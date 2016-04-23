@@ -1,0 +1,30 @@
+package com.mocha.server.listeners;
+
+import com.mocha.server.Core;
+import com.mocha.server.JsonListenerCapsule.JsonListener;
+import com.mocha.server.JsonListenerCapsule.RequestTypes;
+import com.mocha.server.models.requests.LoginRequest;
+import com.mocha.server.models.requests.LoginResultRequest;
+import com.mocha.server.models.results.LoginResults;
+/**
+ *   Hüseyin Orkun Elmas
+ *
+ * */
+public class LoginListener extends JsonListener<LoginRequest> {
+
+    @Override
+    public void run(LoginRequest req) {
+            LoginResults res;
+            if (Core.Repository.getUsers().authenticate(req) != null)
+            {
+                res = LoginResults.SUCCESS;
+            }
+            else
+            {
+                res = LoginResults.WRONG;
+            }
+
+            Core.ServerManager.sendMessageObject(getClientUID(), RequestTypes.LOGIN_RESULT, new LoginResultRequest(res));
+            System.out.println("sent " + res);
+    }
+}

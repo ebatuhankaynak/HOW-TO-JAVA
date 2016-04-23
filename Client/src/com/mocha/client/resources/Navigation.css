@@ -1,0 +1,146 @@
+/*
+ * Copyright (c) 2009, 2011, Oracle and/or its affiliates. All rights reserved.
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * This code is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 only, as
+ * published by the Free Software Foundation.  Oracle designates this
+ * particular file as subject to the "Classpath" exception as provided
+ * by Oracle in the LICENSE file that accompanied this code.
+ *
+ * This code is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * version 2 for more details (a copy is included in the LICENSE file that
+ * accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version
+ * 2 along with this work; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ *
+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
+ * or visit www.oracle.com if you need additional information or have any
+ * questions.
+ *
+ */
+
+.mainMenuButton {
+    -fx-base: #81FF84;
+    -fx-skin: "com.sun.javafx.scene.control.skin.ButtonSkin";
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-padding: 0.166667em 0.833333em 0.25em 0.833333em;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
+
+.mainMenuButton:focused {
+
+    -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-background-radius:  6.4, 5, 4, 3;
+}
+
+.mainMenuButton:hover {
+    -fx-color: -fx-hover-base;
+}
+
+.mainMenuButton:armed {
+    -fx-color: -fx-pressed-base;
+}
+
+.mainMenuButton:default {
+    -fx-base: -fx-accent;
+}
+
+.mainMenuButton:cancel {
+}
+
+.mainMenuButton:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.currentButton {
+    -fx-base: #FCFF68;
+    -fx-skin: "com.sun.javafx.scene.control.skin.ButtonSkin";
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-padding: 0.166667em 0.833333em 0.25em 0.833333em;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
+
+.currentButton:focused {
+
+    -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-background-radius:  6.4, 5, 4, 3;
+}
+
+.currentButton:hover {
+    -fx-color: -fx-hover-base;
+}
+
+.currentButton:armed {
+    -fx-color: -fx-pressed-base;
+}
+
+.currentButton:default {
+    -fx-base: -fx-accent;
+}
+
+.currentButton:cancel {
+}
+
+.currentButton:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+/*
+#MainMenuButton {
+    -fx-base: #81FF84;
+    -fx-skin: "com.sun.javafx.scene.control.skin.ButtonSkin";
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-padding: 0.166667em 0.833333em 0.25em 0.833333em;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
+
+#MainMenuButton:focused {
+
+    -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-background-radius:  6.4, 5, 4, 3;
+}
+
+#MainMenuButton:hover {
+    -fx-color: -fx-hover-base;
+}
+
+#MainMenuButton:armed {
+    -fx-color: -fx-pressed-base;
+}
+
+#MainMenuButton:default {
+    -fx-base: -fx-accent;
+}
+
+#MainMenuButton:cancel {
+}
+
+#MainMenuButton:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}*/
+
+/*
+#MainMenuButton {
+    -fx-background-color:-fx-background;
+    -fx-background: ;
+    -fx-border-color: black;
+}*/
