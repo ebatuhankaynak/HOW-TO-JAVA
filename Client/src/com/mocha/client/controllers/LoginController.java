@@ -5,7 +5,7 @@ import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.requests.LoginRequest;
 import com.mocha.client.models.requests.LoginResultRequest;
-import com.mocha.server.models.results.LoginResults;
+import com.mocha.client.models.results.LoginResults;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
