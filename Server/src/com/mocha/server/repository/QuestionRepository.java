@@ -20,7 +20,6 @@ public class QuestionRepository
 
     public QuestionContainer find(QuestionRequest questionRequest){
         QuestionContainer questions = questionContainers.findOne( questionRequest.toSearchQuery()).as( QuestionContainer.class);
-        System.out.println(questions.getQuestionLevel());
         return  questions;
     }
 
@@ -28,7 +27,5 @@ public class QuestionRepository
     {
         questionContainers.save(container);
     }
-
-
 }
 
