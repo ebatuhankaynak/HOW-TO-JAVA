@@ -1,6 +1,6 @@
 package com.mocha.client.models.requests;
 
-import com.mocha.server.models.results.LoginResults;
+import com.mocha.client.models.results.LoginResults;
 
 public class LoginResultRequest {
 
