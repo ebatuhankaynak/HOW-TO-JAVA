@@ -57,9 +57,9 @@
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <Label />
-                        <Label text="Current Coffee Beans: " />
-                        <Label text="Coffee Beans Gained Today: " />
-                        <Label text="Total Coffee Beans: " />
+                        <Label fx:id="currentCoffeeBeansLabel" text="Current Coffee Beans: " />
+                        <Label fx:id="beansTodayLabel" text="Coffee Beans Gained Today: " />
+                        <Label fx:id="totalBeansLabel" text="Total Coffee Beans: " />
                      </children>
                   </VBox>
                </children>

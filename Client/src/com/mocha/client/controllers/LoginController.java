@@ -6,6 +6,7 @@ import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.requests.LoginRequest;
 import com.mocha.client.models.requests.LoginResultRequest;
 import com.mocha.client.models.results.LoginResults;
+import com.mocha.client.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
@@ -20,13 +21,11 @@ import java.util.ResourceBundle;
  * Created by E.Batuhan Kaynak on 28.3.2016.
  */
 
-public class LoginController  extends Controller implements Initializable{
+public class LoginController extends Controller implements Initializable{
 
     @FXML TextField usernameTF;
     @FXML PasswordField passwordTF;
     @FXML Hyperlink createAccount;
-
-    private String userName;
 
     // TODO: 17.4.2016 HOLD DA NAME AFTA LOGIN 
     public LoginController(){
@@ -34,10 +33,15 @@ public class LoginController  extends Controller implements Initializable{
             @Override
             public void run(LoginResultRequest req) {
                 LoginResults res = req.getResult();
-                if (res == LoginResults.SUCCESS)
+                if (res == LoginResults.SUCCESS){
                     System.out.println("Login successfull");
-                else if (res == LoginResults.FAILURE)
+                    User user = req.getUser();
+                    System.out.println(user.getUsername());
+                    Core.Storage.setUser(user);
+                }
+                else if (res == LoginResults.FAILURE) {
                     System.out.println("Login failed");
+                }
             }
         });
     }

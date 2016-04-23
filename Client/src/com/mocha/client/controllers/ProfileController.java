@@ -1,25 +1,31 @@
 package com.mocha.client.controllers;
 
+import com.mocha.client.Core;
+import com.mocha.client.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by E.Batuhan Kaynak on 17.4.2016.
  */
 
-public class ProfileController extends Controller {
+public class ProfileController extends Controller implements Initializable{
 
     @FXML Label nameLabel;
+    @FXML Label currentCoffeeBeansLabel;
+    @FXML Label beansTodayLabel;
+    @FXML Label totalBeansLabel;
     @FXML BarChart progressGraph;
 
     final CategoryAxis xAxis;
@@ -65,4 +71,10 @@ public class ProfileController extends Controller {
         goToScene("MainMenu");
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        User user = Core.Storage.getUser();
+        nameLabel.setText(user.getUsername());
+        currentCoffeeBeansLabel.setText("Current Coffee Beans: " + String.valueOf(user.getCoffeeBeans()));
+    }
 }
