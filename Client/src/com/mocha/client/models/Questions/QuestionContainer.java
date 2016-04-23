@@ -1,4 +1,4 @@
-package com.mocha.server.models;
+package com.mocha.client.models.Questions;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mocha.server.models.Questions.Question;
