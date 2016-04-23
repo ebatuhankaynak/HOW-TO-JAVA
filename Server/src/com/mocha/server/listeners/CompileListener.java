@@ -5,10 +5,8 @@ import com.mocha.server.Core;
 import com.mocha.server.JsonListenerCapsule.JsonListener;
 import com.mocha.server.JsonListenerCapsule.RequestTypes;
 import com.mocha.server.models.requests.CompileRequest;
-import com.mocha.server.models.requests.RegisterRequest;
-import com.mocha.server.models.requests.RegisterResultRequest;
-import com.mocha.server.models.results.CompilerResult;
-import com.mocha.server.models.results.RegisterResults;
+import com.mocha.server.models.requests.CompileResultRequest;
+import com.mocha.server.models.results.CompileResult;
 
 public class CompileListener extends JsonListener <CompileRequest> {
 
@@ -16,14 +14,21 @@ public class CompileListener extends JsonListener <CompileRequest> {
     @Override
     public void run(CompileRequest req)
         {
-            CompilerResult result;
+            CompileResult result;
             CompilerCapsule compiler = new CompilerCapsule();
-
+            // TODO: 4/23/2016 boolean []   =  
             compiler.compile(req.getCodeToCompile());
 
-
-
-
-
+            if (compiler.isCompiled())
+            {
+                result = CompileResult.SUCCESS;
+            }
+            else
+            {
+                result = CompileResult.FAİL;
+            }
+            Core.ServerManager.sendMessageObject(getClientUID(), RequestTypes.COMPILE_RESULT, new CompileResultRequest(result));
+            System.out.println("sent " + result);
         }
 }
+
