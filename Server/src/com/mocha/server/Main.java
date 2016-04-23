@@ -18,13 +18,14 @@ public class Main {
 
 
         com.mocha.server.CompilerCapsule.CompilerCapsule compilerCapsule = new com.mocha.server.CompilerCapsule.CompilerCapsule();
+        /*
         compilerCapsule.compile("public class Main\n" +
                 "{  \n" +
                 "        public static void main(String args[])\n" +
                 "        {\n" +
                 "           System.out.println(\"Hello World!\\nasddsa\");\n" +
                 "        }\n" +
-                "}\n");
+                "}\n");*/
 
         Core.JsonListenerManager.addJsonListener(RequestTypes.LOGIN, new LoginListener());
         Core.JsonListenerManager.addJsonListener(RequestTypes.REGISTER, new RegisterListener());

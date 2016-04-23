@@ -73,13 +73,7 @@ public class CodingMenuController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("INSIDE INITIALIZE");
-        //setUpCodingMenu();
-        //questionLabel = new Label();
-        System.out.println(TopicMenuController.questionBadDesign);
         Question q = TopicMenuController.questionBadDesign;
-        System.out.println("INITIALIZ ICNE GELDI MI?");
-        System.out.println(q);
         questionLabel.setText(q.getQuestion());
     }
 }

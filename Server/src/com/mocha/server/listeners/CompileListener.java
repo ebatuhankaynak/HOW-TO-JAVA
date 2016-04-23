@@ -1,11 +1,8 @@
 package com.mocha.server.listeners;
 
 import com.mocha.server.CompilerCapsule.CompilerCapsule;
-import com.mocha.server.Core;
 import com.mocha.server.JsonListenerCapsule.JsonListener;
-import com.mocha.server.JsonListenerCapsule.RequestTypes;
 import com.mocha.server.models.requests.CompileRequest;
-import com.mocha.server.models.requests.CompileResultRequest;
 import com.mocha.server.models.results.CompileResult;
 
 public class CompileListener extends JsonListener <CompileRequest> {
@@ -25,9 +22,9 @@ public class CompileListener extends JsonListener <CompileRequest> {
             }
             else
             {
-                result = CompileResult.FAİL;
+                result = CompileResult.FAILURE;
             }
-            Core.ServerManager.sendMessageObject(getClientUID(), RequestTypes.COMPILE_RESULT, new CompileResultRequest(result));
+            //Core.ServerManager.sendMessageObject(getClientUID(), RequestTypes.COMPILE_RESULT, new CompileResultRequest(result));
             System.out.println("sent " + result);
         }
 }

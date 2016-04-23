@@ -6,6 +6,7 @@ public enum RequestTypes {
     REGISTER,
     REGISTER_RESULT,
     QUESTION,
-    QUESTION_RESULT
-
+    QUESTION_RESULT,
+    COMPILE,
+    COMPILE_RESULT
 }
