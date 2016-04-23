@@ -1,4 +1,4 @@
-package com.mocha.server.models;
+package com.mocha.client.models;
 
 import java.util.ArrayList;
 import java.util.List;

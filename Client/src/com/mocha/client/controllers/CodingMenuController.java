@@ -2,8 +2,6 @@ package com.mocha.client.controllers;
 
 
 import com.mocha.server.models.Questions.Question;
-import com.mocha.server.models.Questions.QuestionContainer;
-import com.mocha.server.models.Topic;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
