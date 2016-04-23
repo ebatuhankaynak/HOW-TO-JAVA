@@ -1,5 +1,7 @@
 package com.mocha.client.models.Questions;
 
+import com.mocha.client.models.Questions.QuestionID;
+
 /**
  * Hüseyin Ziya İmamoğlu
  * 17.04.2016
@@ -13,8 +15,8 @@ public class CodeCompletionQuestion extends CompiledQuestion
     private String codeSegment;
 
     // Constructor
-    public CodeCompletionQuestion( String question, QuestionID id, int coffeeBeansAwarded, String[] testCases,
-                                    String[] testCaseAnswers, String codeSegment)
+    public CodeCompletionQuestion(String question, QuestionID id, int coffeeBeansAwarded, String[] testCases,
+                                  String[] testCaseAnswers, String codeSegment)
     {
         super( question, id, coffeeBeansAwarded, testCases, testCaseAnswers);
         this.codeSegment = codeSegment;
