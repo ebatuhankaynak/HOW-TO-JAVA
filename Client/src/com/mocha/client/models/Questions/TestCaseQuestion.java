@@ -14,9 +14,9 @@ public class TestCaseQuestion extends CompiledQuestion
 
     // Constructor
     public TestCaseQuestion( String question, QuestionID id, int coffeeBeansAwarded,
-                             String[] testCases, String[] testCaseAnswers, String codeSegment)
+                             String[] testCases, String[] testCaseAnswers, String codeSegment, String testClass)
     {
-        super( question, id, coffeeBeansAwarded, testCases, testCaseAnswers);
+        super( question, id, coffeeBeansAwarded, testCases, testCaseAnswers, testClass);
         this.codeSegment = codeSegment;
     }
 

@@ -1,7 +1,5 @@
 package com.mocha.client.JsonListenerCapsule;
 
-import com.mocha.server.models.results.CompileResult;
-
 public enum RequestTypes {
     LOGIN,
     LOGIN_RESULT,

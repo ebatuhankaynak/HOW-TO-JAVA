@@ -1,5 +1,7 @@
 package com.mocha.client.models.Questions;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Hüseyin Ziya İmamoğlu
  * 17.04.2016
@@ -10,6 +12,7 @@ package com.mocha.client.models.Questions;
 public class Question
 {
     // Instance Variables
+    @JsonProperty
     private QuestionID id;
     private String question; //Denotes the text of the question
     private int coffeeBeansAwarded; // Denotes the coffeee beans awarded for the question

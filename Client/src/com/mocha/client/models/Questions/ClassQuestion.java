@@ -1,5 +1,8 @@
 package com.mocha.client.models.Questions;
 
+import com.mocha.server.models.Questions.CompiledQuestion;
+import com.mocha.server.models.Questions.QuestionID;
+
 /**
  * Hüseyin Ziya İmamoğlu
  * 17.04.2016
@@ -7,29 +10,15 @@ package com.mocha.client.models.Questions;
  * Info about class
  * v 1.0
  */
-public class ClassQuestion extends CompiledQuestion
-{
-    // Instance Variables
-    private String testClass;
+public class ClassQuestion extends CompiledQuestion {
 
     // Constructor
     public ClassQuestion(String question, QuestionID id, int coffeeBeansAwarded, String[] testCases,
-                         String[] testCaseAnswers, String testClass)
-    {
-        super(question, id, coffeeBeansAwarded, testCases, testCaseAnswers);
-        this.testClass = testClass;
-    }
-
-    // Getter and setter methods
-    public String getTestClass()
-    {
-        return testClass;
-    }
-
-    public void setTestClass(String testClass)
-    {
-        this.testClass = testClass;
+                         String[] testCaseAnswers, String testClass) {
+        super(question, id, coffeeBeansAwarded, testCases, testCaseAnswers, testClass);
     }
 }
+
+
 
 

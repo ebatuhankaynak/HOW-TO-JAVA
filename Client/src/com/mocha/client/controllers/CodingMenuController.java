@@ -2,7 +2,13 @@ package com.mocha.client.controllers;
 
 
 import com.mocha.client.Core;
+import com.mocha.client.JsonListenerCapsule.JsonListener;
+import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.Questions.Question;
+import com.mocha.client.models.requests.CompileRequest;
+import com.mocha.client.models.requests.CompileResultRequest;
+import com.mocha.client.models.results.CompileResults;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -26,10 +32,11 @@ public class CodingMenuController extends Controller implements Initializable {
 
     public CodingMenuController(){
         question = Core.Storage.getQuestionToShow();
-        /*
+
         Core.JsonListenerManager.addJsonListener(RequestTypes.COMPILE_RESULT, new JsonListener<CompileResultRequest>() {
             @Override
             public void run(CompileResultRequest req) {
+                System.out.println("IN CODING MENU");
                 CompileResults res = req.getResult();
                 System.out.println(res);
                 if (res == CompileResults.SUCCESS) {
@@ -44,21 +51,21 @@ public class CodingMenuController extends Controller implements Initializable {
                     System.out.println("Rip Compile");
                 }
             }
-        });*/
+        });
     }
 
     @FXML
     public void onCompileButtonClick(MouseEvent mouseEvent)
     {
         sendCodeToServer();
-        goToScene("CodingMenuTest");
+        //goToScene("CodingMenuTest");
     }
 
     public void sendCodeToServer()
     {
-//        String userName = Core.Storage.getUser().getUsername();
+        String userName = Core.Storage.getUser().getUsername();
         String codeToSend = codingArea.getText();
-        //Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
+        Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
     }
 
     @FXML

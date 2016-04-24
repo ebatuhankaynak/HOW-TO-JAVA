@@ -1,7 +1,12 @@
 package com.mocha.client.controllers;
 
 import com.mocha.client.Core;
+import com.mocha.client.JsonListenerCapsule.JsonListener;
+import com.mocha.client.JsonListenerCapsule.RequestTypes;
+import com.mocha.client.models.Questions.CompiledQuestion;
 import com.mocha.client.models.requests.CompileResultRequest;
+import com.mocha.client.models.results.CompileResults;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -41,7 +46,7 @@ public class CodingMenuTestController extends CodingMenuController {
         //super();
         compileResultRequest = Core.Storage.getCompileResultRequest();
         compileDatas = FXCollections.observableArrayList();
-        /*
+
         Core.JsonListenerManager.addJsonListener(RequestTypes.COMPILE_RESULT, new JsonListener<CompileResultRequest>() {
             @Override
             public void run(CompileResultRequest req) {
@@ -59,7 +64,7 @@ public class CodingMenuTestController extends CodingMenuController {
                     System.out.println("Rip Compile");
                 }
             }
-        });*/
+        });
         Scene scene = Core.Storage.getScene();
         scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
@@ -68,23 +73,23 @@ public class CodingMenuTestController extends CodingMenuController {
             }
         });
     }
-    /*
+
     public void parseCompileData(){
         // TODO: 24.4.2016 get array size and run loop
-        for (int i = 0; i < compileResultRequest.getCompilerResult().size(); i++)){
-            String testCase = compileResultRequest;
-            String errorString compileResultRequest;
-            boolean passed = compileResultRequest;
+        for (int i = 0; i < compileResultRequest.getCompilerResults().length; i++){
+            String testCase = ((CompiledQuestion) (Core.Storage.getQuestionToShow())).getTestCases()[i];
+            String errorString = compileResultRequest.getErrString()[i];
+            boolean passed = compileResultRequest.getCompilerResults()[i];
             MyCompileData compileData;
             if (passed){
-                compileData = new MyCompileData(testCase, errorString, tickImage));
+                compileData = new MyCompileData(testCase, errorString, tickImage);
             }
             else{
-                compileData = new MyCompileData(testCase, errorString, crossImage));
+                compileData = new MyCompileData(testCase, errorString, crossImage);
             }
             compileDatas.add(compileData);
         }
-    }*/
+    }
 
     final ObservableList<MyCompileData> data = FXCollections.observableArrayList(
             new MyCompileData("aba", "rip", tickImage),
@@ -95,14 +100,14 @@ public class CodingMenuTestController extends CodingMenuController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
-        //parseCompileData();
+        parseCompileData();
 
         testCaseColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("testCase"));
         errorColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("error"));
         passedColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, ImageView>("passed"));
 
-        testTable.setItems(data);
-        //testTable.setItems(compileDatas);
+        //testTable.setItems(data);
+        testTable.setItems(compileDatas);
     }
 
     /*

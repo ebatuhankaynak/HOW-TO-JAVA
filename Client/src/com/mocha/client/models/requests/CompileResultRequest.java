@@ -8,13 +8,14 @@ import com.mocha.client.models.results.CompileResults;
  */
 public class CompileResultRequest {
 
-
         private CompileResults result;
         private User user;
         private boolean [] compilerResults;
-        public CompileResultRequest(CompileResults result, boolean[] compilerResults  ) {
+        private String [] errString;
+        public CompileResultRequest(CompileResults result, boolean[] compilerResults, String[] errString  ) {
             this.result = result;
             this.compilerResults = compilerResults;
+            this.errString = errString;
         }
 
         public CompileResults getResult() {
@@ -34,4 +35,19 @@ public class CompileResultRequest {
         }
 
 
+    public boolean[] getCompilerResults() {
+        return compilerResults;
+    }
+
+    public void setCompilerResults(boolean[] compilerResults) {
+        this.compilerResults = compilerResults;
+    }
+
+    public String[] getErrString() {
+        return errString;
+    }
+
+    public void setErrString(String[] errString) {
+        this.errString = errString;
+    }
 }

@@ -9,8 +9,8 @@ public class LoginResultRequest {
     private User user;
 
     public LoginResultRequest(LoginResults result, User user) {
-        this.result = result;
         this.user = user;
+        this.result = result;
     }
 
     public LoginResults getResult() {

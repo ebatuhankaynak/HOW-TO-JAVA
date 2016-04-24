@@ -12,7 +12,7 @@ public class QuestionID
     // Instance Variables
     private int questionNumber;
     private int questionLevel;
-    private int questionTopic;
+    private String questionTopic;
 
     // Constructor
 
@@ -20,7 +20,7 @@ public class QuestionID
 
     }
 
-    public QuestionID( int questionNumber, int questionLevel, int questionTopic)
+    public QuestionID( int questionNumber, int questionLevel, String questionTopic)
     {
         this.questionLevel = questionLevel;
         this.questionNumber = questionNumber;
@@ -33,7 +33,7 @@ public class QuestionID
         return questionLevel;
     }
 
-    public int getQuestionTopic()
+    public String getQuestionTopic()
         {
             return questionTopic;
         }
@@ -53,7 +53,7 @@ public class QuestionID
             this.questionNumber = questionNumber;
         }
 
-    public void setQuestionTopic( int questionTopic)
+    public void setQuestionTopic( String questionTopic)
         {
             this.questionTopic = questionTopic;
         }

@@ -12,14 +12,16 @@ public class CompiledQuestion extends Question
     // Instance Variables
     private String[] testCases;
     private String[] testCaseAnswers;
+    private String testClass;
 
     // Constructor
     public CompiledQuestion( String question, QuestionID id, int coffeeBeansAwarded,
-                            String[] testCases, String[] testCaseAnswers)
+                            String[] testCases, String[] testCaseAnswers, String testClass)
     {
         super( question, id, coffeeBeansAwarded);
         this.testCases = testCases;
         this.testCaseAnswers = testCaseAnswers;
+        this.testClass = testClass;
     }
 
     // Check Method
@@ -45,6 +47,15 @@ public class CompiledQuestion extends Question
     {
         return testCases;
     }
+
+    public String getTestClass(){
+        return testClass;
+    }
+
+
+
+
+
 }
 
 
