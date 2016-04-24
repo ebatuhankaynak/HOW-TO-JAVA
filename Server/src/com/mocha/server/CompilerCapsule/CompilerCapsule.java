@@ -52,7 +52,7 @@ public class CompilerCapsule {
         Runtime runtime = Runtime.getRuntime();
         Process process = null;
         try {
-            process = runtime.exec("cmd /c \"cd CompilerStorage\\" + uniqueId + " && C:\\jdk1.8.0_73\\bin\\javac.exe Main.java  2>results"+ uniqueId + ".txt");
+            process = runtime.exec("cmd /c \"cd CompilerStorage\\" + uniqueId + " && C:\\jdk1.8.0_60\\bin\\javac.exe Main.java  2>results"+ uniqueId + ".txt");
         //    process = runtime.exec("cmd /c \"cd CompilerStorage\\" + uniqueId + " && C:\\jdk1.8.0_73\\bin\\javac.exe Main.java" );
             process.waitFor();
         } catch (IOException e) {
@@ -116,7 +116,7 @@ public class CompilerCapsule {
 
     }
     String readFile(String fileName, String uniqueId) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Hüseyin\\IdeaProjects\\Mocha\\CompilerStorage\\" + uniqueId + "\\results" + uniqueId+ ".txt"));
+        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\asus\\IdeaProjects\\Mocha\\CompilerStorage\\" + uniqueId + "\\results" + uniqueId+ ".txt"));
         try {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
