@@ -15,10 +15,14 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.web.HTMLEditor;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,6 +36,8 @@ public class CodingMenuTestController extends CodingMenuController {
     @FXML TableColumn testCaseColumn;
     @FXML TableColumn errorColumn;
     @FXML TableColumn passedColumn;
+    @FXML TextArea codingArea;
+    @FXML HTMLEditor htmlEditor;
 
     private static final String tickSource = "../resources/images/tick_32.png";
     private static final String crossSource = "../resources/images/cross_32.png";
@@ -65,13 +71,7 @@ public class CodingMenuTestController extends CodingMenuController {
                 }
             }
         });
-        Scene scene = Core.Storage.getScene();
-        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-
-            }
-        });
+        Scene scene = Core.Storage.getScene(); // NO NEED FOR THIS NOW(I THINK)
     }
 
     public void parseCompileData(){
@@ -94,7 +94,12 @@ public class CodingMenuTestController extends CodingMenuController {
     final ObservableList<MyCompileData> data = FXCollections.observableArrayList(
             new MyCompileData("aba", "rip", tickImage),
             new MyCompileData("baaba", "rip", crossImage),
+            new MyCompileData("Ziya", "Ortalama out of bounds", tickImage),
+            new MyCompileData("Ziya", "Ortalama out of bounds", tickImage),
+            new MyCompileData("Ziya", "Ortalama out of bounds", tickImage),
+            new MyCompileData("Ziya", "Ortalama out of bounds", tickImage),
             new MyCompileData("Ziya", "Ortalama out of bounds", tickImage)
+
     );
 
     @Override
@@ -108,6 +113,20 @@ public class CodingMenuTestController extends CodingMenuController {
 
         testTable.setItems(data);
         //testTable.setItems(compileDatas);
+
+        htmlEditor.lookup(".top-toolbar").setManaged(false);
+        htmlEditor.lookup(".top-toolbar").setVisible(false);
+
+        htmlEditor.lookup(".bottom-toolbar").setManaged(false);
+        htmlEditor.lookup(".bottom-toolbar").setVisible(false);
+
+        htmlEditor.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                System.out.println("KEY RELEASED");
+                htmlEditor.setHtmlText("<p style=\"color:red;\"> sa </p>");
+            }
+        });
     }
 
     /*
