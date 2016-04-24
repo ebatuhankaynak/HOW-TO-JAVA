@@ -1,10 +1,17 @@
 package com.mocha.client.controllers;
 
 
-import com.mocha.server.models.Questions.Question;
+import com.mocha.client.Core;
+import com.mocha.client.models.Questions.Question;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
@@ -24,7 +31,8 @@ public class CodingMenuController extends Controller implements Initializable {
 
     public CodingMenuController(){
         System.out.println(TopicMenuController.questionBadDesign);
-        question = TopicMenuController.questionBadDesign;
+        //question = TopicMenuController.questionBadDesign;
+        question = Core.Storage.getQuestionToShow();
         System.out.println("CODING MENU CONTROLLER");
         System.out.println(question);
     }
@@ -40,7 +48,7 @@ public class CodingMenuController extends Controller implements Initializable {
     @FXML
     public void onCompileButtonClick(MouseEvent mouseEvent)
     {
-        //sendCodeToServer();
+        goToScene("CodingMenuTest");
     }
 
     public void setUpCodingMenu()
@@ -73,7 +81,7 @@ public class CodingMenuController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Question q = TopicMenuController.questionBadDesign;
-        questionLabel.setText(q.getQuestion());
+        Question question = Core.Storage.getQuestionToShow();
+        questionLabel.setText(question.getQuestion());
     }
 }

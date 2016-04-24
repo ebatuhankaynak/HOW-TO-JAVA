@@ -17,4 +17,12 @@ public class Storage {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public Question getQuestionToShow() {
+        return questionToShow;
+    }
+
+    public void setQuestionToShow(Question questionToShow) {
+        this.questionToShow = questionToShow;
+    }
 }

@@ -1,10 +1,7 @@
 package com.mocha.client.models.requests;
 
 import com.mocha.client.models.results.QuestionResults;
-import com.mocha.server.models.Questions.Question;
-import com.mocha.server.models.Questions.QuestionContainer;
-
-import java.util.List;
+import com.mocha.client.models.Questions.QuestionContainer;
 
 /**
  * Created by E.Batuhan Kaynak on 19.4.2016.

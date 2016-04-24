@@ -7,8 +7,8 @@ import com.mocha.client.Transition;
 import com.mocha.client.models.requests.QuestionRequest;
 import com.mocha.client.models.requests.QuestionResultRequest;
 import com.mocha.client.models.results.QuestionResults;
-import com.mocha.server.models.Questions.Question;
-import com.mocha.server.models.Questions.QuestionContainer;
+import com.mocha.client.models.Questions.Question;
+import com.mocha.client.models.Questions.QuestionContainer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -34,9 +34,9 @@ public class TopicMenuController extends Controller {
                 QuestionResults res = req.getResult();
                 System.out.println(res);
                 if (res == QuestionResults.SUCCESS) {
-                    //System.out.println("Got the questions");
                     questions = req.getQuestions();
-                    questionBadDesign = questions.getQuestions().get(0);
+                    Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
+                    //questionBadDesign = questions.getQuestions().get(0);
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
@@ -63,7 +63,8 @@ public class TopicMenuController extends Controller {
 
     @FXML
     public void onMethodsButtonClick(MouseEvent mouseEvent) {
-        goToScene("CodingMenu");
+        requestQuestions("METHOD", "1");
+        //goToScene("CodingMenu");
     }
 
     public void requestQuestions(String topicType, String level)

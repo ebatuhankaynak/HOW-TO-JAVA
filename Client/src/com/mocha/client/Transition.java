@@ -1,23 +1,13 @@
 package com.mocha.client;
 
-import com.mocha.client.controllers.CodingMenuController;
 import com.mocha.client.controllers.Controller;
-import com.mocha.client.controllers.LoginController;
-import com.mocha.client.controllers.TopicTypes;
-import com.mocha.server.models.Questions.Question;
-import com.mocha.server.models.Questions.QuestionContainer;
-import javafx.fxml.FXML;
+import com.mocha.client.models.Questions.Question;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Optional;
 
 /**
  * Created by E.Batuhan Kaynak on 31.3.2016.
