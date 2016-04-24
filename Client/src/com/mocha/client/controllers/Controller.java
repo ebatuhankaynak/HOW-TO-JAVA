@@ -10,7 +10,6 @@ import javafx.stage.Stage;
  */
 
 public class Controller {
-    //public String username;
     private Stage prevStage;
 
     public void setPrevStage(Stage prevStage){

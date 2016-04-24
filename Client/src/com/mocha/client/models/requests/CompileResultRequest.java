@@ -1,7 +1,7 @@
 package com.mocha.client.models.requests;
 
 import com.mocha.client.models.User;
-import com.mocha.client.models.results.CompileResult;
+import com.mocha.client.models.results.CompileResults;
 
 /**
  * Created by Hüseyin on 4/23/2016.
@@ -9,19 +9,19 @@ import com.mocha.client.models.results.CompileResult;
 public class CompileResultRequest {
 
 
-        private CompileResult result;
+        private CompileResults result;
         private User user;
         private boolean [] compilerResults;
-        public CompileResultRequest(CompileResult result, boolean[] compilerResults  ) {
+        public CompileResultRequest(CompileResults result, boolean[] compilerResults  ) {
             this.result = result;
             this.compilerResults = compilerResults;
         }
 
-        public CompileResult getResult() {
+        public CompileResults getResult() {
             return result;
         }
 
-        public void setResult(CompileResult result) {
+        public void setResult(CompileResults result) {
             this.result = result;
         }
 

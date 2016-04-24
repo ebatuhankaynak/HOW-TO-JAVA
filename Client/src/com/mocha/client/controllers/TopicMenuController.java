@@ -36,7 +36,6 @@ public class TopicMenuController extends Controller {
                 if (res == QuestionResults.SUCCESS) {
                     questions = req.getQuestions();
                     Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
-                    //questionBadDesign = questions.getQuestions().get(0);
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {

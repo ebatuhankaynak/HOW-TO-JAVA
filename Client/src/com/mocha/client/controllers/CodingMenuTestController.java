@@ -1,15 +1,16 @@
 package com.mocha.client.controllers;
 
 import com.mocha.client.Core;
-import com.mocha.client.models.Questions.Question;
+import com.mocha.client.models.requests.CompileResultRequest;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,33 +25,65 @@ public class CodingMenuTestController extends CodingMenuController {
     @FXML TableColumn errorColumn;
     @FXML TableColumn passedColumn;
 
-    final ObservableList<MyTableData> data = FXCollections.observableArrayList(
-            new MyTableData("aba", "rip", "X"),
-            new MyTableData("baaba", "rip", "X"),
-            new MyTableData("Ziya", "Ortalama out of bounds", "X")
+    private static final String tickSource = "../resources/images/tick_32.png";
+    private static final String crossSource = "../resources/images/cross_32.png";
+
+    private final ImageView tickImage = new ImageView(new Image(String.valueOf(getClass().getResource(tickSource))));
+    private final ImageView crossImage = new ImageView(new Image(String.valueOf(getClass().getResource(crossSource))));
+
+    private CompileResultRequest compileResultRequest;
+    private ObservableList<MyCompileData> compileDatas;
+
+    public CodingMenuTestController(){
+        compileResultRequest = Core.Storage.getCompileResultRequest();
+        compileDatas = FXCollections.observableArrayList();
+    }
+
+    public void parseCompileData(){
+        // TODO: 24.4.2016 get array size and run loop
+        for (int i = 0; i < compileResultRequest.getCompilerResult().size(); i++)){
+            String testCase = compileResultRequest;
+            String errorString compileResultRequest;
+            boolean passed = compileResultRequest;
+            MyCompileData compileData;
+            if (passed){
+                compileData = new MyCompileData(testCase, errorString, tickImage));
+            }
+            else{
+                compileData = new MyCompileData(testCase, errorString, crossImage));
+            }
+            compileDatas.add(compileData);
+        }
+    }
+
+    final ObservableList<MyCompileData> data = FXCollections.observableArrayList(
+            new MyCompileData("aba", "rip", tickImage),
+            new MyCompileData("baaba", "rip", crossImage),
+            new MyCompileData("Ziya", "Ortalama out of bounds", tickImage)
     );
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //testCaseColumn = new TableColumn("Test Case");
-        testCaseColumn.setCellValueFactory(new PropertyValueFactory<MyTableData, String>("testCase"));
-        errorColumn.setCellValueFactory(new PropertyValueFactory<MyTableData, String>("error"));
-        passedColumn.setCellValueFactory(new PropertyValueFactory<MyTableData, String>("passed"));
+        super.initialize(location, resources);
+        parseCompileData();
 
-        //errorColumn = new TableColumn("Error");
+        testCaseColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("testCase"));
+        errorColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("error"));
+        passedColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, ImageView>("passed"));
 
         testTable.setItems(data);
+        //testTable.setItems(compileDatas);
     }
 
-    public static class MyTableData{
+    public static class MyCompileData {
         private final SimpleStringProperty testCase;
         private final SimpleStringProperty error;
-        private final SimpleStringProperty passed;
+        private final ImageView passed;
 
-        private MyTableData(String testCase, String  error, String passed) {
+        private MyCompileData(String testCase, String  error, ImageView passed) {
             this.testCase = new SimpleStringProperty(testCase);
             this.error = new SimpleStringProperty(error);
-            this.passed = new SimpleStringProperty(passed);
+            this.passed = passed;
         }
 
         public String getTestCase() {
@@ -61,8 +94,8 @@ public class CodingMenuTestController extends CodingMenuController {
             return error.get();
         }
 
-        public String getPassed() {
-            return passed.get();
+        public ImageView getPassed() {
+            return passed;
         }
     }
 }
