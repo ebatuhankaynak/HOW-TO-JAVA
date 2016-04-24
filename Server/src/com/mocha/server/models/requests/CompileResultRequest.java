@@ -1,7 +1,7 @@
 package com.mocha.server.models.requests;
 
 import com.mocha.server.models.User;
-import com.mocha.server.models.results.CompileResults;
+import com.mocha.server.models.results.CompileResult;
 
 /**
  * Created by Hüseyin on 4/23/2016.
@@ -9,21 +9,21 @@ import com.mocha.server.models.results.CompileResults;
 public class CompileResultRequest {
 
 
-        private CompileResults result;
+        private CompileResult result;
         private User user;
         private boolean [] compilerResults;
         private String [] errString;
-        public CompileResultRequest(CompileResults result, boolean[] compilerResults, String[] errString  ) {
+        public CompileResultRequest(CompileResult result, boolean[] compilerResults, String[] errString  ) {
             this.result = result;
             this.compilerResults = compilerResults;
             this.errString = errString;
         }
 
-        public CompileResults getResult() {
+        public CompileResult getResult() {
             return result;
         }
 
-        public void setResult(CompileResults result) {
+        public void setResult(CompileResult result) {
             this.result = result;
         }
 

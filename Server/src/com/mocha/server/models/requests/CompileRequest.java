@@ -5,17 +5,18 @@ import com.mocha.server.models.Questions.Question;
 
 public class CompileRequest
 {
+    //mght delete userneame variable
     private String codeToCompile;
     private String userName;
     private CompiledQuestion question;
-    public CompileRequest(String codeToCompile, String userName, CompiledQuestion question)
+    public CompileRequest (String codeToCompile, String userName, CompiledQuestion question)
     {
         this.codeToCompile = codeToCompile;
         this.userName = userName;
         this.question = question;
     }
 
-    public CompileRequest()
+    public CompileRequest ()
     {
 
     }

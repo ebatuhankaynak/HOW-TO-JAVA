@@ -1,6 +1,9 @@
 package com.mocha.server.repository;
 
-import com.mocha.server.models.Questions.*;
+import com.mocha.server.models.Questions.ClassQuestion;
+import com.mocha.server.models.Questions.MethodQuestion;
+import com.mocha.server.models.Questions.QuestionContainer;
+import com.mocha.server.models.Questions.QuestionID;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;

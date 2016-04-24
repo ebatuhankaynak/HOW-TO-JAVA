@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Creates a question
  * v 1.0
  */
-public  class Question
+public class Question
 {
     // Instance Variables
     @JsonProperty
@@ -62,7 +62,5 @@ public  class Question
     {
         this.coffeeBeansAwarded = coffeeBeansawarded;
     }
-
-
 }
 
