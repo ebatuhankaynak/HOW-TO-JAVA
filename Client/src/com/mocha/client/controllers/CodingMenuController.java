@@ -30,7 +30,7 @@ public class CodingMenuController extends Controller implements Initializable {
     @FXML Label questionLabel;
     @FXML TextArea codingArea;
 
-    private CompiledQuestion question;
+    private Question question;
 
     public CodingMenuController(){
         question = Core.Storage.getQuestionToShow();
@@ -66,6 +66,7 @@ public class CodingMenuController extends Controller implements Initializable {
     {
         String userName = Core.Storage.getUser().getUsername();
         String codeToSend = codingArea.getText();
+        goToScene("CodingMenuTest");
         //Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
     }
 
@@ -77,7 +78,7 @@ public class CodingMenuController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        CompiledQuestion question = Core.Storage.getQuestionToShow();
+        Question question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
         codingArea.setPromptText("Enter Your Code Here!");
     }

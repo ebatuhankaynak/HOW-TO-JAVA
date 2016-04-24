@@ -100,14 +100,14 @@ public class CodingMenuTestController extends CodingMenuController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
-        parseCompileData();
+        //parseCompileData();
 
         testCaseColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("testCase"));
         errorColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("error"));
         passedColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, ImageView>("passed"));
 
-        //testTable.setItems(data);
-        testTable.setItems(compileDatas);
+        testTable.setItems(data);
+        //testTable.setItems(compileDatas);
     }
 
     /*
