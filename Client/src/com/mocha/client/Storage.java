@@ -3,6 +3,7 @@ package com.mocha.client;
 import com.mocha.client.models.Questions.Question;
 import com.mocha.client.models.User;
 import com.mocha.client.models.requests.CompileResultRequest;
+import javafx.scene.Scene;
 
 /**
  * Created by E.Batuhan Kaynak on 23.4.2016.
@@ -11,6 +12,7 @@ public class Storage {
     private User user;
     private Question questionToShow;
     private CompileResultRequest compileResultRequest;
+    private Scene scene;
 
     public User getUser() {
         return user;
@@ -34,5 +36,13 @@ public class Storage {
 
     public void setCompileResultRequest(CompileResultRequest compileResultRequest) {
         this.compileResultRequest = compileResultRequest;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
     }
 }

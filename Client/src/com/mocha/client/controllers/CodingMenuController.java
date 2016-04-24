@@ -2,13 +2,7 @@ package com.mocha.client.controllers;
 
 
 import com.mocha.client.Core;
-import com.mocha.client.JsonListenerCapsule.JsonListener;
-import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.Questions.Question;
-import com.mocha.client.models.requests.CompileRequest;
-import com.mocha.client.models.requests.CompileResultRequest;
-import com.mocha.client.models.results.CompileResults;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

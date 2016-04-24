@@ -60,7 +60,7 @@ public class CodingMenuTestController extends CodingMenuController {
                 }
             }
         });*/
-        Scene scene = getScene();
+        Scene scene = Core.Storage.getScene();
         scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
