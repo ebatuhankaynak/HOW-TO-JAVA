@@ -60,8 +60,9 @@ public class CodingMenuController extends Controller implements Initializable {
 
     public void sendCodeToServer()
     {
-        String userName;
-        Core.JsonListenerManager.addJsonListener(RequestTypes.COMPILE, new CompileRequest(codingArea.getText() ,Core.Storage.getUser().getUsername(), question);
+        String userName = Core.Storage.getUser().getUsername();
+        String codeToSend = codingArea.getText();
+        Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
     }
 
     @FXML

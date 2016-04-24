@@ -35,10 +35,11 @@ public class CodingMenuTestController extends CodingMenuController {
     private ObservableList<MyCompileData> compileDatas;
 
     public CodingMenuTestController(){
+        super();
         compileResultRequest = Core.Storage.getCompileResultRequest();
         compileDatas = FXCollections.observableArrayList();
     }
-
+    /*
     public void parseCompileData(){
         // TODO: 24.4.2016 get array size and run loop
         for (int i = 0; i < compileResultRequest.getCompilerResult().size(); i++)){
@@ -54,7 +55,7 @@ public class CodingMenuTestController extends CodingMenuController {
             }
             compileDatas.add(compileData);
         }
-    }
+    }*/
 
     final ObservableList<MyCompileData> data = FXCollections.observableArrayList(
             new MyCompileData("aba", "rip", tickImage),
@@ -65,7 +66,7 @@ public class CodingMenuTestController extends CodingMenuController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
-        parseCompileData();
+        //parseCompileData();
 
         testCaseColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("testCase"));
         errorColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("error"));
