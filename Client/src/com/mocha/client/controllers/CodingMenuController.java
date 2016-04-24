@@ -32,6 +32,7 @@ public class CodingMenuController extends Controller implements Initializable {
 
     public CodingMenuController(){
         question = Core.Storage.getQuestionToShow();
+        /*
         Core.JsonListenerManager.addJsonListener(RequestTypes.COMPILE_RESULT, new JsonListener<CompileResultRequest>() {
             @Override
             public void run(CompileResultRequest req) {
@@ -49,20 +50,21 @@ public class CodingMenuController extends Controller implements Initializable {
                     System.out.println("Rip Compile");
                 }
             }
-        });
+        });*/
     }
 
     @FXML
     public void onCompileButtonClick(MouseEvent mouseEvent)
     {
         sendCodeToServer();
+        goToScene("CodingMenuTest");
     }
 
     public void sendCodeToServer()
     {
-        String userName = Core.Storage.getUser().getUsername();
+//        String userName = Core.Storage.getUser().getUsername();
         String codeToSend = codingArea.getText();
-        Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
+        //Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
     }
 
     @FXML

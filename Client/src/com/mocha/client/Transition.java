@@ -37,6 +37,7 @@ public class Transition {
         Controller controller = myLoader.getController();
         controller.setPrevStage(stage);
         Scene scene = new Scene(myPane);
+        controller.setScene(scene);
         /*
         String image = Main.class.getResource("resources/images/Theme1.png").toExternalForm();
         myPane.setStyle("-fx-background-image: url('" + image + "'); " +
@@ -87,6 +88,7 @@ public class Transition {
         Controller controller = myLoader.getController();
         controller.setPrevStage(stage);
         Scene scene = new Scene(myPane);
+        controller.setScene(scene);
         stage.setScene(scene);
     }
 

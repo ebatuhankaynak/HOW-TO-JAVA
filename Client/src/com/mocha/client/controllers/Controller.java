@@ -2,6 +2,7 @@ package com.mocha.client.controllers;
 
 import com.mocha.client.Transition;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -11,6 +12,7 @@ import javafx.stage.Stage;
 
 public class Controller {
     private Stage prevStage;
+    private Scene scene;
 
     public void setPrevStage(Stage prevStage){
         this.prevStage = prevStage;
@@ -29,5 +31,13 @@ public class Controller {
     {
        //Transition transition = new Transition(getPrevStage(), sceneName);
         new Transition(getPrevStage(), sceneName).changeScene();
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
     }
 }

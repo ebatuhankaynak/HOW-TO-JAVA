@@ -1,20 +1,19 @@
 package com.mocha.client.controllers;
 
 import com.mocha.client.Core;
-import com.mocha.client.JsonListenerCapsule.JsonListener;
-import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.requests.CompileResultRequest;
-import com.mocha.client.models.results.CompileResults;
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -61,6 +60,13 @@ public class CodingMenuTestController extends CodingMenuController {
                 }
             }
         });*/
+        Scene scene = getScene();
+        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+            }
+        });
     }
     /*
     public void parseCompileData(){
@@ -98,6 +104,11 @@ public class CodingMenuTestController extends CodingMenuController {
         testTable.setItems(data);
         //testTable.setItems(compileDatas);
     }
+
+    /*
+    private class MyIDEListener extends {
+
+    }*/
 
     public static class MyCompileData {
         private final SimpleStringProperty testCase;
