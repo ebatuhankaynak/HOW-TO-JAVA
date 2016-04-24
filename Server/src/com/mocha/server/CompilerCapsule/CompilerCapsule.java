@@ -1,10 +1,10 @@
 package com.mocha.server.CompilerCapsule;
 
-import com.mocha.server.models.Questions.ClassQuestion;
 import com.mocha.server.models.Questions.CompiledQuestion;
+import com.mocha.server.models.Questions.Question;
 
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
 
 public class CompilerCapsule {
 
@@ -23,6 +23,7 @@ public class CompilerCapsule {
     public void addTestCase(String input, String expectedOutput){
         testCaseStorage.add(input, expectedOutput);
     }
+
 
     public String [] compile(String code, CompiledQuestion question)  {
 
@@ -52,7 +53,7 @@ public class CompilerCapsule {
         Runtime runtime = Runtime.getRuntime();
         Process process = null;
         try {
-            process = runtime.exec("cmd /c \"cd CompilerStorage\\" + uniqueId + " && C:\\jdk1.8.0_73\\bin\\javac.exe Main.java  2>results"+ uniqueId + ".txt");
+            process = runtime.exec("cmd /c \"cd CompilerStorage\\" + uniqueId + " && C:\\jdk1.8.0_60\\bin\\javac.exe Main.java  2>results"+ uniqueId + ".txt");
         //    process = runtime.exec("cmd /c \"cd CompilerStorage\\" + uniqueId + " && C:\\jdk1.8.0_73\\bin\\javac.exe Main.java" );
             process.waitFor();
         } catch (IOException e) {
@@ -116,7 +117,7 @@ public class CompilerCapsule {
 
     }
     String readFile(String fileName, String uniqueId) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("C:\\Kullanıcılar\\asus\\IdeaProjects\\Mocha\\CompilerStorage\\" + uniqueId + "\\results" + uniqueId+ ".txt"));
+        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\asus\\IdeaProjects\\Mocha\\CompilerStorage\\" + uniqueId + "\\results" + uniqueId+ ".txt"));
         try {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();

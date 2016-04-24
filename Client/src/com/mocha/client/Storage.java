@@ -1,5 +1,6 @@
 package com.mocha.client;
 
+import com.mocha.client.models.Questions.CompiledQuestion;
 import com.mocha.client.models.Questions.Question;
 import com.mocha.client.models.User;
 import com.mocha.client.models.requests.CompileResultRequest;

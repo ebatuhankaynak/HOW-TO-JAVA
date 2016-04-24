@@ -24,8 +24,6 @@ public class TopicMenuController extends Controller {
     private QuestionContainer questions;
     private Question questionToShow;
 
-    public static Question questionBadDesign;
-
     public TopicMenuController()
     {
         Core.JsonListenerManager.addJsonListener(RequestTypes.QUESTION_RESULT, new JsonListener<QuestionResultRequest>() {
@@ -52,12 +50,6 @@ public class TopicMenuController extends Controller {
     @FXML
     public void onDataTypesButtonClick(MouseEvent mouseEvent) {
         requestQuestions("DATA_TYPES", "1");
-        //prepareQuestion();
-        //goToScene("CodingMenu");
-        //goToCodingMenu(questionToShow);
-        //requestQuestions(TopicTypes.DATA_TYPES);
-        //goToCodingMenu(TopicTypes.DATA_TYPES);
-        //goToScene("CodingMenu");
     }
 
     @FXML
@@ -70,13 +62,6 @@ public class TopicMenuController extends Controller {
     {
         Core.SocketManager.sendMessageObject(RequestTypes.QUESTION, new QuestionRequest(topicType, level));
     }
-
-    /*
-    public void prepareQuestion(){
-        //for (int i = 0; i < 1)
-
-        //Question questionToShow = questions.get(0);
-    }*/
 
     public void goToCodingMenu(Question questionToShow) {
         goToScene("CodingMenu", questionToShow);

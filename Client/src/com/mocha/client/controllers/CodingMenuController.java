@@ -4,10 +4,12 @@ package com.mocha.client.controllers;
 import com.mocha.client.Core;
 import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
+import com.mocha.client.models.Questions.CompiledQuestion;
 import com.mocha.client.models.Questions.Question;
 import com.mocha.client.models.requests.CompileRequest;
 import com.mocha.client.models.requests.CompileResultRequest;
 import com.mocha.client.models.results.CompileResults;
+import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,7 +30,7 @@ public class CodingMenuController extends Controller implements Initializable {
     @FXML Label questionLabel;
     @FXML TextArea codingArea;
 
-    private Question question;
+    private CompiledQuestion question;
 
     public CodingMenuController(){
         question = Core.Storage.getQuestionToShow();
@@ -58,14 +60,13 @@ public class CodingMenuController extends Controller implements Initializable {
     public void onCompileButtonClick(MouseEvent mouseEvent)
     {
         sendCodeToServer();
-        //goToScene("CodingMenuTest");
     }
 
     public void sendCodeToServer()
     {
         String userName = Core.Storage.getUser().getUsername();
         String codeToSend = codingArea.getText();
-        Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
+        //Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
     }
 
     @FXML
@@ -76,7 +77,7 @@ public class CodingMenuController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Question question = Core.Storage.getQuestionToShow();
+        CompiledQuestion question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
         codingArea.setPromptText("Enter Your Code Here!");
     }
