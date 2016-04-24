@@ -1,7 +1,11 @@
 package com.mocha.client.controllers;
 
 import com.mocha.client.Core;
+import com.mocha.client.JsonListenerCapsule.JsonListener;
+import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.requests.CompileResultRequest;
+import com.mocha.client.models.results.CompileResults;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,9 +39,28 @@ public class CodingMenuTestController extends CodingMenuController {
     private ObservableList<MyCompileData> compileDatas;
 
     public CodingMenuTestController(){
-        super();
+        //super();
         compileResultRequest = Core.Storage.getCompileResultRequest();
         compileDatas = FXCollections.observableArrayList();
+        /*
+        Core.JsonListenerManager.addJsonListener(RequestTypes.COMPILE_RESULT, new JsonListener<CompileResultRequest>() {
+            @Override
+            public void run(CompileResultRequest req) {
+                CompileResults res = req.getResult();
+                System.out.println(res);
+                if (res == CompileResults.SUCCESS) {
+                    Core.Storage.setCompileResultRequest(req);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            goToScene("CodingMenuTest");
+                        }
+                    });
+                } else if (res == CompileResults.FAILURE) {
+                    System.out.println("Rip Compile");
+                }
+            }
+        });*/
     }
     /*
     public void parseCompileData(){
