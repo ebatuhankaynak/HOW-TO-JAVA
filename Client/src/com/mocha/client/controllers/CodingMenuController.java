@@ -32,9 +32,9 @@ public class CodingMenuController extends Controller implements Initializable {
 
     @FXML Label questionTitle;
     @FXML Label questionLabel;
-    //@FXML TextArea codingArea;
+    @FXML TextArea codingArea;
     //@FXML HTMLEditor htmlEditor;
-    @FXML WebView webView;
+    //@FXML WebView webView;
 
     private Question question;
 
@@ -71,9 +71,9 @@ public class CodingMenuController extends Controller implements Initializable {
     public void sendCodeToServer()
     {
         String userName = Core.Storage.getUser().getUsername();
-        //String codeToSend = codingArea.getText();
+        String codeToSend = codingArea.getText();
         goToScene("CodingMenuTest");
-        //Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
+        Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
     }
 
     @FXML
