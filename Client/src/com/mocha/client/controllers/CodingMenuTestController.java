@@ -123,9 +123,10 @@ public class CodingMenuTestController extends CodingMenuController {
         htmlEditor.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                System.out.println("KEY RELEASED");
-                htmlEditor.setHtmlText( htmlEditor.getHtmlText().concat("<p style=\"color:red;\"> sa </p>"));
-                System.out.println(htmlEditor.getHtmlText());
+                String parsedHtml = getPageContents(htmlEditor.getHtmlText());
+                String newText = getBluePublic(parsedHtml);
+                htmlEditor.setHtmlText(newText);
+                htmlEditor.requestFocus();
             }
         });
     }

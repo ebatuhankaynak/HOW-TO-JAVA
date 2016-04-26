@@ -19,6 +19,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.HTMLEditor;
+import javafx.scene.web.WebView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,8 +32,9 @@ public class CodingMenuController extends Controller implements Initializable {
 
     @FXML Label questionTitle;
     @FXML Label questionLabel;
-    @FXML TextArea codingArea;
-    @FXML HTMLEditor htmlEditor;
+    //@FXML TextArea codingArea;
+    //@FXML HTMLEditor htmlEditor;
+    @FXML WebView webView;
 
     private Question question;
 
@@ -69,9 +71,9 @@ public class CodingMenuController extends Controller implements Initializable {
     public void sendCodeToServer()
     {
         String userName = Core.Storage.getUser().getUsername();
-        String codeToSend = codingArea.getText();
+        //String codeToSend = codingArea.getText();
         goToScene("CodingMenuTest");
-        Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
+        //Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
     }
 
     @FXML
@@ -84,35 +86,44 @@ public class CodingMenuController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Question question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
-        codingArea.setPromptText("Enter Your Code Here!");
 
-        htmlEditor.lookup(".top-toolbar").setManaged(false);
-        htmlEditor.lookup(".top-toolbar").setVisible(false);
+        /*
+        webView.lookup(".top-toolbar").setManaged(false);
+        webView.lookup(".top-toolbar").setVisible(false);
 
-        htmlEditor.lookup(".bottom-toolbar").setManaged(false);
-        htmlEditor.lookup(".bottom-toolbar").setVisible(false);
-
+        webView.lookup(".bottom-toolbar").setManaged(false);
+        webView.lookup(".bottom-toolbar").setVisible(false);
+        */
+        /*
         htmlEditor.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                System.out.println(getPageContents(htmlEditor.getHtmlText()));
-                if(getPageContents(htmlEditor.getHtmlText()).contains("public")){
-                    System.out.println("INSIDE IF");
-                    String parsedHtml = getPageContents(htmlEditor.getHtmlText());
-                    for (int i = 0; i + 6 <= parsedHtml.length(); i++){
-                        System.out.println("INSIDE FOR");
-                        if (parsedHtml.substring(i, i + 6).equals("public")){
-                            htmlEditor.setHtmlText(parsedHtml.substring(0, i) + "<span style=\"color:blue;\">public</span>" + parsedHtml.substring(i + 6));
-                            //htmlEditor.setHtmlText(parsedHtml.substring(0, i) + "<span style=\"color:blue;\">" + parsedHtml.substring(i, i + 6) + "</span>");
-                        }
-                    }
-
-                    //htmlEditor.setHtmlText( parsedHtml.substring(0, parsedHtml.length() - 6) + "<span style=\"color:blue;\">public</span>");
-
-                }
-                //htmlEditor.setHtmlText( getPageContents(htmlEditor.getHtmlText()) + "<span style=\"color:red;\">sa</span>");
+                System.out.println("HTML");
+                System.out.print(htmlEditor.getHtmlText());
+                String parsedHtml = htmlEditor.getHtmlText();
+                String newText = getBluePublic(parsedHtml);
+                //htmlEditor.setHtmlText(newText);
+                htmlEditor.requestFocus();
+                //codingArea.requestFocus();
+                //htmlEditor.requestFocus();
+                System.out.println(htmlEditor.isFocused());
             }
         });
+        */
+    }
+
+    public String getBluePublic(String parsedHtml){
+        if (parsedHtml.contains("public")) {
+            for (int i = 0; i + 6 <= parsedHtml.length(); i++) {
+                if (parsedHtml.substring(i, i + 6).equals("public")) {
+                    return parsedHtml.substring(0, i) + "<span style=\"color:blue;\">public</span>" + getBluePublic(parsedHtml.substring(i + 6));
+                }
+            }
+            return parsedHtml;
+        }
+        else {
+            return parsedHtml;
+        }
     }
 
     public String getPageContents(String content)
