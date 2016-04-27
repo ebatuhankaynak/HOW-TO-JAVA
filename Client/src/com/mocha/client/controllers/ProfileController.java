@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 /**
@@ -26,45 +27,19 @@ public class ProfileController extends Controller implements Initializable{
     @FXML Label currentCoffeeBeansLabel;
     @FXML Label beansTodayLabel;
     @FXML Label totalBeansLabel;
-    @FXML BarChart progressGraph;
+    @FXML BarChart<String, Integer> progressGraph;
+    @FXML CategoryAxis xAxis;
+    @FXML NumberAxis yAxis;
 
-    final CategoryAxis xAxis;
-    final NumberAxis yAxis;
-    final BarChart.Series<String, Number> series1 =  new BarChart.Series<String, Number>();
-    ObservableList<XYChart.Series<String, Number>> barChartData = FXCollections.observableArrayList();
-    ObservableList<XYChart.Series<String, Number>> stackBarChartData = FXCollections.observableArrayList();
+    private ObservableList<String> topicNames = FXCollections.observableArrayList();
+    private XYChart.Series<String, Integer> series = new XYChart.Series<>();
 
-
-
+    private final String[] topics = {"Data Types", "Methods"};
 
     public ProfileController()
     {
-        xAxis = new CategoryAxis();
-        yAxis = new NumberAxis();
-        progressGraph = new BarChart(xAxis, yAxis);
-        setProgressGraph();
+        //setProgressGraph();
     }
-
-    public void setProgressGraph()
-    {
-        series1.setName("2001");
-        series1.getData().add(new XYChart.Data<String, Number>("blah", 25601.34));
-
-        barChartData.add(series1);
-        progressGraph.setData(barChartData);
-    }
-
-    /*
-    @FXML ImageView profileImage;
-
-    public ProfileController(){
-        setProfileImage();
-    }
-
-    @FXML
-    public void setProfileImage() {
-        profileImage.setImage("../resources/images/java.png"));
-    }*/
 
     @FXML
     private void onMainMenuButtonClick(MouseEvent mouseEvent){
@@ -76,5 +51,15 @@ public class ProfileController extends Controller implements Initializable{
         User user = Core.Storage.getUser();
         nameLabel.setText(user.getUsername());
         currentCoffeeBeansLabel.setText("Current Coffee Beans: " + String.valueOf(user.getCoffeeBeans()));
+        //beansTodayLabel.setText();
+        //totalBeansLabel.setText();
+
+        topicNames.addAll(Arrays.asList(topics));
+        xAxis.setCategories(topicNames);
+
+        series.getData().add(new XYChart.Data<>(topics[0], 50));
+        series.getData().add(new XYChart.Data<>(topics[1], 100));
+
+        progressGraph.getData().add(series);
     }
 }

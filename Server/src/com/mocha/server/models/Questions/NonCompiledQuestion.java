@@ -7,7 +7,7 @@ package com.mocha.server.models.Questions;
  * Creates a non compiled question
  * v 1.0
  */
-public class NonCompiledQuestion extends Question
+public class NonCompiledQuestion
 {
     // Instance Variables
     private String answer;
@@ -15,7 +15,7 @@ public class NonCompiledQuestion extends Question
     // Constructor
     public NonCompiledQuestion( String question, QuestionID id, int coffeeBeansAwarded, String answer)
     {
-        super( question, id, coffeeBeansAwarded);
+
         this.answer = answer;
     }
 

@@ -13,7 +13,7 @@ public class TracingQuestion extends NonCompiledQuestion
     private String codeSegment;
 
     // Constructor
-    public TracingQuestion( String question, QuestionID id, int coffeeBeansAwarded, String answer, String codeSegment)
+    public TracingQuestion( String question, QuestionID id, int coffeeBeansAwarded, String answer, String codeSegment, String testClass)
     {
         super( question, id, coffeeBeansAwarded, answer);
         this.codeSegment = codeSegment;

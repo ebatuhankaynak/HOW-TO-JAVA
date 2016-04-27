@@ -90,7 +90,7 @@ public class CompilerCapsule {
             e.printStackTrace();
         }
 
-        System.out.println(output);
+        System.out.println("this is output" + output);
         int index = 0;
        // String[] outputArray = new String[output.length()];
         String temp;
@@ -112,6 +112,12 @@ public class CompilerCapsule {
         for( int i = 0; i < result.size(); i++) {
             outputArray[i] = result.get(i);
         }
+
+        if( !isCompiled()) {
+
+            outputArray = new String[question.getTestCases().length];
+        }
+
         return  outputArray;
 
     }
@@ -140,7 +146,7 @@ public class CompilerCapsule {
         Runtime runtime = Runtime.getRuntime();
         Process process = null;
         try {
-            String str = "cmd /c \"cd CompilerStorage\\" + uniqueId + "\\" + " && java Main "+ testCase +" >> results"+ uniqueId +".txt";
+            String str = "cmd /c \"cd CompilerStorage\\" + uniqueId + "\\" + " && java Main "+ testCase +" >> results"+ uniqueId +".txt" + "&& java Main "+ testCase +" 2>> results"+ uniqueId +".txt";
             System.out.println(str);
             process = runtime.exec(str);
             process.waitFor();

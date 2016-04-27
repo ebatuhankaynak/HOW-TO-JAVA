@@ -72,7 +72,7 @@ public class CodingMenuController extends Controller implements Initializable {
     {
         String userName = Core.Storage.getUser().getUsername();
         String codeToSend = codingArea.getText();
-        goToScene("CodingMenuTest");
+        //goToScene("CodingMenuTest");
         Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
     }
 

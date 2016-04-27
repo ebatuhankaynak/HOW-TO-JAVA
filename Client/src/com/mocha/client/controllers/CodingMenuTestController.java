@@ -36,14 +36,14 @@ public class CodingMenuTestController extends CodingMenuController {
     @FXML TableColumn testCaseColumn;
     @FXML TableColumn errorColumn;
     @FXML TableColumn passedColumn;
-    @FXML TextArea codingArea;
+    //@FXML TextArea codingArea;
     @FXML HTMLEditor htmlEditor;
 
     private static final String tickSource = "../resources/images/tick_32.png";
     private static final String crossSource = "../resources/images/cross_32.png";
 
-    private final ImageView tickImage = new ImageView(new Image(String.valueOf(getClass().getResource(tickSource))));
-    private final ImageView crossImage = new ImageView(new Image(String.valueOf(getClass().getResource(crossSource))));
+    //private final ImageView tickImage = new ImageView(new Image(String.valueOf(getClass().getResource(tickSource))));
+    //private final ImageView crossImage = new ImageView(new Image(String.valueOf(getClass().getResource(crossSource))));
 
     private CompileResultRequest compileResultRequest;
     private ObservableList<MyCompileData> compileDatas;
@@ -82,44 +82,42 @@ public class CodingMenuTestController extends CodingMenuController {
             boolean passed = compileResultRequest.getCompilerResults()[i];
             MyCompileData compileData;
             if (passed){
-                compileData = new MyCompileData(testCase, errorString, tickImage);
+                compileData = new MyCompileData(testCase, errorString, createTickImage());
             }
             else{
-                compileData = new MyCompileData(testCase, errorString, crossImage);
+                compileData = new MyCompileData(testCase, errorString, createCrossImage());
             }
             compileDatas.add(compileData);
         }
     }
 
-    final ObservableList<MyCompileData> data = FXCollections.observableArrayList(
-            new MyCompileData("aba", "rip", tickImage),
-            new MyCompileData("baaba", "rip", crossImage),
-            new MyCompileData("Ziya", "Ortalama out of bounds", tickImage),
-            new MyCompileData("Ziya", "Ortalama out of bounds", tickImage),
-            new MyCompileData("Ziya", "Ortalama out of bounds", tickImage),
-            new MyCompileData("Ziya", "Ortalama out of bounds", tickImage),
-            new MyCompileData("Ziya", "Ortalama out of bounds", tickImage)
+    public ImageView createTickImage(){
+        return new ImageView(new Image(String.valueOf(getClass().getResource(tickSource))));
+    }
 
-    );
+    public ImageView createCrossImage(){
+        return new ImageView(new Image(String.valueOf(getClass().getResource(crossSource))));
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.initialize(location, resources);
-        //parseCompileData();
+        parseCompileData();
 
         testCaseColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("testCase"));
         errorColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("error"));
         passedColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, ImageView>("passed"));
 
-        testTable.setItems(data);
-        //testTable.setItems(compileDatas);
+        testTable.setItems(compileDatas);
 
+        /*
         htmlEditor.lookup(".top-toolbar").setManaged(false);
         htmlEditor.lookup(".top-toolbar").setVisible(false);
 
         htmlEditor.lookup(".bottom-toolbar").setManaged(false);
         htmlEditor.lookup(".bottom-toolbar").setVisible(false);
-
+        */
+        /*
         htmlEditor.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -128,7 +126,7 @@ public class CodingMenuTestController extends CodingMenuController {
                 htmlEditor.setHtmlText(newText);
                 htmlEditor.requestFocus();
             }
-        });
+        });*/
     }
 
     /*

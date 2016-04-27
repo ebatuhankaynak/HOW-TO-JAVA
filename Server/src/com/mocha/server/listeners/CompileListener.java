@@ -18,6 +18,7 @@ public class CompileListener extends JsonListener <CompileRequest> {
             CompilerCapsule compiler = new CompilerCapsule();
             // TODO: 4/23/2016 give the correcct boolean array when check is implemented
             //boolean[] isPassed = {true,true,true,true};
+           // System.out.println(req.getQuestion().getTestClass());
             String [] compilerResults = compiler.compile(req.getCodeToCompile(), req.getQuestion());
             boolean[] isPassed =  req.getQuestion().check(compilerResults);
             if (compiler.isCompiled())

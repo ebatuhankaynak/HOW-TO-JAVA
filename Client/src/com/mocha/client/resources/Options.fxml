@@ -39,7 +39,19 @@
           </Tab>
           <Tab text="Change Themes">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="20.0" layoutY="72.0" prefHeight="142.0" prefWidth="100.0">
+                           <children>
+                              <RadioButton mnemonicParsing="false" text="RadioButton" />
+                              <RadioButton mnemonicParsing="false" text="RadioButton" />
+                              <RadioButton mnemonicParsing="false" text="RadioButton" />
+                              <RadioButton mnemonicParsing="false" text="RadioButton" />
+                              <RadioButton mnemonicParsing="false" text="RadioButton" />
+                              <RadioButton mnemonicParsing="false" text="RadioButton" />
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
             </content>
           </Tab>
             <Tab text="IDE Settings">

@@ -71,10 +71,10 @@
       </VBox>
       <BarChart fx:id="progressGraph" prefHeight="431.0" prefWidth="350.0" title="Progress Graph" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
         <xAxis>
-          <CategoryAxis side="BOTTOM" />
+          <CategoryAxis fx:id="xAxis" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis side="LEFT" />
+          <NumberAxis fx:id="yAxis" side="LEFT" />
         </yAxis>
          <effect>
             <Glow />
