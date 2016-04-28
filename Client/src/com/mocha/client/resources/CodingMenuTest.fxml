@@ -56,14 +56,15 @@
       <TableView fx:id="testTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="6" GridPane.rowSpan="3">
         <columns>
           <TableColumn fx:id="testCaseColumn" prefWidth="107.0" resizable="false" text="Test Case" />
-          <TableColumn fx:id="errorColumn" prefWidth="610.0" resizable="false" text="Error" />
+            <TableColumn fx:id="expectedColumn" prefWidth="191.0" resizable="false" text="Expected" />
+            <TableColumn fx:id="outputColumn" prefWidth="419.0" resizable="false" text="Output" />
             <TableColumn fx:id="passedColumn" prefWidth="62.0" resizable="false" text="Passed" />
         </columns>
       </TableView>
       <WebView fx:id="webView" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="3" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <ProgressBar fx:id="progressBar" visible="false" prefWidth="200.0" />
+            <ProgressBar fx:id="progressBar" prefWidth="200.0" visible="false" />
          </children>
       </HBox>
    </children>

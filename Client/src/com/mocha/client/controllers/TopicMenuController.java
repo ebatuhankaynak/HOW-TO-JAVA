@@ -4,6 +4,7 @@ import com.mocha.client.Core;
 import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.Transition;
+import com.mocha.client.models.Questions.CompiledQuestion;
 import com.mocha.client.models.requests.QuestionRequest;
 import com.mocha.client.models.requests.QuestionResultRequest;
 import com.mocha.client.models.results.QuestionResults;
@@ -22,7 +23,7 @@ import javafx.scene.input.MouseEvent;
 public class TopicMenuController extends Controller {
 
     private QuestionContainer questions;
-    private Question questionToShow;
+    private CompiledQuestion questionToShow;
 
     public TopicMenuController()
     {

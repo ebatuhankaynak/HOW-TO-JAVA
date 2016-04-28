@@ -52,6 +52,11 @@ public class CompiledQuestion extends Question
         return testClass;
     }
 
+    public String[] getTestCaseAnswers() {
+        return testCaseAnswers;
+    }
+
+
 
 
 

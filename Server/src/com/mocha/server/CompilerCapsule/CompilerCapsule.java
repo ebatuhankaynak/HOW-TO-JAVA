@@ -146,7 +146,7 @@ public class CompilerCapsule {
         Runtime runtime = Runtime.getRuntime();
         Process process = null;
         try {
-            String str = "cmd /c \"cd CompilerStorage\\" + uniqueId + "\\" + " && java Main "+ testCase +" >> results"+ uniqueId +".txt" + "&& java Main "+ testCase +" 2>> results"+ uniqueId +".txt";
+            String str = "cmd /c \"cd CompilerStorage\\" + uniqueId + "\\" + " && java Main "+ testCase +" 2>> results"+ uniqueId +".txt" + "&& java Main "+ testCase +" >> results"+ uniqueId +".txt";
             System.out.println(str);
             process = runtime.exec(str);
             process.waitFor();

@@ -15,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,7 +34,8 @@ public class CodingMenuTestController extends CodingMenuController {
 
     @FXML TableView testTable;
     @FXML TableColumn testCaseColumn;
-    @FXML TableColumn errorColumn;
+    @FXML TableColumn expectedColumn;
+    @FXML TableColumn outputColumn;
     @FXML TableColumn passedColumn;
     //@FXML TextArea codingArea;
     //@FXML HTMLEditor htmlEditor;
@@ -51,7 +51,6 @@ public class CodingMenuTestController extends CodingMenuController {
     private ObservableList<MyCompileData> compileDatas;
 
     public CodingMenuTestController(){
-        //super();
         compileResultRequest = Core.Storage.getCompileResultRequest();
         compileDatas = FXCollections.observableArrayList();
 
@@ -77,17 +76,17 @@ public class CodingMenuTestController extends CodingMenuController {
     }
 
     public void parseCompileData(){
-        // TODO: 24.4.2016 get array size and run loop
         for (int i = 0; i < compileResultRequest.getCompilerResults().length; i++){
             String testCase = ((CompiledQuestion) (Core.Storage.getQuestionToShow())).getTestCases()[i];
-            String errorString = compileResultRequest.getErrString()[i];
+            String expected = ((CompiledQuestion) (Core.Storage.getQuestionToShow())).getTestCaseAnswers()[i];
+            String output = compileResultRequest.getErrString()[i];
             boolean passed = compileResultRequest.getCompilerResults()[i];
             MyCompileData compileData;
             if (passed){
-                compileData = new MyCompileData(testCase, errorString, createTickImage());
+                compileData = new MyCompileData(testCase, expected, output, createTickImage());
             }
             else{
-                compileData = new MyCompileData(testCase, errorString, createCrossImage());
+                compileData = new MyCompileData(testCase, expected, output, createCrossImage());
             }
             compileDatas.add(compileData);
         }
@@ -107,7 +106,8 @@ public class CodingMenuTestController extends CodingMenuController {
         parseCompileData();
 
         testCaseColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("testCase"));
-        errorColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("error"));
+        expectedColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("expected"));
+        outputColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("output"));
         passedColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, ImageView>("passed"));
 
         testTable.setItems(compileDatas);
@@ -151,12 +151,14 @@ public class CodingMenuTestController extends CodingMenuController {
 
     public static class MyCompileData {
         private final SimpleStringProperty testCase;
-        private final SimpleStringProperty error;
+        private final SimpleStringProperty expected;
+        private final SimpleStringProperty output;
         private final ImageView passed;
 
-        private MyCompileData(String testCase, String  error, ImageView passed) {
+        private MyCompileData(String testCase, String expected, String output, ImageView passed) {
             this.testCase = new SimpleStringProperty(testCase);
-            this.error = new SimpleStringProperty(error);
+            this.expected = new SimpleStringProperty(expected);
+            this.output = new SimpleStringProperty(output);
             this.passed = passed;
         }
 
@@ -164,12 +166,16 @@ public class CodingMenuTestController extends CodingMenuController {
             return testCase.get();
         }
 
-        public String getError() {
-            return error.get();
+        public String getOutput() {
+            return output.get();
         }
 
         public ImageView getPassed() {
             return passed;
+        }
+
+        public String getExpected() {
+            return expected.get();
         }
     }
 }
