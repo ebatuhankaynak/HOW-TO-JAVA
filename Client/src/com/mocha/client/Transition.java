@@ -39,7 +39,7 @@ public class Transition {
         Scene scene = new Scene(myPane);
         Core.Storage.setScene(scene);
 
-        String userTheme = "Green";
+        String userTheme = Core.Storage.getSelectedTheme();
         String image = Main.class.getResource("resources/images/shopImages/" + userTheme + ".png").toExternalForm();
         myPane.setStyle("-fx-background-image: url('" + image + "'); " +
                 "-fx-background-position: center center; " +

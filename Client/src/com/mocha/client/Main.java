@@ -30,8 +30,9 @@ public class Main extends Application {
         primaryStage.setScene(myScene);
         primaryStage.show();
 
-        String userTheme = "Green";
-        String image = Main.class.getResource("resources/images/shopImages/" + userTheme + ".png").toExternalForm();
+        String selectedTheme = "Green";
+        Core.Storage.setSelectedTheme(selectedTheme);
+        String image = Main.class.getResource("resources/images/shopImages/" + selectedTheme + ".png").toExternalForm();
         myPane.setStyle("-fx-background-image: url('" + image + "'); " +
                 "-fx-background-position: center center; " +
                 "-fx-background-repeat: repeat;");

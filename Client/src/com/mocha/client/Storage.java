@@ -14,6 +14,7 @@ public class Storage {
     private Question questionToShow;
     private CompileResultRequest compileResultRequest;
     private Scene scene;
+    private String selectedTheme;
 
     public User getUser() {
         return user;
@@ -45,5 +46,13 @@ public class Storage {
 
     public void setScene(Scene scene) {
         this.scene = scene;
+    }
+
+    public String getSelectedTheme() {
+        return selectedTheme;
+    }
+
+    public void setSelectedTheme(String selectedTheme) {
+        this.selectedTheme = selectedTheme;
     }
 }

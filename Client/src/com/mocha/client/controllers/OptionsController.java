@@ -1,5 +1,6 @@
 package com.mocha.client.controllers;
 
+import com.mocha.client.Core;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,25 +28,46 @@ public class OptionsController extends Controller implements Initializable{
     @FXML ArrayList<Label> labelList;
 
     private ArrayList<String> userThemes;
-    private URL location;
-    private ResourceBundle recources;
-    private boolean right;
-    private boolean left;
-    private boolean first;
+    private int seperatorIndex;
 
     public OptionsController(){
-        first = true;
+        seperatorIndex = 0;
     }
 
     @FXML void onLeftButtonClick(MouseEvent mouseEvent){
-        left = true;
-        initialize(location, recources);
+        seperatorIndex--;
+        seperatorIndex--;
+        changeImages();
+        seperatorIndex++;
     }
 
     @FXML void onRightButtonClick(MouseEvent mouseEvent){
-        right = true;
-        System.out.println("RIGHT BUTTON");
-        initialize(location, recources);
+        changeImages();
+        seperatorIndex++;
+    }
+
+    public void changeImages(){
+        if (seperatorIndex < 0){
+            seperatorIndex = 0;
+        }
+        else if (seperatorIndex > userThemes.size()){
+            seperatorIndex = userThemes.size();
+        }
+        for (int i = 0; i + seperatorIndex < userThemes.size(); i++){
+            if (seperatorIndex == 0 ) {
+                //labelList.get(i).setText(userThemes.get(seperatorIndex + i));
+                labelList.get(0).setText("");
+            }
+            labelList.get(i).setText(userThemes.get(seperatorIndex + i));
+            String imageSource = String.valueOf(getClass().getResource("../resources/images/shopImages/" + userThemes.get(seperatorIndex + i) + ".png"));
+            imageList.get(i).setImage(new Image(imageSource));
+        }
+    }
+
+    @FXML
+    public void onChangeButtonClick(MouseEvent mouseEvent){
+        Core.Storage.setSelectedTheme(userThemes.get(seperatorIndex));
+        goToScene("Options");
     }
 
     @FXML
@@ -65,50 +87,32 @@ public class OptionsController extends Controller implements Initializable{
         }
     }
 
+    /*
+    public void reformUserThemes(){
+        String currentTheme = Core.Storage.getSelectedTheme();
+        for (int i = 0; i < )
+    }*/
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.location = location;
-        this.recources = resources;
 
-        System.out.println("IN INITIALIZE");
+        userThemes = new ArrayList<>();
+        userThemes.add(Core.Storage.getSelectedTheme());
+        userThemes.add("Red");
+        userThemes.add("Blue");
+        userThemes.add("Green");
+        userThemes.add("White");
 
-        System.out.println(first);
-
-        if (first) {
-            System.out.println("IN FIRST");
-            imageList.get(0).setImage(new Image(String.valueOf(getClass().getResource("../resources/images/shopImages/Null.png"))));
-            labelList.get(0).setText("");
-
-            userThemes = new ArrayList<>();
-            //userThemes.add("");
-            userThemes.add("Red");
-            userThemes.add("Blue");
-            userThemes.add("Green");
-
-            for (int i = 1; i - 1 < userThemes.size(); i++) {
-                labelList.get(i).setText(userThemes.get(i - 1));
-                String imageSource = String.valueOf(getClass().getResource("../resources/images/shopImages/" + userThemes.get(i - 1) + ".png"));
-                imageList.get(i).setImage(new Image(imageSource));
+        for (int i = 0; i < userThemes.size(); i++) {
+            if (i != 0) {
+                labelList.get(i).setText(userThemes.get(i));
             }
-            first = false;
-        }
-        else if (right){
-            System.out.println("IN RIGHT");
-            for (int i = 0; i + 1< userThemes.size(); i++){
-                //imageList.set(i, imageList.get(i + 1));
-                imageList.get(i).setImage(imageList.get(i).getImage());
-                labelList.get(i).setText(labelList.get(i).toString());
-                //labelList.set(i, labelList.get(i + 1));
+            else {
+                labelList.get(i).setText("");
             }
-            right = false;
+            String imageSource = String.valueOf(getClass().getResource("../resources/images/shopImages/" + userThemes.get(i) + ".png"));
+            imageList.get(i).setImage(new Image(imageSource));
         }
-        else if (left){
-            System.out.println("IN LEFT");
-            for (int i = 0; i + 1< userThemes.size(); i++){
-                imageList.set(i + 1, imageList.get(i));
-                labelList.set(i + 1, labelList.get(i));
-            }
-            left = false;
-        }
+        seperatorIndex++;
     }
 }
