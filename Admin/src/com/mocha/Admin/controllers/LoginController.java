@@ -50,7 +50,7 @@ public class LoginController extends Controller implements Initializable{
         // TODO: 8.4.2016 UNCOMMENT THIS TO TEST SERVER 
         Core.SocketManager.sendMessageObject(RequestTypes.LOGIN, new LoginRequest(usernameTF.getText(), passwordTF.getText()));
         if (true) {
-            goToScene("MainMenu");
+            goToScene("AdminPanel");
         }
     }
 
