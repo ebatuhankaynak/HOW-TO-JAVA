@@ -38,11 +38,12 @@ public class Transition {
         controller.setPrevStage(stage);
         Scene scene = new Scene(myPane);
         Core.Storage.setScene(scene);
-        /*
-        String image = Main.class.getResource("resources/images/Theme1.png").toExternalForm();
+
+        String userTheme = "Green";
+        String image = Main.class.getResource("resources/images/shopImages/" + userTheme + ".png").toExternalForm();
         myPane.setStyle("-fx-background-image: url('" + image + "'); " +
                 "-fx-background-position: center center; " +
-                "-fx-background-repeat: stretch;");*/
+                "-fx-background-repeat: repeat;");
         stage.setScene(scene);
     }
 

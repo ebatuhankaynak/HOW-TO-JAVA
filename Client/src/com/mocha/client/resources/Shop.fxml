@@ -9,260 +9,260 @@
 <?import java.util.ArrayList?>
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" stylesheets="@Navigation.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mocha.client.controllers.ShopController">
 
-   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="179.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="141.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="107.0" minHeight="10.0" prefHeight="13.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="303.0" minHeight="10.0" prefHeight="303.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
-         <children>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
-               <items>
-                  <Button mnemonicParsing="false" onMouseClicked="#onMainMenuButtonClick" styleClass="mainMenuButton" text="Main Menu" />
-                  <Button mnemonicParsing="false" styleClass="currentButton" text="Shop" />
-               </items>
-            </ToolBar>
-         </children>
-      </HBox>
-      <ImageView fitHeight="150.0" fitWidth="479.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <image>
-            <Image url="@images/Shop.png" />
-         </image>
-      </ImageView>
-      <VBox prefHeight="205.0" prefWidth="160.0" GridPane.rowIndex="3">
-         <children>
-            <Label />
-            <Label />
-            <CheckBox mnemonicParsing="false" text="Only Show Affordable" />
-         </children>
-      </VBox>
-      <Label fx:id="coffeeBeansLabel" text="You Have 0 Coffee Beans" GridPane.rowIndex="2">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2;" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="3" GridPane.rowSpan="2">
-        <tabs>
-          <Tab text="Themes">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TabPane layoutX="-1.0" layoutY="1.0" prefHeight="365.0" prefWidth="628.0" style="-fx-border-color: black;" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-                              <Tab text="Page 1">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="734.0">
-                                       <children>
-                                          <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                                          <HBox layoutX="5.0" layoutY="9.0" prefHeight="311.0" prefWidth="609.0">
-                                             <children>
-                                                <VBox prefHeight="311.0" prefWidth="211.0">
-                                                   <children>
-                                                      <ImageView fx:id="image1" fitHeight="205.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/java.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                         <children>
-                                                            <Label fx:id="label1" text="THEME_NAME_1" />
-                                                            <Button mnemonicParsing="false" text="Buy!" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </VBox>
-                                                <VBox prefHeight="311.0" prefWidth="214.0">
-                                                   <children>
-                                                      <ImageView fx:id="image2" fitHeight="204.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/java.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                         <children>
-                                                            <Label fx:id="label2" text="THEME_NAME_1" />
-                                                            <Button mnemonicParsing="false" text="Buy!" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </VBox>
-                                                <VBox prefHeight="311.0" prefWidth="213.0">
-                                                   <children>
-                                                      <ImageView fx:id="image3" fitHeight="200.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/java.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                         <children>
-                                                            <Label fx:id="label3" text="THEME_NAME_1" />
-                                                            <Button mnemonicParsing="false" text="Buy!" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                              <Tab text="Page 2">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="734.0">
-                                       <children>
-                                          <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                                          <HBox layoutX="5.0" layoutY="9.0" prefHeight="311.0" prefWidth="609.0">
-                                             <children>
-                                                <VBox prefHeight="311.0" prefWidth="211.0">
-                                                   <children>
-                                                      <ImageView fx:id="image4" fitHeight="205.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/java.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                         <children>
-                                                            <Label fx:id="label4" text="THEME_NAME_1" />
-                                                            <Button mnemonicParsing="false" text="Buy!" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </VBox>
-                                                <VBox prefHeight="311.0" prefWidth="214.0">
-                                                   <children>
-                                                      <ImageView fx:id="image5" fitHeight="204.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/java.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                         <children>
-                                                            <Label fx:id="label5" text="THEME_NAME_1" />
-                                                            <Button mnemonicParsing="false" text="Buy!" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </VBox>
-                                                <VBox prefHeight="311.0" prefWidth="213.0">
-                                                   <children>
-                                                      <ImageView fx:id="image6" fitHeight="200.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/java.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                         <children>
-                                                            <Label fx:id="label6" text="THEME_NAME_1" />
-                                                            <Button mnemonicParsing="false" text="Buy!" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                              <Tab text="Page 3">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="734.0">
-                                       <children>
-                                          <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                                          <HBox layoutX="5.0" layoutY="9.0" prefHeight="311.0" prefWidth="609.0">
-                                             <children>
-                                                <VBox prefHeight="311.0" prefWidth="211.0">
-                                                   <children>
-                                                      <ImageView fitHeight="205.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/java.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                         <children>
-                                                            <Label text="THEME_NAME_1" />
-                                                            <Button mnemonicParsing="false" text="Buy!" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </VBox>
-                                                <VBox prefHeight="311.0" prefWidth="214.0">
-                                                   <children>
-                                                      <ImageView fitHeight="204.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/java.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                         <children>
-                                                            <Label text="THEME_NAME_1" />
-                                                            <Button mnemonicParsing="false" text="Buy!" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </VBox>
-                                                <VBox prefHeight="311.0" prefWidth="213.0">
-                                                   <children>
-                                                      <ImageView fitHeight="200.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/java.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                         <children>
-                                                            <Label text="THEME_NAME_1" />
-                                                            <Button mnemonicParsing="false" text="Buy!" />
-                                                         </children>
-                                                      </VBox>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab>
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </children>
-   <fx:define>
-      <ArrayList fx:id="labelList" >
-         <fx:reference source="label1"/>
-         <fx:reference source="label2"/>
-         <fx:reference source="label3"/>
-         <fx:reference source="label4"/>
-         <fx:reference source="label5"/>
-         <fx:reference source="label6"/>
-      </ArrayList>
-      <ArrayList fx:id="imageList" >
-         <fx:reference source="image1"/>
-         <fx:reference source="image2"/>
-         <fx:reference source="image3"/>
-         <fx:reference source="image4"/>
-         <fx:reference source="image5"/>
-         <fx:reference source="image6"/>
-      </ArrayList>
-   </fx:define>
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="179.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="141.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="107.0" minHeight="10.0" prefHeight="13.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="303.0" minHeight="10.0" prefHeight="303.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
+            <children>
+                <ToolBar prefHeight="40.0" prefWidth="200.0">
+                    <items>
+                        <Button mnemonicParsing="false" onMouseClicked="#onMainMenuButtonClick" styleClass="mainMenuButton" text="Main Menu" />
+                        <Button mnemonicParsing="false" styleClass="currentButton" text="Shop" />
+                    </items>
+                </ToolBar>
+            </children>
+        </HBox>
+        <ImageView fitHeight="150.0" fitWidth="479.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <image>
+                <Image url="@images/Shop.png" />
+            </image>
+        </ImageView>
+        <VBox prefHeight="205.0" prefWidth="160.0" GridPane.rowIndex="3">
+            <children>
+                <Label />
+                <Label />
+                <CheckBox mnemonicParsing="false" text="Only Show Affordable" />
+            </children>
+        </VBox>
+        <Label fx:id="coffeeBeansLabel" text="You Have 0 Coffee Beans" GridPane.rowIndex="2">
+            <font>
+                <Font name="System Bold" size="15.0" />
+            </font>
+        </Label>
+        <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black; -fx-border-width: 2;" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="3" GridPane.rowSpan="2">
+            <tabs>
+                <Tab text="Themes">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TabPane layoutX="-1.0" layoutY="1.0" prefHeight="365.0" prefWidth="628.0" style="-fx-border-color: black;" tabClosingPolicy="UNAVAILABLE">
+                                    <tabs>
+                                        <Tab text="Page 1">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="734.0">
+                                                    <children>
+                                                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                                                        <HBox layoutX="5.0" layoutY="9.0" prefHeight="311.0" prefWidth="609.0">
+                                                            <children>
+                                                                <VBox prefHeight="311.0" prefWidth="211.0">
+                                                                    <children>
+                                                                        <ImageView fx:id="image1" fitHeight="205.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
+                                                                            <image>
+                                                                                <Image url="@images/java.png" />
+                                                                            </image>
+                                                                        </ImageView>
+                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                                            <children>
+                                                                                <Label fx:id="label1" text="THEME_NAME_1" />
+                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox prefHeight="311.0" prefWidth="214.0">
+                                                                    <children>
+                                                                        <ImageView fx:id="image2" fitHeight="204.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
+                                                                            <image>
+                                                                                <Image url="@images/java.png" />
+                                                                            </image>
+                                                                        </ImageView>
+                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                                            <children>
+                                                                                <Label fx:id="label2" text="THEME_NAME_1" />
+                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox prefHeight="311.0" prefWidth="213.0">
+                                                                    <children>
+                                                                        <ImageView fx:id="image3" fitHeight="200.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
+                                                                            <image>
+                                                                                <Image url="@images/java.png" />
+                                                                            </image>
+                                                                        </ImageView>
+                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                                            <children>
+                                                                                <Label fx:id="label3" text="THEME_NAME_1" />
+                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Page 2">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="734.0">
+                                                    <children>
+                                                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                                                        <HBox layoutX="5.0" layoutY="9.0" prefHeight="311.0" prefWidth="609.0">
+                                                            <children>
+                                                                <VBox prefHeight="311.0" prefWidth="211.0">
+                                                                    <children>
+                                                                        <ImageView fx:id="image4" fitHeight="205.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
+                                                                            <image>
+                                                                                <Image url="@images/java.png" />
+                                                                            </image>
+                                                                        </ImageView>
+                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                                            <children>
+                                                                                <Label fx:id="label4" text="THEME_NAME_1" />
+                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox prefHeight="311.0" prefWidth="214.0">
+                                                                    <children>
+                                                                        <ImageView fx:id="image5" fitHeight="204.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
+                                                                            <image>
+                                                                                <Image url="@images/java.png" />
+                                                                            </image>
+                                                                        </ImageView>
+                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                                            <children>
+                                                                                <Label fx:id="label5" text="THEME_NAME_1" />
+                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox prefHeight="311.0" prefWidth="213.0">
+                                                                    <children>
+                                                                        <ImageView fx:id="image6" fitHeight="200.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
+                                                                            <image>
+                                                                                <Image url="@images/java.png" />
+                                                                            </image>
+                                                                        </ImageView>
+                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                                            <children>
+                                                                                <Label fx:id="label6" text="THEME_NAME_1" />
+                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Page 3">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="734.0">
+                                                    <children>
+                                                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                                                        <HBox layoutX="5.0" layoutY="9.0" prefHeight="311.0" prefWidth="609.0">
+                                                            <children>
+                                                                <VBox prefHeight="311.0" prefWidth="211.0">
+                                                                    <children>
+                                                                        <ImageView fitHeight="205.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
+                                                                            <image>
+                                                                                <Image url="@images/java.png" />
+                                                                            </image>
+                                                                        </ImageView>
+                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                                            <children>
+                                                                                <Label text="THEME_NAME_1" />
+                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox prefHeight="311.0" prefWidth="214.0">
+                                                                    <children>
+                                                                        <ImageView fitHeight="204.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
+                                                                            <image>
+                                                                                <Image url="@images/java.png" />
+                                                                            </image>
+                                                                        </ImageView>
+                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                                            <children>
+                                                                                <Label text="THEME_NAME_1" />
+                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                                <VBox prefHeight="311.0" prefWidth="213.0">
+                                                                    <children>
+                                                                        <ImageView fitHeight="200.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
+                                                                            <image>
+                                                                                <Image url="@images/java.png" />
+                                                                            </image>
+                                                                        </ImageView>
+                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                                            <children>
+                                                                                <Label text="THEME_NAME_1" />
+                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                            </children>
+                                                                        </VBox>
+                                                                    </children>
+                                                                </VBox>
+                                                            </children>
+                                                        </HBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab>
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+    <fx:define>
+        <ArrayList fx:id="labelList" >
+            <fx:reference source="label1"/>
+            <fx:reference source="label2"/>
+            <fx:reference source="label3"/>
+            <fx:reference source="label4"/>
+            <fx:reference source="label5"/>
+            <fx:reference source="label6"/>
+        </ArrayList>
+        <ArrayList fx:id="imageList" >
+            <fx:reference source="image1"/>
+            <fx:reference source="image2"/>
+            <fx:reference source="image3"/>
+            <fx:reference source="image4"/>
+            <fx:reference source="image5"/>
+            <fx:reference source="image6"/>
+        </ArrayList>
+    </fx:define>
 </GridPane>

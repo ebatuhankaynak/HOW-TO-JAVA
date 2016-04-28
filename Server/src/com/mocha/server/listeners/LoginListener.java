@@ -16,7 +16,7 @@ public class LoginListener extends JsonListener<LoginRequest> {
     @Override
     public void run(LoginRequest req) {
             LoginResults res;
-            User user =Core.Repository.getUsers().authenticate(req)  ;
+            User user = Core.Repository.getUsers().authenticate(req)  ;
             if (user != null)
             {
                 res = LoginResults.SUCCESS;

@@ -4,8 +4,14 @@ import com.mocha.client.controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.util.Optional;
 
 /**
  * Created by E.Batuhan Kaynak on 30.3.2016.
@@ -26,13 +32,16 @@ public class Main extends Application {
         loginController.setPrevStage(primaryStage);
 
         Scene myScene = new Scene(myPane);
-        /*
-        String image = Main.class.getResource("resources/images/Theme1.png").toExternalForm();
-        myPane.setStyle("-fx-background-image: url('" + image + "'); " +
-                "-fx-background-position: center center; " +
-                "-fx-background-repeat: stretch;");*/
+
         primaryStage.setScene(myScene);
         primaryStage.show();
+
+        String userTheme = "Green";
+        String image = Main.class.getResource("resources/images/shopImages/" + userTheme + ".png").toExternalForm();
+        myPane.setStyle("-fx-background-image: url('" + image + "'); " +
+                "-fx-background-position: center center; " +
+                "-fx-background-repeat: repeat;");
+
     }
 
     public static void main(String[] args) {
