@@ -4,14 +4,8 @@ import com.mocha.client.controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-import java.util.Optional;
 
 /**
  * Created by E.Batuhan Kaynak on 30.3.2016.

@@ -50,16 +50,16 @@ public class ProfileController extends Controller implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         User user = Core.Storage.getUser();
         nameLabel.setText(user.getUsername());
-        currentCoffeeBeansLabel.setText("Current Coffee Beans: " + String.valueOf(user.getCoffeeBeans()));
+        currentCoffeeBeansLabel.setText("Current Coffee Beans: " + String.valueOf(user.getTotalScore()));
         //beansTodayLabel.setText();
-        //totalBeansLabel.setText();
+        totalBeansLabel.setText(String.valueOf(user.getTotalCoffeeBeans()));
 
         topicNames.addAll(Arrays.asList(topics));
         xAxis.setCategories(topicNames);
 
-        series.getData().add(new XYChart.Data<>(topics[0], 50));
-        series.getData().add(new XYChart.Data<>(topics[1], 100));
-
+        for (int i = 0; i < topics.length; i++) {
+            series.getData().add(new XYChart.Data<>(topics[i], user.getScore(topics[i])));
+        }
         progressGraph.getData().add(series);
     }
 }

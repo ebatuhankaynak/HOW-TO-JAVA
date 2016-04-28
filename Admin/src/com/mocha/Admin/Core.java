@@ -1,8 +1,8 @@
-package com.mocha.client;
+package com.mocha.Admin;
 
-import com.mocha.client.EventCapsule.EventCapsule;
-import com.mocha.client.JsonListenerCapsule.JsonListenerCapsule;
-import com.mocha.client.socket.SocketCapsule;
+import com.mocha.Admin.EventCapsule.EventCapsule;
+import com.mocha.Admin.JsonListenerCapsule.JsonListenerCapsule;
+import com.mocha.Admin.socket.SocketCapsule;
 
 public class Core {
     public static EventCapsule EventManager = new EventCapsule();

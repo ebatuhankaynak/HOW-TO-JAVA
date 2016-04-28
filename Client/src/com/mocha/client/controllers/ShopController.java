@@ -37,7 +37,7 @@ public class ShopController extends Controller implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         User user = Core.Storage.getUser();
-        coffeeBeansLabel.setText("You Have " + user.getCoffeeBeans() + " Coffee Beans");
+        coffeeBeansLabel.setText("You Have " + user.getTotalCoffeeBeans() + " Coffee Beans");
 
         for (int i = 0; i < themeNames.length; i++){
             labelList.get(i).setText(themeNames[i]);

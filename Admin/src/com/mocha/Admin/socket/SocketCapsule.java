@@ -1,10 +1,10 @@
-package com.mocha.client.socket;
+package com.mocha.Admin.socket;
 
 import com.google.gson.Gson;
-import com.mocha.client.Core;
-import com.mocha.client.EventCapsule.EventTypes;
-import com.mocha.client.JsonListenerCapsule.JsonRequest;
-import com.mocha.client.JsonListenerCapsule.RequestTypes;
+import com.mocha.Admin.Core;
+import com.mocha.Admin.EventCapsule.EventTypes;
+import com.mocha.Admin.JsonListenerCapsule.JsonRequest;
+import com.mocha.Admin.JsonListenerCapsule.RequestTypes;
 
 import java.io.BufferedReader;
 import java.io.IOException;

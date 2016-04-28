@@ -76,7 +76,7 @@ public class OptionsController extends Controller implements Initializable{
 
         if (first) {
             System.out.println("IN FIRST");
-            imageList.get(0).setImage(new Image(String.valueOf(getClass().getResource("../resources/images/shopImages/Null.png"))));
+            imageList.get(0).setImage(new Image(String.valueOf(getClass().getResource("../resources/images/shopImages/.png"))));
             labelList.get(0).setText("");
 
             userThemes = new ArrayList<>();

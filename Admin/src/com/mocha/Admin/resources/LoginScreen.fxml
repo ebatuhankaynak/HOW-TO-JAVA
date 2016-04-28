@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="CENTER" hgap="10" styleClass="root" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mocha.Admin.controllers.LoginController">
+   <children>
+   
+       <Text id="welcome-text" text="Welcome" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+   
+       <Label text="User Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+   
+       <TextField fx:id="usernameTF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   
+       <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+   
+       <PasswordField fx:id="passwordTF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+   
+       <HBox alignment="BOTTOM_RIGHT" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <children>
+              <Button onMouseClicked="#onSignInButtonClick" text="Sign In" />
+      </children>
+       </HBox>
+   
+       <Text fx:id="actiontarget" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Hyperlink fx:id="createAccount" onMouseClicked="#onCreateAccountClick" text="Create One!" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Label text="No Account?" GridPane.rowIndex="6" />
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+
+
+</GridPane>
