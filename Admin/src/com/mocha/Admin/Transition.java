@@ -36,13 +36,6 @@ public class Transition {
         Controller controller = myLoader.getController();
         controller.setPrevStage(stage);
         Scene scene = new Scene(myPane);
-        //Core.Storage.setScene(scene);
-
-        String userTheme = "Green";
-        String image = Main.class.getResource("resources/images/shopImages/" + userTheme + ".png").toExternalForm();
-        myPane.setStyle("-fx-background-image: url('" + image + "'); " +
-                "-fx-background-position: center center; " +
-                "-fx-background-repeat: repeat;");
         stage.setScene(scene);
     }
 

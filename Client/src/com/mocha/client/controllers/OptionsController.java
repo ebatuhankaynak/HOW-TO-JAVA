@@ -76,7 +76,7 @@ public class OptionsController extends Controller implements Initializable{
 
         if (first) {
             System.out.println("IN FIRST");
-            imageList.get(0).setImage(new Image(String.valueOf(getClass().getResource("../resources/images/shopImages/.png"))));
+            imageList.get(0).setImage(new Image(String.valueOf(getClass().getResource("../resources/images/shopImages/Null.png"))));
             labelList.get(0).setText("");
 
             userThemes = new ArrayList<>();
@@ -95,8 +95,10 @@ public class OptionsController extends Controller implements Initializable{
         else if (right){
             System.out.println("IN RIGHT");
             for (int i = 0; i + 1< userThemes.size(); i++){
-                imageList.set(i, imageList.get(i + 1));
-                labelList.set(i, labelList.get(i + 1));
+                //imageList.set(i, imageList.get(i + 1));
+                imageList.get(i).setImage(imageList.get(i).getImage());
+                labelList.get(i).setText(labelList.get(i).toString());
+                //labelList.set(i, labelList.get(i + 1));
             }
             right = false;
         }
