@@ -15,6 +15,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -33,6 +34,7 @@ public class CodingMenuController extends Controller implements Initializable {
     @FXML Label questionTitle;
     @FXML Label questionLabel;
     @FXML TextArea codingArea;
+    @FXML ProgressBar progressBar;
     //@FXML HTMLEditor htmlEditor;
     //@FXML WebView webView;
 
@@ -73,6 +75,7 @@ public class CodingMenuController extends Controller implements Initializable {
         String userName = Core.Storage.getUser().getUsername();
         String codeToSend = codingArea.getText();
         //goToScene("CodingMenuTest");
+        progressBar.setVisible(true);
         Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
     }
 

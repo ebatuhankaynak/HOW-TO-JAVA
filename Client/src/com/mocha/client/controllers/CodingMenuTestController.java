@@ -19,11 +19,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.scene.web.HTMLEditor;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,7 +38,8 @@ public class CodingMenuTestController extends CodingMenuController {
     @FXML TableColumn errorColumn;
     @FXML TableColumn passedColumn;
     //@FXML TextArea codingArea;
-    @FXML HTMLEditor htmlEditor;
+    //@FXML HTMLEditor htmlEditor;
+    @FXML WebView webView;
 
     private static final String tickSource = "../resources/images/tick_32.png";
     private static final String crossSource = "../resources/images/cross_32.png";
@@ -110,13 +112,31 @@ public class CodingMenuTestController extends CodingMenuController {
 
         testTable.setItems(compileDatas);
 
-        /*
-        htmlEditor.lookup(".top-toolbar").setManaged(false);
-        htmlEditor.lookup(".top-toolbar").setVisible(false);
+        WebEngine webEngine = webView.getEngine();
+        String url = CodingMenuTestController.class.getResource("IDE.html").toExternalForm();
+        webEngine.load(url);
 
-        htmlEditor.lookup(".bottom-toolbar").setManaged(false);
-        htmlEditor.lookup(".bottom-toolbar").setVisible(false);
-        */
+        //webEngine.executeScript();
+
+        //webEngine.executeScript("checkTabPress()");
+        try {
+            webView.addEventFilter( KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>()
+                    {
+                        Robot eventRobot = new Robot();
+
+                        @Override
+                        public void handle( KeyEvent KV )
+                        {
+                            if( KV.getCode() == KeyCode.TAB)
+                            {
+                                KV.consume();
+                            }
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         /*
         htmlEditor.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
@@ -128,11 +148,6 @@ public class CodingMenuTestController extends CodingMenuController {
             }
         });*/
     }
-
-    /*
-    private class MyIDEListener extends {
-
-    }*/
 
     public static class MyCompileData {
         private final SimpleStringProperty testCase;
