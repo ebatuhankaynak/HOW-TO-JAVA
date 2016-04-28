@@ -48,6 +48,7 @@ public class User
     public User(){
         submissions = new ArrayList<>();
         progress  = new UserProgress( 0);
+        //themes.add("Null");
     }
 
     public String getLastSubmissionDate() {

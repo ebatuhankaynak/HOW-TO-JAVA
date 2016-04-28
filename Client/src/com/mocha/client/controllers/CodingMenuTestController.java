@@ -4,12 +4,18 @@ import com.mocha.client.Core;
 import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.Questions.CompiledQuestion;
+import com.mocha.client.models.Questions.Question;
 import com.mocha.client.models.requests.CompileResultRequest;
 import com.mocha.client.models.results.CompileResults;
+import com.sun.javafx.webkit.Accessor;
+import com.sun.webkit.WebPage;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Worker;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -40,6 +46,8 @@ public class CodingMenuTestController extends CodingMenuController {
     //@FXML TextArea codingArea;
     //@FXML HTMLEditor htmlEditor;
     @FXML WebView webView;
+
+    private WebPage webPage;
 
     private static final String tickSource = "../resources/images/tick_32.png";
     private static final String crossSource = "../resources/images/cross_32.png";
@@ -102,7 +110,10 @@ public class CodingMenuTestController extends CodingMenuController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        super.initialize(location, resources);
+        //super.initialize(location, resources);
+        Question question = Core.Storage.getQuestionToShow();
+        questionLabel.setText(question.getQuestion());
+
         parseCompileData();
 
         testCaseColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("testCase"));
@@ -113,40 +124,52 @@ public class CodingMenuTestController extends CodingMenuController {
         testTable.setItems(compileDatas);
 
         WebEngine webEngine = webView.getEngine();
+        webPage = Accessor.getPageFor(webEngine);
         String url = CodingMenuTestController.class.getResource("IDE.html").toExternalForm();
         webEngine.load(url);
+        webPage.executeScript(webPage.getMainFrame(), "document.body.innerHTML = " + Core.Storage.getCodeToShow() + ";");
 
-        //webEngine.executeScript();
-
-        //webEngine.executeScript("checkTabPress()");
+        //webView.addEventHandler(KeyEvent.KEY_RELEASED, event -> executeScript());
         try {
-            webView.addEventFilter( KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>()
+            webView.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>()
+                {
+                    @Override
+                    public void handle(KeyEvent keyEvent)
                     {
-                        Robot eventRobot = new Robot();
-
-                        @Override
-                        public void handle( KeyEvent KV )
+                        if(keyEvent.getCode() == KeyCode.TAB)
                         {
-                            if( KV.getCode() == KeyCode.TAB)
-                            {
-                                KV.consume();
-                            }
+                            executeScript();
+                            keyEvent.consume();
                         }
-                    });
-        } catch (Exception e) {
+                    }
+                });
+            webView.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
+                @Override
+                public void handle(KeyEvent event) {
+                    String currentText = (String) webPage.executeScript(webPage.getMainFrame(), "document.body.innerHTML");
+                    System.out.println(currentText);
+                    String newText = "\"" + getBluePublic(currentText) + "\"";
+                    webPage.executeScript(webPage.getMainFrame(), "document.body.innerHTML = " + newText + ";");
+                }
+            });
+            setCaret();
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
-        /*
-        htmlEditor.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                String parsedHtml = getPageContents(htmlEditor.getHtmlText());
-                String newText = getBluePublic(parsedHtml);
-                htmlEditor.setHtmlText(newText);
-                htmlEditor.requestFocus();
-            }
-        });*/
+    public void executeScript(){
+        webPage.executeScript(webPage.getMainFrame(), "document.body.innerHTML = document.body.innerHTML + \"&emsp;\" + \"ZA\"");
+    }
+
+    public void setCaret(){
+        webPage.executeScript(webPage.getMainFrame(), "range = document.createRange();" +
+                "range.selectNodeContents(document.body);" +
+                "range.collapse(false);" +
+                "selection = window.getSelection();" +
+                "selection.removeAllRanges();" +
+                "selection.addRange(range);");
     }
 
     public static class MyCompileData {

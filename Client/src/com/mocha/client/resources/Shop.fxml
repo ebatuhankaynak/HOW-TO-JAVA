@@ -76,7 +76,7 @@
                                                                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                                                             <children>
                                                                                 <Label fx:id="label1" text="THEME_NAME_1" />
-                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                                <Button fx:id="button1" mnemonicParsing="false" text="Buy!" />
                                                                             </children>
                                                                         </VBox>
                                                                     </children>
@@ -91,7 +91,7 @@
                                                                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                                                             <children>
                                                                                 <Label fx:id="label2" text="THEME_NAME_1" />
-                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                                <Button fx:id="button2" mnemonicParsing="false" text="Buy!" />
                                                                             </children>
                                                                         </VBox>
                                                                     </children>
@@ -106,7 +106,7 @@
                                                                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                                                             <children>
                                                                                 <Label fx:id="label3" text="THEME_NAME_1" />
-                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                                <Button fx:id="button3" mnemonicParsing="false" text="Buy!" />
                                                                             </children>
                                                                         </VBox>
                                                                     </children>
@@ -134,7 +134,7 @@
                                                                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                                                             <children>
                                                                                 <Label fx:id="label4" text="THEME_NAME_1" />
-                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                                <Button fx:id="button4" mnemonicParsing="false" text="Buy!" />
                                                                             </children>
                                                                         </VBox>
                                                                     </children>
@@ -149,7 +149,7 @@
                                                                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                                                             <children>
                                                                                 <Label fx:id="label5" text="THEME_NAME_1" />
-                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                                <Button fx:id="button5" mnemonicParsing="false" text="Buy!" />
                                                                             </children>
                                                                         </VBox>
                                                                     </children>
@@ -164,7 +164,7 @@
                                                                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                                                             <children>
                                                                                 <Label fx:id="label6" text="THEME_NAME_1" />
-                                                                                <Button mnemonicParsing="false" text="Buy!" />
+                                                                                <Button fx:id="button6" mnemonicParsing="false" text="Buy!" />
                                                                             </children>
                                                                         </VBox>
                                                                     </children>
@@ -263,6 +263,14 @@
             <fx:reference source="image4"/>
             <fx:reference source="image5"/>
             <fx:reference source="image6"/>
+        </ArrayList>
+        <ArrayList fx:id="buttonList" >
+            <fx:reference source="button1" id="1" onMouseClicked="#onBuyButtonClick"/>
+            <fx:reference source="button2" id="2" onMouseClicked="#onBuyButtonClick"/>
+            <fx:reference source="button3" id="3" onMouseClicked="#onBuyButtonClick"/>
+            <fx:reference source="button4" id="4" onMouseClicked="#onBuyButtonClick"/>
+            <fx:reference source="button5" id="5" onMouseClicked="#onBuyButtonClick"/>
+            <fx:reference source="button6" id="6" onMouseClicked="#onBuyButtonClick"/>
         </ArrayList>
     </fx:define>
 </GridPane>

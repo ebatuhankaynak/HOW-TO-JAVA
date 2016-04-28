@@ -74,8 +74,8 @@ public class CodingMenuController extends Controller implements Initializable {
     {
         String userName = Core.Storage.getUser().getUsername();
         String codeToSend = codingArea.getText();
-        //goToScene("CodingMenuTest");
         progressBar.setVisible(true);
+        Core.Storage.setCodeToShow(codeToSend);
         Core.SocketManager.sendMessageObject(RequestTypes.COMPILE, new CompileRequest(codeToSend ,userName, question));
     }
 
@@ -89,37 +89,18 @@ public class CodingMenuController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Question question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
-
-        /*
-        webView.lookup(".top-toolbar").setManaged(false);
-        webView.lookup(".top-toolbar").setVisible(false);
-
-        webView.lookup(".bottom-toolbar").setManaged(false);
-        webView.lookup(".bottom-toolbar").setVisible(false);
-        */
-        /*
-        htmlEditor.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                System.out.println("HTML");
-                System.out.print(htmlEditor.getHtmlText());
-                String parsedHtml = htmlEditor.getHtmlText();
-                String newText = getBluePublic(parsedHtml);
-                //htmlEditor.setHtmlText(newText);
-                htmlEditor.requestFocus();
-                //codingArea.requestFocus();
-                //htmlEditor.requestFocus();
-                System.out.println(htmlEditor.isFocused());
-            }
-        });
-        */
+        codingArea.setText("public static int factorial (int n){\n" +
+                "\tif (n <= 1)\n" +
+                "\treturn 1;\n" +
+                "\treturn n * factorial (n - 1);\n" +
+                "}");
     }
 
     public String getBluePublic(String parsedHtml){
         if (parsedHtml.contains("public")) {
             for (int i = 0; i + 6 <= parsedHtml.length(); i++) {
                 if (parsedHtml.substring(i, i + 6).equals("public")) {
-                    return parsedHtml.substring(0, i) + "<span style=\"color:blue;\">public</span>" + getBluePublic(parsedHtml.substring(i + 6));
+                    return parsedHtml.substring(0, i) + "<span style='color:blue;'>public</span>" + getBluePublic(parsedHtml.substring(i + 6));
                 }
             }
             return parsedHtml;
@@ -162,3 +143,11 @@ public class CodingMenuController extends Controller implements Initializable {
         return result;
     }
 }
+
+        /*
+        webView.lookup(".top-toolbar").setManaged(false);
+        webView.lookup(".top-toolbar").setVisible(false);
+
+        webView.lookup(".bottom-toolbar").setManaged(false);
+        webView.lookup(".bottom-toolbar").setVisible(false);
+        */
