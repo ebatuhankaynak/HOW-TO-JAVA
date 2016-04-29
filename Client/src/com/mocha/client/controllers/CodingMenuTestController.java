@@ -6,16 +6,14 @@ import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.Questions.CompiledQuestion;
 import com.mocha.client.models.Questions.Question;
 import com.mocha.client.models.requests.CompileResultRequest;
+import com.mocha.client.models.requests.QuestionRequest;
 import com.mocha.client.models.results.CompileResults;
 import com.sun.javafx.webkit.Accessor;
 import com.sun.webkit.WebPage;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Worker;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -29,7 +27,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -46,8 +43,10 @@ public class CodingMenuTestController extends CodingMenuController {
     //@FXML TextArea codingArea;
     //@FXML HTMLEditor htmlEditor;
     @FXML WebView webView;
+    @FXML javafx.scene.control.Button nextQuestionButton;
 
     private WebPage webPage;
+    private boolean trueSoFar;
 
     private static final String tickSource = "../resources/images/tick_32.png";
     private static final String crossSource = "../resources/images/cross_32.png";
@@ -61,6 +60,7 @@ public class CodingMenuTestController extends CodingMenuController {
     public CodingMenuTestController(){
         compileResultRequest = Core.Storage.getCompileResultRequest();
         compileDatas = FXCollections.observableArrayList();
+        trueSoFar = true;
 
         Core.JsonListenerManager.addJsonListener(RequestTypes.COMPILE_RESULT, new JsonListener<CompileResultRequest>() {
             @Override
@@ -83,12 +83,20 @@ public class CodingMenuTestController extends CodingMenuController {
         Scene scene = Core.Storage.getScene(); // NO NEED FOR THIS NOW(I THINK)
     }
 
+    public void onNextQuestionButtonClick(){
+        Core.Storage.setQuestionToShow(Core.Storage.getQuestionContainer().getQuestions().get(0));
+        goToScene("CodingMenu");
+    }
+
     public void parseCompileData(){
         for (int i = 0; i < compileResultRequest.getCompilerResults().length; i++){
             String testCase = ((CompiledQuestion) (Core.Storage.getQuestionToShow())).getTestCases()[i];
             String expected = ((CompiledQuestion) (Core.Storage.getQuestionToShow())).getTestCaseAnswers()[i];
             String output = compileResultRequest.getErrString()[i];
             boolean passed = compileResultRequest.getCompilerResults()[i];
+            if (!passed){
+                trueSoFar = false;
+            }
             MyCompileData compileData;
             if (passed){
                 compileData = new MyCompileData(testCase, expected, output, createTickImage());
@@ -115,6 +123,10 @@ public class CodingMenuTestController extends CodingMenuController {
         questionLabel.setText(question.getQuestion());
 
         parseCompileData();
+        if (trueSoFar){
+            nextQuestionButton.setVisible(true);
+            nextQuestionButton.setDisable(false);
+        }
 
         testCaseColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("testCase"));
         expectedColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("expected"));
@@ -127,7 +139,7 @@ public class CodingMenuTestController extends CodingMenuController {
         webPage = Accessor.getPageFor(webEngine);
         String url = CodingMenuTestController.class.getResource("IDE.html").toExternalForm();
         webEngine.load(url);
-        webPage.executeScript(webPage.getMainFrame(), "document.body.innerHTML = " + Core.Storage.getCodeToShow() + ";");
+        //webPage.executeScript(webPage.getMainFrame(), "document.body.innerHTML = " + Core.Storage.getCodeToShow() + ";");
 
         //webView.addEventHandler(KeyEvent.KEY_RELEASED, event -> executeScript());
         try {

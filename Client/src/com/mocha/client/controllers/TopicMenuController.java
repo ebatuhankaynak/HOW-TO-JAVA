@@ -35,6 +35,8 @@ public class TopicMenuController extends Controller {
                 if (res == QuestionResults.SUCCESS) {
                     questions = req.getQuestions();
                     Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
+                    questions.getQuestions().remove(0);
+                    Core.Storage.setQuestionContainer(questions);
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
@@ -56,7 +58,6 @@ public class TopicMenuController extends Controller {
     @FXML
     public void onMethodsButtonClick(MouseEvent mouseEvent) {
         requestQuestions("METHOD", "1");
-        //goToScene("CodingMenu");
     }
 
     public void requestQuestions(String topicType, String level)

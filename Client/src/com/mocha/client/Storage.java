@@ -2,6 +2,7 @@ package com.mocha.client;
 
 import com.mocha.client.models.Questions.CompiledQuestion;
 import com.mocha.client.models.Questions.Question;
+import com.mocha.client.models.Questions.QuestionContainer;
 import com.mocha.client.models.User;
 import com.mocha.client.models.requests.CompileResultRequest;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.scene.Scene;
 public class Storage {
     private User user;
     private Question questionToShow;
+    private QuestionContainer questionContainer;
     private CompileResultRequest compileResultRequest;
     private Scene scene;
     private String selectedTheme;
@@ -63,5 +65,13 @@ public class Storage {
 
     public void setCodeToShow(String codeToShow) {
         this.codeToShow = codeToShow;
+    }
+
+    public QuestionContainer getQuestionContainer() {
+        return questionContainer;
+    }
+
+    public void setQuestionContainer(QuestionContainer questionContainer) {
+        this.questionContainer = questionContainer;
     }
 }

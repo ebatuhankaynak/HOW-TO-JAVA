@@ -1,4 +1,4 @@
-package com.mocha.Admin.models;
+package com.mocha.server.models;
 
 /**
  * Created by E.Batuhan Kaynak on 28.4.2016.

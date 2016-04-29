@@ -27,6 +27,8 @@
    <children>
       <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
          <children>
+            <Button mnemonicParsing="false" fx:id="nextQuestionButton" disable="true" visible="false" onMouseClicked="#onNextQuestionButtonClick" text="Next Question!" />
+            <Label text="    " />
             <Button mnemonicParsing="false" onMouseClicked="#onCompileButtonClick" text="Compile!" />
          </children>
       </HBox>
