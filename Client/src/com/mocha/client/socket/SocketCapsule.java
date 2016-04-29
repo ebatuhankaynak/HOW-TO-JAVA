@@ -14,7 +14,6 @@ import java.net.Socket;
 
 public class SocketCapsule {
 
-
     PrintWriter out;
     Gson gson = new Gson();
 

@@ -19,6 +19,7 @@ public class QuestionRepository
     }
 
     public QuestionContainer find(QuestionRequest questionRequest){
+        System.out.println("this is where bomb happens");
         QuestionContainer questions = questionContainers.findOne( questionRequest.toSearchQuery()).as( QuestionContainer.class);
         return  questions;
     }

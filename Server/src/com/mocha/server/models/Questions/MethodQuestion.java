@@ -12,9 +12,9 @@ public class MethodQuestion extends CompiledQuestion
 
     // Constructor
     public MethodQuestion(String question, QuestionID id, int coffeeBeansAwarded, String[] testCases,
-                          String[] testCaseAnswers, String codeSegment)
+                          String[] testCaseAnswers, String testClass)
     {
-        super(question, id, coffeeBeansAwarded, testCases, testCaseAnswers);
+        super(question, id, coffeeBeansAwarded, testCases, testCaseAnswers, testClass);
 
     }
 }

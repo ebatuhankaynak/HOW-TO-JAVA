@@ -1,40 +1,53 @@
 package com.mocha.server.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class User {
+/**
+ * Hüseyin Ziya İmamoğlu
+ * 28.04.2016
+ * ${CLASS_NAME}
+ * Info about class
+ * v 1.0
+ */
+
+/* Score and coffeeBeans are different.
+ * Score doesn't change, while coffeebeans decreases with buyinn things from shop
+ * They start as the same thing.
+ */
+
+public class User
+{
     private String id;
     private String username;
     private String password;
     private String lastLoginDate;
     private String lastSubmissionDate;
-    private int coffeeBeans;
     private List<Submission> submissions;
-    private Map<Integer, Integer> topicMasteryLevels;
+    private UserProgress progress;
+    private ArrayList<String> themes;
+    private String currentTheme;
 
-    public User(String id, String username, String password, String lastLoginDate, String lastSubmissionDate, int coffeeBeans, List<Submission> submissions, Map<Integer, Integer> topicMasteryLevels) {
+    public User(String id, String username, String password, String lastLoginDate, String lastSubmissionDate,
+                int coffeeBeans, List<Submission> submissions, String currentTheme)
+    {
         this.id = id;
         this.username = username;
         this.password = password;
         this.lastLoginDate = lastLoginDate;
         this.lastSubmissionDate = lastSubmissionDate;
-        this.coffeeBeans = coffeeBeans;
         this.submissions = submissions;
-        this.topicMasteryLevels = topicMasteryLevels;
-    }
+        progress = new UserProgress( coffeeBeans);
+        themes = new ArrayList<>();
+        this.currentTheme = currentTheme;
+           }
+
 
     public User(){
         submissions = new ArrayList<>();
-        coffeeBeans = 0;
-    }
-    public int getCoffeeBeans() {
-        return coffeeBeans;
-    }
-
-    public void setCoffeeBeans(int coffeeBeans) {
-        this.coffeeBeans = coffeeBeans;
+        progress  = new UserProgress( 0);
     }
 
     public String getLastSubmissionDate() {
@@ -85,11 +98,69 @@ public class User {
         this.submissions = submissions;
     }
 
-    public Map<Integer, Integer> getTopicMasteryLevels() {
-        return topicMasteryLevels;
+    public void setProgress(UserProgress progress)
+    {
+        this.progress = progress;
     }
 
-    public void setTopicMasteryLevels(Map<Integer, Integer> topicMasteryLevels) {
-        this.topicMasteryLevels = topicMasteryLevels;
+    public UserProgress getProgress()
+    {
+        return progress;
     }
+
+    public ArrayList<String> getThemes()
+    {
+        return themes;
+    }
+
+    public void setThemes( ArrayList<String> themes)   {
+        this.themes = themes;
+    }
+
+    public void addTheme( String theme)
+    {
+        themes.add( theme);
+    }
+
+    public String getCurrentTheme()
+    {
+        return currentTheme;
+    }
+
+    public void setCurrentTheme(String currentTheme)
+    {
+        this.currentTheme = currentTheme;
+    }
+
+    public int getLevel( String topic)
+    {
+        return progress.getLevel( topic);
+    }
+
+    public int getScore( String topic)
+    {
+        return progress.getScore( topic);
+    }
+
+    public int getCoffeeBeans( String topic)
+    {
+        return progress.getCoffeeBeans( topic);
+    }
+
+    public int getTotalScore()
+    {
+        return progress.getTotalScore();
+    }
+
+    public int getTotalCoffeeBeans()
+    {
+        return progress.getTotalCoffeeBeans();
+    }
+
+    public void update( String topic, int scoreGained, boolean isPassed)
+    {
+        progress.update( topic, scoreGained, isPassed);
+    }
+
+
 }

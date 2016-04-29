@@ -1,5 +1,7 @@
 package com.mocha.client.models.Questions;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
 /**
@@ -12,16 +14,17 @@ import java.util.ArrayList;
 public class QuestionContainer
 {
     // Instance Variables
-    private ArrayList<Question> questions;
+    @JsonProperty
+    private ArrayList<CompiledQuestion> questions;
     private String questionTopic;
     private String questionLevel;
 
-    public ArrayList<Question> getQuestions()
+    public ArrayList<CompiledQuestion> getQuestions()
     {
         return questions;
     }
 
-    public void setQuestions(ArrayList<Question> questions)
+    public void setQuestions(ArrayList<CompiledQuestion> questions)
     {
         this.questions = questions;
     }
@@ -46,7 +49,7 @@ public class QuestionContainer
         this.questionLevel = questionLevel;
     }
 
-    public void add ( Question question)
+    public void add ( CompiledQuestion question)
     {
         questions.add( question);
     }

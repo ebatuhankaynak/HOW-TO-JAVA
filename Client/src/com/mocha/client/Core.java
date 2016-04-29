@@ -1,7 +1,6 @@
 package com.mocha.client;
 
 import com.mocha.client.EventCapsule.EventCapsule;
-import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.JsonListenerCapsule;
 import com.mocha.client.socket.SocketCapsule;
 

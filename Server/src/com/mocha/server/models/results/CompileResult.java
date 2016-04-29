@@ -5,6 +5,6 @@ package com.mocha.server.models.results;
  */
 public enum CompileResult {
     SUCCESS,
-    FAILURE
+    FAİL
 
 }

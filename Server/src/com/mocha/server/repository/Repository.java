@@ -1,6 +1,9 @@
 package com.mocha.server.repository;
 
-import com.mocha.server.models.Questions.*;
+import com.mocha.server.models.Questions.ClassQuestion;
+import com.mocha.server.models.Questions.MethodQuestion;
+import com.mocha.server.models.Questions.QuestionContainer;
+import com.mocha.server.models.Questions.QuestionID;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -24,6 +27,24 @@ public class Repository {
         users = new UsersRepository(jongo.getCollection("Users"));
 
         questionContainers = new QuestionRepository( jongo.getCollection("QuestionContainers"));
+        //--------------------------------------------------------------------------------------------------// Test
+        QuestionContainer container = new QuestionContainer( "DATA_TYPES", "1");
+        QuestionID id = new QuestionID( 1, 1, "DATA_TYPES");
+        String [] testCases  = new String [5];
+        String[] testCaseAnswers = {"1", "1", "2", "6", "24"};
+        for( int i = 0; i < testCases.length; i++)
+        {
+            testCases[i] = i + "";
+        }
+
+        String testClass = "public class Main{ public static void main( String[] args) { System.out.println( factorial( Integer.parseInt( args[0])); } ";
+
+
+        MethodQuestion q1 = new MethodQuestion( "Write a recursive method that computes the factorial", id , 100, testCases, testCaseAnswers, testClass);
+        container.add( q1);
+
+        questionContainers.add( container);
+        //-------------------------------------------------------------------------------------
     }
 
     public UsersRepository getUsers() {

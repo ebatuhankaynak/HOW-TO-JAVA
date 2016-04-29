@@ -26,13 +26,17 @@ public class Main extends Application {
         loginController.setPrevStage(primaryStage);
 
         Scene myScene = new Scene(myPane);
-        /*
-        String image = Main.class.getResource("resources/images/Theme1.png").toExternalForm();
-        myPane.setStyle("-fx-background-image: url('" + image + "'); " +
-                "-fx-background-position: center center; " +
-                "-fx-background-repeat: stretch;");*/
+
         primaryStage.setScene(myScene);
         primaryStage.show();
+
+        String selectedTheme = "Green";
+        Core.Storage.setSelectedTheme(selectedTheme);
+        String image = Main.class.getResource("resources/images/shopImages/" + selectedTheme + ".png").toExternalForm();
+        myPane.setStyle("-fx-background-image: url('" + image + "'); " +
+                "-fx-background-position: center center; " +
+                "-fx-background-repeat: repeat;");
+
     }
 
     public static void main(String[] args) {

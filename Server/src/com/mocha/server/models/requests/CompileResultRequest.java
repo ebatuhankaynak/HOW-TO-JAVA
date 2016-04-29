@@ -12,9 +12,11 @@ public class CompileResultRequest {
         private CompileResult result;
         private User user;
         private boolean [] compilerResults;
-        public CompileResultRequest(CompileResult result, boolean[] compilerResults  ) {
+        private String [] errString;
+        public CompileResultRequest(CompileResult result, boolean[] compilerResults, String[] errString  ) {
             this.result = result;
             this.compilerResults = compilerResults;
+            this.errString = errString;
         }
 
         public CompileResult getResult() {
@@ -34,4 +36,19 @@ public class CompileResultRequest {
         }
 
 
+    public boolean[] getCompilerResults() {
+        return compilerResults;
+    }
+
+    public void setCompilerResults(boolean[] compilerResults) {
+        this.compilerResults = compilerResults;
+    }
+
+    public String[] getErrString() {
+        return errString;
+    }
+
+    public void setErrString(String[] errString) {
+        this.errString = errString;
+    }
 }

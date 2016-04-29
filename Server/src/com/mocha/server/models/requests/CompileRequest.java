@@ -1,13 +1,15 @@
 package com.mocha.server.models.requests;
 
+import com.mocha.server.models.Questions.CompiledQuestion;
 import com.mocha.server.models.Questions.Question;
 
 public class CompileRequest
 {
+    //mght delete userneame variable
     private String codeToCompile;
     private String userName;
-    private Question question;
-    public CompileRequest (String codeToCompile, String userName, Question question)
+    private CompiledQuestion question;
+    public CompileRequest (String codeToCompile, String userName, CompiledQuestion question)
     {
         this.codeToCompile = codeToCompile;
         this.userName = userName;
@@ -36,11 +38,11 @@ public class CompileRequest
     }
 
 
-    public void setQuestion(Question question) {
+    public void setQuestion(CompiledQuestion question) {
         this.question = question;
     }
 
-    public Question getQuestion() {
+    public CompiledQuestion getQuestion() {
         return question;
     }
 }

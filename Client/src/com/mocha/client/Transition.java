@@ -37,11 +37,13 @@ public class Transition {
         Controller controller = myLoader.getController();
         controller.setPrevStage(stage);
         Scene scene = new Scene(myPane);
-        /*
-        String image = Main.class.getResource("resources/images/Theme1.png").toExternalForm();
+        Core.Storage.setScene(scene);
+
+        String userTheme = Core.Storage.getSelectedTheme();
+        String image = Main.class.getResource("resources/images/shopImages/" + userTheme + ".png").toExternalForm();
         myPane.setStyle("-fx-background-image: url('" + image + "'); " +
                 "-fx-background-position: center center; " +
-                "-fx-background-repeat: stretch;");*/
+                "-fx-background-repeat: repeat;");
         stage.setScene(scene);
     }
 
@@ -87,6 +89,7 @@ public class Transition {
         Controller controller = myLoader.getController();
         controller.setPrevStage(stage);
         Scene scene = new Scene(myPane);
+        Core.Storage.setScene(scene);
         stage.setScene(scene);
     }
 

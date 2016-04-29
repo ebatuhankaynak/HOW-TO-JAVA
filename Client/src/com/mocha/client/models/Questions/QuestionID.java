@@ -1,7 +1,5 @@
 package com.mocha.client.models.Questions;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 /**
  * Hüseyin Ziya İmamoğlu
  * 17.04.2016
@@ -12,17 +10,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class QuestionID
 {
     // Instance Variables
-    @JsonProperty
     private int questionNumber;
     private int questionLevel;
-    private int questionTopic;
+    private String questionTopic;
 
     // Constructor
+
     private QuestionID(){
 
     }
 
-    public QuestionID( int questionNumber, int questionLevel, int questionTopic)
+    public QuestionID( int questionNumber, int questionLevel, String questionTopic)
     {
         this.questionLevel = questionLevel;
         this.questionNumber = questionNumber;
@@ -35,7 +33,7 @@ public class QuestionID
         return questionLevel;
     }
 
-    public int getQuestionTopic()
+    public String getQuestionTopic()
         {
             return questionTopic;
         }
@@ -55,7 +53,7 @@ public class QuestionID
             this.questionNumber = questionNumber;
         }
 
-    public void setQuestionTopic( int questionTopic)
+    public void setQuestionTopic( String questionTopic)
         {
             this.questionTopic = questionTopic;
         }

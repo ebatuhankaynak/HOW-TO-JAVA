@@ -36,7 +36,6 @@ public class LoginController extends Controller implements Initializable{
                 if (res == LoginResults.SUCCESS){
                     System.out.println("Login successfull");
                     User user = req.getUser();
-                    System.out.println(user.getUsername());
                     Core.Storage.setUser(user);
                 }
                 else if (res == LoginResults.FAILURE) {

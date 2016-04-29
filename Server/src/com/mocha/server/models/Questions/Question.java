@@ -16,14 +16,15 @@ public class Question
     private QuestionID id;
     private String question; //Denotes the text of the question
     private int coffeeBeansAwarded; // Denotes the coffeee beans awarded for the question
-
+    private String testClass;
     // Constructor
     private Question(){
 
     }
 
-    public Question(String question, QuestionID id, int coffeeBeansAwarded)
+    public Question(String question, QuestionID id, int coffeeBeansAwarded, String testClass)
     {
+        this.testClass = testClass;
         this.question = question;
         this.id = id;
         this.coffeeBeansAwarded = coffeeBeansAwarded;
@@ -61,6 +62,14 @@ public class Question
     public void setCoffeeBeansawarded(int coffeeBeansawarded)
     {
         this.coffeeBeansAwarded = coffeeBeansawarded;
+    }
+
+    public String getTestClass() {
+        return testClass;
+    }
+
+    public void setTestClass(String testClass) {
+        this.testClass = testClass;
     }
 }
 
