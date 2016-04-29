@@ -1,6 +1,6 @@
 package com.mocha.client.models.requests;
 
-import com.mocha.server.models.results.RegisterResults;
+import com.mocha.client.models.results.RegisterResults;
 
 public class RegisterResultRequest {
 

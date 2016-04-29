@@ -1,6 +1,5 @@
 package com.mocha.server.repository;
 
-import com.mocha.server.models.Questions.ClassQuestion;
 import com.mocha.server.models.Questions.MethodQuestion;
 import com.mocha.server.models.Questions.QuestionContainer;
 import com.mocha.server.models.Questions.QuestionID;
@@ -12,6 +11,7 @@ import org.jongo.Jongo;
 /**
  * Created by Ergün Batuhan Kaynak on 28.3.2016.
  */
+
 public class Repository {
 
     private UsersRepository users;

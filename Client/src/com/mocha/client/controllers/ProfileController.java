@@ -34,7 +34,7 @@ public class ProfileController extends Controller implements Initializable{
     private ObservableList<String> topicNames = FXCollections.observableArrayList();
     private XYChart.Series<String, Integer> series = new XYChart.Series<>();
 
-    private final String[] topics = {"Data Types", "Methods"};
+    private final String[] topics = {"DATA_TYPES", "METHODS", "CLASS"};
 
     public ProfileController()
     {
@@ -58,7 +58,7 @@ public class ProfileController extends Controller implements Initializable{
         xAxis.setCategories(topicNames);
 
         for (int i = 0; i < topics.length; i++) {
-           // series.getData().add(new XYChart.Data<>(topics[i], user.getScore(topics[i])));
+            series.getData().add(new XYChart.Data<>(topics[i], user.getScore(topics[i])));
         }
         progressGraph.getData().add(series);
     }

@@ -1,9 +1,9 @@
 package com.mocha.client.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Hüseyin Ziya İmamoğlu
@@ -14,48 +14,49 @@ import java.util.Map;
  */
 
 /* Score and coffeeBeans are different.
- * Score doesn't change, while coffeebeans decreases with buyinn things from shop
+ * Score doesn't change, while coffeebeans decreases with buying things from shop
  * They start as the same thing.
  */
 
 public class User
 {
+    @JsonProperty
     private String id;
     private String username;
     private String password;
     private String lastLoginDate;
     private String lastSubmissionDate;
-    private List<Submission> submissions;
     private UserProgress progress;
     private ArrayList<String> themes;
     private String currentTheme;
 
     public User(String id, String username, String password, String lastLoginDate, String lastSubmissionDate,
-                int coffeeBeans, List<Submission> submissions, String currentTheme)
+                int coffeeBeans, List<com.mocha.server.models.Submission> submissions, String currentTheme)
     {
         this.id = id;
         this.username = username;
         this.password = password;
         this.lastLoginDate = lastLoginDate;
         this.lastSubmissionDate = lastSubmissionDate;
-        this.submissions = submissions;
         progress = new UserProgress( coffeeBeans);
         themes = new ArrayList<>();
         this.currentTheme = currentTheme;
-           }
+    }
 
 
     public User(){
-        submissions = new ArrayList<>();
         progress  = new UserProgress( 0);
-        //themes.add("Null");
+        themes = new ArrayList<>();
+        themes.add("Null");
+        currentTheme = "Null";
     }
+
 
     public String getLastSubmissionDate() {
         return lastSubmissionDate;
     }
 
-    public void setLastSubmissionDate(String lastSubmissionDate) {
+    public void setLastSubmissionDate( String lastSubmissionDate) {
         this.lastSubmissionDate = lastSubmissionDate;
     }
 
@@ -89,14 +90,6 @@ public class User
 
     public void setLastLoginDate(String lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
-    }
-
-    public List<Submission> getSubmissions() {
-        return submissions;
-    }
-
-    public void setSubmissions(List<Submission> submissions) {
-        this.submissions = submissions;
     }
 
     public void setProgress(UserProgress progress)
@@ -143,11 +136,6 @@ public class User
         return progress.getScore( topic);
     }
 
-    public int getCoffeeBeans( String topic)
-    {
-        return progress.getCoffeeBeans( topic);
-    }
-
     public int getTotalScore()
     {
         return progress.getTotalScore();
@@ -162,6 +150,8 @@ public class User
     {
         progress.update( topic, scoreGained, isPassed);
     }
+
+
 
 
 }

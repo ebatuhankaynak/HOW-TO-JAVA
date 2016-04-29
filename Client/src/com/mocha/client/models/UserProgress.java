@@ -1,5 +1,7 @@
 package com.mocha.client.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,81 +15,84 @@ import java.util.Map;
  */
 
 /* Score and coffeeBeans are different.
- * Score doesn't change, while coffeebeans decreases with buyinn things from shop
+ * Score doesn't change, while coffeebeans decreases with buying things from shop
  * They start as the same thing.
  */
 
 
-public class UserProgress
-{
+public class UserProgress {
     // Constants
     private final static int LEVEL_CONSTANT = 1000;
 
     // Instance Variables
+    @JsonProperty
     private int totalCoffeeBeans;
     private int totalScore;
     private Map<String, Integer> topicsToInt;
-    private ArrayList<levelContainer> scores;
-
-    private int index;
+    private ArrayList<LevelContainer> scores;
 
     // Constructor
-    public UserProgress( int totalCoffeeBeans)
-    {
+    public UserProgress(int totalCoffeeBeans) {
         this.totalCoffeeBeans = totalCoffeeBeans;
         scores = new ArrayList<>();
-        index = 0;
         topicsToInt = new HashMap<>();
-        System.out.println("IN CONSTRUCTOR");
         addTopic("DATA_TYPES");
+        addTopic("METHODS");
+        addTopic("CLASS");
     }
 
-    private UserProgress()
-    {
-
+    private UserProgress() {
     }
 
     // Getter and setter methods
 
-
-    public int getTotalCoffeeBeans()
-    {
+    public int getTotalCoffeeBeans() {
         return totalCoffeeBeans;
     }
 
-    public void setTotalCoffeeBeans( int totalCoffeeBeans)
-    {
+    public void setTotalCoffeeBeans(int totalCoffeeBeans) {
         this.totalCoffeeBeans = totalCoffeeBeans;
     }
 
-    public int getTotalScore() { return totalScore; }
+    public int getTotalScore() {
+        return totalScore;
+    }
 
-    public void setTotalScore(int totalScore)
-    {
+    public void setTotalScore(int totalScore) {
         this.totalScore = totalScore;
     }
 
-    public void addTopic(String topic)
-    {
-        System.out.println("IN ADD");
-        scores.add( new levelContainer(0,0,0));
-        topicsToInt.put(topic, index++);
+    public void addTopic(String topic) {
+        scores.add(new LevelContainer(0, 0));
+        topicsToInt.put(topic, scores.size() - 1);
     }
 
-    public int getScore( String topic)
-    {
-        System.out.println("IN GETSCORE");
-        return scores.get( topicsToInt.get( topic)).getScore();
+    public int getScore(String topic) {
+        return scores.get(topicsToInt.get(topic)).getScore();
     }
 
-    public int getLevel( String topic)
-    {
-        return  scores.get( topicsToInt.get( topic)).getLevel();
+    public int getLevel(String topic) {
+        return scores.get(topicsToInt.get(topic)).getLevel();
     }
 
-    public int getCoffeeBeans( String topic)
-    {
-        return scores.get( topicsToInt.get( topic)).getCoffeeBeans();
+    public ArrayList<LevelContainer> getScores() {
+        return scores;
+    }
+
+    public Map<String, Integer> getTopicsToInt() {
+        return topicsToInt;
+    }
+
+    public static int getLevelConstant() {
+        return LEVEL_CONSTANT;
+    }
+
+    public void setScores(ArrayList<LevelContainer> scores) {
+        this.scores = scores;
+    }
+
+    public void setTopicsToInt(Map<String, Integer> topicsToInt) {
+        this.topicsToInt = topicsToInt;
     }
 
     /*
@@ -104,112 +109,51 @@ public class UserProgress
         return result;
     } */
 
-    public void update( String topic, int scoreGained, boolean[] isPassed)
-    {
+    public void update(String topic, int scoreGained, boolean[] isPassed) {
         boolean cond;
 
         cond = true;
-        for (int i = 0; i < isPassed.length && cond; i++)
-        {
+        for (int i = 0; i < isPassed.length && cond; i++) {
             cond = !isPassed[i];
         }
 
-        if (!cond)
-        {
+        if (!cond) {
             int temp;
             int level;
             int score;
 
-            temp = topicsToInt.get( topic);
+            temp = topicsToInt.get(topic);
 
-            score = scores.get( temp).getScore();
-            level = scores.get( temp).getLevel();
+            score = scores.get(temp).getScore();
+            level = scores.get(temp).getLevel();
 
-            if( ( score + scoreGained) / LEVEL_CONSTANT > level)
-            {
+            if ((score + scoreGained) / LEVEL_CONSTANT > level) {
                 level++;
             }
 
-            scores.set( temp, new levelContainer( score, level, score));
+            scores.set(temp, new LevelContainer(score, level));
             totalScore = totalScore + scoreGained;
         }
     }
 
-    public void update( String topic, int scoreGained, boolean isPassed)
-    {
-        if ( isPassed)
-        {
+    public void update(String topic, int scoreGained, boolean isPassed) {
+        if (isPassed) {
             int temp;
             int level;
             int score;
 
-            temp = topicsToInt.get( topic);
+            temp = topicsToInt.get(topic);
 
-            score = scores.get( temp).getScore();
-            level = scores.get( temp).getLevel();
+            score = scores.get(temp).getScore();
+            level = scores.get(temp).getLevel();
 
-            if( ( score + scoreGained) / LEVEL_CONSTANT > level)
-            {
+            if ((score + scoreGained) / LEVEL_CONSTANT > level) {
                 level++;
             }
 
-            scores.set( temp, new levelContainer( score, level, score));
+            scores.set(temp, new LevelContainer(score, level));
             totalScore = totalScore + scoreGained;
         }
-    }
-
-    private class levelContainer
-    {
-        // Instance Variables
-        private int score;
-        private int coffeeBeans;
-        private int level;
-
-        // Constructor
-        public levelContainer( int score, int level, int coffeeBeans)
-        {
-            this.score = score;
-            this.level = level;
-            this.coffeeBeans = coffeeBeans;
-        }
-
-        private levelContainer()
-        {
-        }
-
-        // getter and setter methods
-
-        public int getScore()
-        {
-            return score;
-        }
-
-        public int getLevel()
-        {
-            return level;
-        }
-
-        public void setScore(int score)
-        {
-            this.score = score;
-        }
-
-        public void setLevel(int level)
-        {
-            this.level = level;
-        }
-
-        public int getCoffeeBeans()
-        {
-            return coffeeBeans;
-        }
-
-        public void setCoffeeBeans(int coffeeBeans)
-        {
-            this.coffeeBeans = coffeeBeans;
-        }
-
     }
 }
-
 

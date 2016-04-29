@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,33 +9,43 @@
 <GridPane alignment="CENTER" hgap="10" styleClass="root" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mocha.client.controllers.CreateAccountController">
    <children>
 
-       <Text id="welcome-text" text="Create Account" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+       <Text id="welcome-text" text="Create Account" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
    
-       <Label text="User Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+       <Label text="User Name:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
    
-       <TextField fx:id="usernameTF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+       <TextField fx:id="usernameTF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
    
-       <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+       <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
    
-       <PasswordField fx:id="passwordTF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+       <PasswordField fx:id="passwordTF" GridPane.columnIndex="1" GridPane.rowIndex="3" />
    
-       <HBox alignment="BOTTOM_RIGHT" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="6">
+       <HBox alignment="BOTTOM_RIGHT" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
       <children>
               <Button onMouseClicked="#onCreateAccountClick" text="Create Account" />
       </children>
        </HBox>
    
-       <Text fx:id="actiontarget" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-      <Hyperlink fx:id="createAccount" onMouseClicked="#onSignInClick" text="Sign In!" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-      <Label text="Have an account?" GridPane.rowIndex="7" />
-      <Label text="Re-type Password:" GridPane.rowIndex="3" />
-      <PasswordField fx:id="rePasswordTF" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+       <Text fx:id="actiontarget" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <Hyperlink fx:id="createAccount" onMouseClicked="#onSignInClick" text="Sign In!" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Label text="Have an account?" GridPane.rowIndex="8" />
+      <Label text="Re-type Password:" GridPane.rowIndex="4" />
+      <PasswordField fx:id="rePasswordTF" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2">
+         <children>
+            <Label fx:id="errorLabel">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
    </children>
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />

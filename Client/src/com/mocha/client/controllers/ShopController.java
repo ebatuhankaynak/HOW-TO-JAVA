@@ -42,7 +42,7 @@ public class ShopController extends Controller implements Initializable{
     @FXML
     public void onBuyButtonClick(MouseEvent mouseEvent){
         Button clickedButton = (Button) mouseEvent.getSource();
-        //Core.Storage.getUser().addTheme(themeNames[Integer.parseInt(clickedButton.getId())]);
+        Core.Storage.getUser().addTheme(themeNames[Integer.parseInt(clickedButton.getId())]);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class ShopController extends Controller implements Initializable{
         for (int i = 0; i < themeNames.length; i++){
             labelList.get(i).setText(themeNames[i]);
         }
-        /*
+
         for (int i = 0; i < themeNames.length; i++){
             if (!(user.getThemes().contains(themeNames[i]))) {
                 imageList.get(i).setImage(new Image(String.valueOf(getClass().getResource(imageSources[i]))));
@@ -69,11 +69,6 @@ public class ShopController extends Controller implements Initializable{
                 buttonList.get(i).setVisible(false);
                 buttonList.get(i).setText("Sold!");
             }
-        }*/
+        }
     }
-
-
-    /*
-
-     */
 }

@@ -7,9 +7,11 @@ import com.mocha.client.models.requests.LoginRequest;
 import com.mocha.client.models.requests.LoginResultRequest;
 import com.mocha.client.models.results.LoginResults;
 import com.mocha.client.models.User;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +28,7 @@ public class LoginController extends Controller implements Initializable{
     @FXML TextField usernameTF;
     @FXML PasswordField passwordTF;
     @FXML Hyperlink createAccount;
+    @FXML Label errorLabel;
 
     // TODO: 17.4.2016 HOLD DA NAME AFTA LOGIN 
     public LoginController(){
@@ -37,9 +40,21 @@ public class LoginController extends Controller implements Initializable{
                     System.out.println("Login successfull");
                     User user = req.getUser();
                     Core.Storage.setUser(user);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            goToScene("MainMenu");
+                        }
+                    });
                 }
-                else if (res == LoginResults.FAILURE) {
+                else{
                     System.out.println("Login failed");
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            errorLabel.setText("Incorrect information!");
+                        }
+                    });
                 }
             }
         });
@@ -47,11 +62,7 @@ public class LoginController extends Controller implements Initializable{
 
     @FXML
     private void onSignInButtonClick(MouseEvent mouseEvent){
-        // TODO: 8.4.2016 UNCOMMENT THIS TO TEST SERVER 
         Core.SocketManager.sendMessageObject(RequestTypes.LOGIN, new LoginRequest(usernameTF.getText(), passwordTF.getText()));
-        if (true) {
-            goToScene("MainMenu");
-        }
     }
 
     @FXML
