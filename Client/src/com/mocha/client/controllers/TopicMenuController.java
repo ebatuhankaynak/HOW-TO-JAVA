@@ -5,14 +5,21 @@ import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.Transition;
 import com.mocha.client.models.Questions.CompiledQuestion;
+import com.mocha.client.models.Questions.Question;
+import com.mocha.client.models.Questions.QuestionContainer;
 import com.mocha.client.models.requests.QuestionRequest;
 import com.mocha.client.models.requests.QuestionResultRequest;
 import com.mocha.client.models.results.QuestionResults;
-import com.mocha.client.models.Questions.Question;
-import com.mocha.client.models.Questions.QuestionContainer;
+import com.mocha.client.models.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 /**
  * Topic Menu Controller. Topic Menu is the menu that shows after clicking the "Practice!" button
@@ -20,10 +27,14 @@ import javafx.scene.input.MouseEvent;
  * Created by E.Batuhan Kaynak on 8.4.2016.
  */
 
-public class TopicMenuController extends Controller {
+public class TopicMenuController extends Controller implements Initializable{
 
+    @FXML Label dataTypesMastery;
+    @FXML ArrayList<Label> labelList;
     private QuestionContainer questions;
     private CompiledQuestion questionToShow;
+
+    private final String[] topics = {"DATA_TYPES", "METHODS", "CLASS"};
 
     public TopicMenuController()
     {
@@ -71,5 +82,18 @@ public class TopicMenuController extends Controller {
 
     private void goToScene(String codingMenu, Question questionToShow) {
         new Transition(getPrevStage(), codingMenu, questionToShow).changeScene();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        User user = Core.Storage.getUser();
+        for (int i = 0; i < labelList.size(); i++) {
+            String star = "";
+            System.out.println(user.getLevel(topics[i]));
+            for (int j = 0; j < user.getLevel(topics[i]); j++) {
+                star = star + "*";
+            }
+            labelList.get(i).setText(star);
+        }
     }
 }

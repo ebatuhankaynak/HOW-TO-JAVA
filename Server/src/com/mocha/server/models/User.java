@@ -3,9 +3,7 @@ package com.mocha.server.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Hüseyin Ziya İmamoğlu
@@ -28,12 +26,11 @@ public class User
     private String password;
     private String lastLoginDate;
     private String lastSubmissionDate;
-    private List<Submission> submissions;
     private UserProgress progress;
     private ArrayList<String> themes;
     private String currentTheme;
 
-    public User( String id, String username, String password, String lastLoginDate, String lastSubmissionDate,
+    public User(String id, String username, String password, String lastLoginDate, String lastSubmissionDate,
                 int coffeeBeans, List<Submission> submissions, String currentTheme)
     {
         this.id = id;
@@ -41,15 +38,13 @@ public class User
         this.password = password;
         this.lastLoginDate = lastLoginDate;
         this.lastSubmissionDate = lastSubmissionDate;
-        this.submissions = submissions;
         progress = new UserProgress( coffeeBeans);
         themes = new ArrayList<>();
         this.currentTheme = currentTheme;
-           }
+    }
 
 
     public User(){
-        submissions = new ArrayList<>();
         progress  = new UserProgress( 0);
         themes = new ArrayList<>();
         themes.add("Null");
@@ -95,14 +90,6 @@ public class User
 
     public void setLastLoginDate(String lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
-    }
-
-    public List<Submission> getSubmissions() {
-        return submissions;
-    }
-
-    public void setSubmissions(List<Submission> submissions) {
-        this.submissions = submissions;
     }
 
     public void setProgress(UserProgress progress)
@@ -159,9 +146,9 @@ public class User
         return progress.getTotalCoffeeBeans();
     }
 
-    public void update( String topic, int scoreGained, boolean isPassed)
+    public void update( String topic, int scoreGained)
     {
-        progress.update( topic, scoreGained, isPassed);
+        progress.update( topic, scoreGained);
     }
 
 

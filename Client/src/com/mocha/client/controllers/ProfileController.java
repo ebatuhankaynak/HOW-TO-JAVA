@@ -50,9 +50,9 @@ public class ProfileController extends Controller implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         User user = Core.Storage.getUser();
         nameLabel.setText(user.getUsername());
-        currentCoffeeBeansLabel.setText("Current Coffee Beans: " + String.valueOf(user.getTotalScore()));
+        currentCoffeeBeansLabel.setText("Current Coffee Beans: " + String.valueOf(user.getTotalCoffeeBeans()));
         //beansTodayLabel.setText();
-        totalBeansLabel.setText(String.valueOf(user.getTotalCoffeeBeans()));
+        //totalBeansLabel.setText(String.valueOf(user.getTotalScore()));
 
         topicNames.addAll(Arrays.asList(topics));
         xAxis.setCategories(topicNames);

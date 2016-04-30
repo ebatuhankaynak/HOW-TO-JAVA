@@ -58,8 +58,6 @@
                      <children>
                         <Label />
                         <Label fx:id="currentCoffeeBeansLabel" text="Current Coffee Beans: " />
-                        <Label fx:id="beansTodayLabel" text="Coffee Beans Gained Today: " />
-                        <Label fx:id="totalBeansLabel" text="Total Coffee Beans: " />
                      </children>
                   </VBox>
                </children>

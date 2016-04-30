@@ -19,6 +19,11 @@ public class UsersRepository {
         return user ;
     }
 
+    public void update( User user)
+    {
+        users.save( user);
+    }
+
     public RegisterResults register(RegisterRequest registerRequest){
         RegisterResults res;
 

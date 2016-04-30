@@ -8,5 +8,7 @@ public enum RequestTypes {
     QUESTION,
     QUESTION_RESULT,
     COMPILE,
-    COMPILE_RESULT
+    COMPILE_RESULT,
+    UPDATE,
+    UPDATE_RESULT
 }

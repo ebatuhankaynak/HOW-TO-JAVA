@@ -3,10 +3,7 @@ package com.mocha.server;
 import com.mocha.server.CompilerCapsule.CompilerCapsule;
 import com.mocha.server.EventCapsule.EventTypes;
 import com.mocha.server.JsonListenerCapsule.RequestTypes;
-import com.mocha.server.listeners.CompileListener;
-import com.mocha.server.listeners.LoginListener;
-import com.mocha.server.listeners.QuestionListener;
-import com.mocha.server.listeners.RegisterListener;
+import com.mocha.server.listeners.*;
 
 import java.util.Scanner;
 
@@ -28,6 +25,7 @@ public class Main {
         Core.JsonListenerManager.addJsonListener(RequestTypes.REGISTER, new RegisterListener());
         Core.JsonListenerManager.addJsonListener(RequestTypes.QUESTION, new QuestionListener());
         Core.JsonListenerManager.addJsonListener(RequestTypes.COMPILE, new CompileListener());
+        Core.JsonListenerManager.addJsonListener(RequestTypes.UPDATE, new UpdateListener());
 
        // for (int i = 0; i < output.length;i++)
         //{

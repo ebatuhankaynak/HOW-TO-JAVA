@@ -146,9 +146,9 @@ public class User
         return progress.getTotalCoffeeBeans();
     }
 
-    public void update( String topic, int scoreGained, boolean isPassed)
+    public void update( String topic, int scoreGained)
     {
-        progress.update( topic, scoreGained, isPassed);
+        progress.update( topic, scoreGained);
     }
 
 

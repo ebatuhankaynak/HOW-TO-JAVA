@@ -1,6 +1,8 @@
 package com.mocha.client;
 
+import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.controllers.LoginController;
+import com.mocha.client.models.requests.UpdateRequest;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -38,7 +40,8 @@ public class Main extends Application {
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                System.out.print("OLDU");
+                System.out.println("About to send UpdateRequest");
+                Core.SocketManager.sendMessageObject(RequestTypes.UPDATE, new UpdateRequest(Core.Storage.getUser()));
             }
         });
 

@@ -109,51 +109,23 @@ public class UserProgress {
         return result;
     } */
 
-    public void update(String topic, int scoreGained, boolean[] isPassed) {
-        boolean cond;
+    public void update(String topic, int scoreGained) {
+        int temp;
+        int level;
+        int score;
 
-        cond = true;
-        for (int i = 0; i < isPassed.length && cond; i++) {
-            cond = !isPassed[i];
+        temp = topicsToInt.get(topic);
+
+        score = scores.get(temp).getScore();
+        level = scores.get(temp).getLevel();
+
+        if ((score + scoreGained) / LEVEL_CONSTANT > level) {
+            level++;
         }
 
-        if (!cond) {
-            int temp;
-            int level;
-            int score;
-
-            temp = topicsToInt.get(topic);
-
-            score = scores.get(temp).getScore();
-            level = scores.get(temp).getLevel();
-
-            if ((score + scoreGained) / LEVEL_CONSTANT > level) {
-                level++;
-            }
-
-            scores.set(temp, new LevelContainer(score, level));
-            totalScore = totalScore + scoreGained;
-        }
-    }
-
-    public void update(String topic, int scoreGained, boolean isPassed) {
-        if (isPassed) {
-            int temp;
-            int level;
-            int score;
-
-            temp = topicsToInt.get(topic);
-
-            score = scores.get(temp).getScore();
-            level = scores.get(temp).getLevel();
-
-            if ((score + scoreGained) / LEVEL_CONSTANT > level) {
-                level++;
-            }
-
-            scores.set(temp, new LevelContainer(score, level));
-            totalScore = totalScore + scoreGained;
-        }
+        scores.set(temp, new LevelContainer(score, level));
+        totalScore = totalScore + scoreGained;
+        totalCoffeeBeans = totalCoffeeBeans + scoreGained;
     }
 }
 

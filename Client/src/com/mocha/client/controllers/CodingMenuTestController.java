@@ -87,6 +87,7 @@ public class CodingMenuTestController extends CodingMenuController {
 
     public void onNextQuestionButtonClick(){
         Core.Storage.setQuestionToShow(Core.Storage.getQuestionContainer().getQuestions().get(0));
+        System.out.println();
         goToScene("CodingMenu");
     }
 
@@ -130,7 +131,10 @@ public class CodingMenuTestController extends CodingMenuController {
             nextQuestionButton.setVisible(true);
             nextQuestionButton.setDisable(false);
             awardLabel.setText("Coffee Beans Awarded!");
-            //Core.Storage.getUser().
+            System.out.println(Core.Storage.getUser().getTotalCoffeeBeans());
+            Core.Storage.getUser().update(question.getId().getQuestionTopic(), question.getCoffeeBeansawarded());
+            //Core.Storage.setUser();
+            System.out.println(Core.Storage.getUser().getTotalCoffeeBeans());
         }
 
         testCaseColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("testCase"));

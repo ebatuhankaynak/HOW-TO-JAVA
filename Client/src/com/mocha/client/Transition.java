@@ -1,7 +1,9 @@
 package com.mocha.client;
 
+import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.controllers.Controller;
 import com.mocha.client.models.Questions.Question;
+import com.mocha.client.models.requests.UpdateRequest;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +49,8 @@ public class Transition {
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-
+                System.out.println("About to send UpdateRequest");
+                Core.SocketManager.sendMessageObject(RequestTypes.UPDATE, new UpdateRequest(Core.Storage.getUser()));
             }
         });
 
