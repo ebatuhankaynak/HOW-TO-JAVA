@@ -2,10 +2,13 @@ package com.mocha.client;
 
 import com.mocha.client.controllers.LoginController;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * Created by E.Batuhan Kaynak on 30.3.2016.
@@ -30,7 +33,16 @@ public class Main extends Application {
         primaryStage.setScene(myScene);
         primaryStage.show();
 
-        String selectedTheme = "Green";
+        Platform.setImplicitExit(false);
+
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                System.out.print("OLDU");
+            }
+        });
+
+        String selectedTheme = "Null";
         Core.Storage.setSelectedTheme(selectedTheme);
         String image = Main.class.getResource("resources/images/shopImages/" + selectedTheme + ".png").toExternalForm();
         myPane.setStyle("-fx-background-image: url('" + image + "'); " +

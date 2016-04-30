@@ -40,6 +40,7 @@ public class LoginController extends Controller implements Initializable{
                     System.out.println("Login successfull");
                     User user = req.getUser();
                     Core.Storage.setUser(user);
+                    Core.Storage.setSelectedTheme(user.getCurrentTheme());
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {

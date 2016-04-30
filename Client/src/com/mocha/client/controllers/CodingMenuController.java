@@ -33,6 +33,7 @@ public class CodingMenuController extends Controller implements Initializable {
 
     @FXML Label questionTitle;
     @FXML Label questionLabel;
+    @FXML Label awardLabel;
     @FXML TextArea codingArea;
     @FXML ProgressBar progressBar;
     //@FXML HTMLEditor htmlEditor;
@@ -89,6 +90,7 @@ public class CodingMenuController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Question question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
+        awardLabel.setText("Coffee Bean award: " + String.valueOf(question.getCoffeeBeansawarded()));
         codingArea.setText("public static int factorial (int n){\n" +
                 "\tif (n <= 1)\n" +
                 "\treturn 1;\n" +

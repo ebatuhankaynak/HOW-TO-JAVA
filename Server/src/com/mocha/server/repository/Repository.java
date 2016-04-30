@@ -43,7 +43,7 @@ public class Repository {
 
         MethodQuestion q1 = new MethodQuestion( "Write a recursive method that computes the factorial", id , 100, testCases, testCaseAnswers, testClass);
         container.add( q1);
-        //container.add( q1);
+        container.add( q1);
 
         questionContainers.add( container);
         //-------------------------------------------------------------------------------------

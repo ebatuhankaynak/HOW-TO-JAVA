@@ -2,10 +2,13 @@ package com.mocha.client;
 
 import com.mocha.client.controllers.Controller;
 import com.mocha.client.models.Questions.Question;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -38,6 +41,15 @@ public class Transition {
         controller.setPrevStage(stage);
         Scene scene = new Scene(myPane);
         Core.Storage.setScene(scene);
+
+        Platform.setImplicitExit(false);
+
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+
+            }
+        });
 
         String userTheme = Core.Storage.getSelectedTheme();
         String image = Main.class.getResource("resources/images/shopImages/" + userTheme + ".png").toExternalForm();

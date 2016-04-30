@@ -53,7 +53,16 @@
       <TextArea fx:id="codingArea" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="3" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <children>
-            <ProgressBar fx:id="progressBar" visible="false" prefWidth="200.0" />
+            <ProgressBar fx:id="progressBar" prefWidth="200.0" visible="false" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+         <children>
+            <Label fx:id="awardLabel" text="Coffee Bean award: ">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
          </children>
       </HBox>
    </children>

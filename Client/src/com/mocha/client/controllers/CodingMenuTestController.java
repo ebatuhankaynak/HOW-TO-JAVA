@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -40,6 +41,7 @@ public class CodingMenuTestController extends CodingMenuController {
     @FXML TableColumn expectedColumn;
     @FXML TableColumn outputColumn;
     @FXML TableColumn passedColumn;
+    @FXML Label awardLabel;
     //@FXML TextArea codingArea;
     //@FXML HTMLEditor htmlEditor;
     @FXML WebView webView;
@@ -121,11 +123,14 @@ public class CodingMenuTestController extends CodingMenuController {
         //super.initialize(location, resources);
         Question question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
+        awardLabel.setText("Coffee Bean award: " + String.valueOf(question.getCoffeeBeansawarded()));
 
         parseCompileData();
         if (trueSoFar){
             nextQuestionButton.setVisible(true);
             nextQuestionButton.setDisable(false);
+            awardLabel.setText("Coffee Beans Awarded!");
+            //Core.Storage.getUser().
         }
 
         testCaseColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, String>("testCase"));
