@@ -37,7 +37,7 @@ public class UserProgress {
         scores = new ArrayList<>();
         topicsToInt = new HashMap<>();
         addTopic("RECURSION");
-        addTopic("METHODS");
+        addTopic("STRING");
         addTopic("CLASS");
     }
 
@@ -123,7 +123,8 @@ public class UserProgress {
             level++;
         }
 
-        scores.set(temp, new LevelContainer(score, level));
+        scores.set(temp, new LevelContainer(score + scoreGained, level));
+        System.out.println("");
         totalScore = totalScore + scoreGained;
         totalCoffeeBeans = totalCoffeeBeans + scoreGained;
     }

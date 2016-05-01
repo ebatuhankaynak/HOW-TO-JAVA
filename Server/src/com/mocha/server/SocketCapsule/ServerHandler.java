@@ -1,5 +1,8 @@
 package com.mocha.server.SocketCapsule;
 
+import com.mocha.server.EventCapsule.EventTypes;
+import com.mocha.server.EventCapsule.MessageEvent;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -25,6 +28,14 @@ public class ServerHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Core.EventManager.addMessageEventListener(EventTypes.CLOSE_SOCKET, new MessageEvent() {
+            @Override
+            public void run(String message) {
+                clientHandlers.remove(Integer.parseInt(message));
+                currentNumberOfClients--;
+            }
+        });
 
         connectClients();
     }

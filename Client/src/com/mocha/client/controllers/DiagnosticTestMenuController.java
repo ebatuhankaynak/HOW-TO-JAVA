@@ -10,11 +10,10 @@ import com.mocha.client.models.results.CompileResults;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -47,7 +46,22 @@ public class DiagnosticTestMenuController extends Controller implements Initiali
                         }
                     });
                 } else if (res == CompileResults.FAILURE) {
-                    System.out.println("Rip Compile");
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Alert alert = new Alert(Alert.AlertType.WARNING);
+                            alert.setTitle("Compile Error!");
+                            alert.setHeaderText("JAVAC HAS NO IDEA WHAT YOU ARE SAYING!");
+                            ButtonType okButton =  new ButtonType("Try Again:/");
+                            alert.getButtonTypes().setAll(okButton);
+
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if (result.get() == okButton) {
+                                progressBar.setVisible(false);
+                                //goToScene("CodingTest");
+                            }
+                        }
+                    });
                 }
             }
         });

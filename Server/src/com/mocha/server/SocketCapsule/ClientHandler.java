@@ -1,4 +1,7 @@
 package com.mocha.server.SocketCapsule;
+import com.mocha.server.EventCapsule.EventCapsule;
+import com.mocha.server.EventCapsule.EventTypes;
+
 import java.io.IOException;
 import java.net.Socket;
 
@@ -34,6 +37,15 @@ public class ClientHandler {
     private void initializeOutput(){
         try {
             out = new ClientOutputStream(socket.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void closeSocket(){
+        try {
+            socket.close();
+            Core.EventManager.runMessageEvent(EventTypes.CLOSE_SOCKET, String.valueOf(uid));
         } catch (IOException e) {
             e.printStackTrace();
         }

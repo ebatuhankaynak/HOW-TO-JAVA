@@ -28,7 +28,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <Button mnemonicParsing="false" onMouseClicked="#onMethodsButtonClick" prefHeight="68.0" prefWidth="134.0" text="Methods" />
+            <Button mnemonicParsing="false" onMouseClicked="#onMethodsButtonClick" prefHeight="68.0" prefWidth="134.0" text="String" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
@@ -61,7 +61,7 @@
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <children>
             <Label text="You do not have the required skills for this topic yet!" />
-            <Label fx:id="classMastery" text="Prerequisites of this topic are: " />
+            <Label text="Prerequisites of this topic are: " />
          </children>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -94,7 +94,6 @@
     <ArrayList fx:id="labelList" >
         <fx:reference source="dataTypesMastery"/>
         <fx:reference source="methodsMastery"/>
-        <fx:reference source="classMastery"/>
     </ArrayList>
     </fx:define>
 </GridPane>

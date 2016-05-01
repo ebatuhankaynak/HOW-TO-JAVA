@@ -37,7 +37,7 @@ public class UserProgress {
         scores = new ArrayList<>();
         topicsToInt = new HashMap<>();
         addTopic("RECURSION");
-        addTopic("METHODS");
+        addTopic("STRING");
         addTopic("CLASS");
     }
 

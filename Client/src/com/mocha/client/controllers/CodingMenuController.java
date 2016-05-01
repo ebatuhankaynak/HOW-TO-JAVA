@@ -105,12 +105,13 @@ public class CodingMenuController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         CompiledQuestion question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
+        /*
         awardLabel.setText("Coffee Bean award: " + String.valueOf(question.getCoffeeBeansawarded()));
         codingArea.setText("public static int factorial (int n){\n" +
                 "\tif (n <= 1)\n" +
                 "\treturn 1;\n" +
                 "\treturn n * factorial (n - 1);\n" +
-                "}");
+                "}");*/
     }
 
     public String getBluePublic(String parsedHtml){

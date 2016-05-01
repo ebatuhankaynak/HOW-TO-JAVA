@@ -34,7 +34,7 @@ public class ProfileController extends Controller implements Initializable{
     private ObservableList<String> topicNames = FXCollections.observableArrayList();
     private XYChart.Series<String, Integer> series = new XYChart.Series<>();
 
-    private final String[] topics = {"RECURSION", "METHODS", "CLASS"};
+    private final String[] topics = {"RECURSION", "STRING", "CLASS"};
 
     public ProfileController()
     {

@@ -33,7 +33,7 @@ public class TopicMenuController extends Controller implements Initializable{
     private CompiledQuestionContainer questions;
     private CompiledQuestion questionToShow;
 
-    private final String[] topics = {"RECURSION", "METHODS", "CLASS"};
+    private final String[] topics = {"RECURSION", "STRING", "CLASS"};
 
     public TopicMenuController()
     {
@@ -87,7 +87,7 @@ public class TopicMenuController extends Controller implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         User user = Core.Storage.getUser();
         for (int i = 0; i < labelList.size(); i++) {
-            String star = "";
+            String star = "*";
             System.out.println(user.getLevel(topics[i]));
             for (int j = 0; j < user.getLevel(topics[i]); j++) {
                 star = star + "*";
