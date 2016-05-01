@@ -46,7 +46,7 @@ public class TopicMenuController extends Controller implements Initializable{
                 if (res == QuestionResults.SUCCESS) {
                     questions = req.getQuestions();
                     Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
-                    questions.getQuestions().remove(0);
+                    //questions.getQuestions().remove(0);
                     Core.Storage.setQuestionContainer(questions);
                     Platform.runLater(new Runnable() {
                         @Override

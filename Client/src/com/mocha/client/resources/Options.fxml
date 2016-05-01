@@ -107,28 +107,6 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Program Settings">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="61.0" prefWidth="365.0">
-                     <children>
-                        <VBox prefHeight="142.0" prefWidth="100.0">
-                           <children>
-                              <RadioButton mnemonicParsing="false" text="RadioButton" />
-                              <RadioButton mnemonicParsing="false" text="RadioButton" />
-                              <RadioButton mnemonicParsing="false" text="RadioButton" />
-                              <RadioButton mnemonicParsing="false" text="RadioButton" />
-                              <RadioButton mnemonicParsing="false" text="RadioButton" />
-                              <RadioButton mnemonicParsing="false" text="RadioButton" />
-                           </children>
-                        </VBox>
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="IDE Settings">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
         </tabs>
       </TabPane>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
@@ -140,11 +118,7 @@
             </Button>
          </children>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <children>
-            <Label fx:id="versionLabel" text="Version" />
-         </children>
-      </HBox>
+      <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
        <ImageView fx:id="image4" visible="false" />
        <ImageView fx:id="image5" visible="false" />
        <ImageView fx:id="image6" visible="false" />

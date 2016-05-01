@@ -5,6 +5,7 @@ import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.Questions.CompiledQuestion;
 import com.mocha.client.models.Questions.Question;
+import com.mocha.client.models.Questions.QuestionContainer;
 import com.mocha.client.models.requests.CompileResultRequest;
 import com.mocha.client.models.requests.QuestionRequest;
 import com.mocha.client.models.results.CompileResults;
@@ -17,9 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -29,6 +28,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -49,6 +49,8 @@ public class CodingMenuTestController extends CodingMenuController {
 
     private WebPage webPage;
     private boolean trueSoFar;
+    private QuestionContainer questions;
+
 
     private static final String tickSource = "../resources/images/tick_32.png";
     private static final String crossSource = "../resources/images/cross_32.png";
@@ -86,9 +88,26 @@ public class CodingMenuTestController extends CodingMenuController {
     }
 
     public void onNextQuestionButtonClick(){
-        Core.Storage.setQuestionToShow(Core.Storage.getQuestionContainer().getQuestions().get(0));
-        System.out.println();
-        goToScene("CodingMenu");
+        try{
+            questions = Core.Storage.getQuestionContainer();
+            Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
+            questions.getQuestions().remove(0);
+            Core.Storage.setQuestionContainer(questions);
+            Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
+            goToScene("CodingMenu");
+        }
+        catch (IndexOutOfBoundsException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Questions Completed!");
+            alert.setHeaderText("Succes!");
+            ButtonType okButton =  new ButtonType("Back to Topic Selection");
+            alert.getButtonTypes().setAll(okButton);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == okButton) {
+                goToScene("TopicMenu");
+            }
+        }
     }
 
     public void parseCompileData(){
@@ -144,6 +163,11 @@ public class CodingMenuTestController extends CodingMenuController {
 
         testTable.setItems(compileDatas);
 
+        /**
+         * BEHOLD, THE FAILED IDE
+         */
+
+        /*
         WebEngine webEngine = webView.getEngine();
         webPage = Accessor.getPageFor(webEngine);
         String url = CodingMenuTestController.class.getResource("IDE.html").toExternalForm();
@@ -178,8 +202,10 @@ public class CodingMenuTestController extends CodingMenuController {
         catch (Exception e) {
             e.printStackTrace();
         }
+        */
     }
 
+    /*
     public void executeScript(){
         webPage.executeScript(webPage.getMainFrame(), "document.body.innerHTML = document.body.innerHTML + \"&emsp;\" + \"ZA\"");
     }
@@ -192,6 +218,7 @@ public class CodingMenuTestController extends CodingMenuController {
                 "selection.removeAllRanges();" +
                 "selection.addRange(range);");
     }
+    */
 
     public static class MyCompileData {
         private final SimpleStringProperty testCase;

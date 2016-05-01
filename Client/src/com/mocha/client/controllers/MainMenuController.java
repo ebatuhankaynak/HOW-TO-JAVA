@@ -1,18 +1,20 @@
 package com.mocha.client.controllers;
 
 import com.mocha.client.Core;
+import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
+import com.mocha.client.models.Questions.QuestionContainer;
+import com.mocha.client.models.requests.QuestionRequest;
+import com.mocha.client.models.requests.QuestionResultRequest;
 import com.mocha.client.models.requests.UpdateRequest;
+import com.mocha.client.models.results.QuestionResults;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.WindowEvent;
 
 import java.util.Optional;
 
@@ -21,6 +23,32 @@ import java.util.Optional;
  */
 
 public class MainMenuController extends Controller {
+
+    private QuestionContainer questions;
+
+    public MainMenuController(){
+        Core.JsonListenerManager.addJsonListener(RequestTypes.QUESTION_RESULT, new JsonListener<QuestionResultRequest>() {
+            @Override
+            public void run(QuestionResultRequest req) {
+                QuestionResults res = req.getResult();
+                System.out.println(res);
+                if (res == QuestionResults.SUCCESS) {
+                    questions = req.getQuestions();
+                    Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
+                    questions.getQuestions().remove(0);
+                    Core.Storage.setQuestionContainer(questions);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            goToScene("DiagnosticTest");
+                        }
+                    });
+                } else if (res == QuestionResults.FAILURE) {
+                    System.out.println("Rip questions");
+                }
+            }
+        });
+    }
     @FXML
     private void onPracticeButtonClick(MouseEvent mouseEvent){
         goToScene("TopicMenu");
@@ -33,7 +61,7 @@ public class MainMenuController extends Controller {
 
     @FXML
     private void onDiagnosticTestButtonClick(MouseEvent mouseEvent){
-        goToScene("DiagnosticTest");
+        Core.SocketManager.sendMessageObject(RequestTypes.QUESTION, new QuestionRequest("RANDOM", "-1"));
     }
 
     @FXML

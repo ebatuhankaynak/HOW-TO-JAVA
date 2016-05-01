@@ -4,23 +4,18 @@ package com.mocha.client.controllers;
 import com.mocha.client.Core;
 import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
-import com.mocha.client.models.Questions.CompiledQuestion;
 import com.mocha.client.models.Questions.Question;
+import com.mocha.client.models.Questions.QuestionContainer;
 import com.mocha.client.models.requests.CompileRequest;
 import com.mocha.client.models.requests.CompileResultRequest;
 import com.mocha.client.models.results.CompileResults;
-import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.web.HTMLEditor;
-import javafx.scene.web.WebView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,6 +35,7 @@ public class CodingMenuController extends Controller implements Initializable {
     //@FXML WebView webView;
 
     private Question question;
+    private QuestionContainer questions;
 
     public CodingMenuController(){
         question = Core.Storage.getQuestionToShow();
@@ -55,6 +51,11 @@ public class CodingMenuController extends Controller implements Initializable {
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
+                            /*
+                            questions = Core.Storage.getQuestionContainer();
+                            Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
+                            questions.getQuestions().remove(0);
+                            Core.Storage.setQuestionContainer(questions);*/
                             goToScene("CodingMenuTest");
                         }
                     });

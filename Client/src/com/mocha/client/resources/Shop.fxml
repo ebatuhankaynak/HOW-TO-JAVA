@@ -5,8 +5,8 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
 <?import java.util.ArrayList?>
+
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" stylesheets="@Navigation.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mocha.client.controllers.ShopController">
 
     <columnConstraints>
@@ -43,7 +43,6 @@
             <children>
                 <Label />
                 <Label />
-                <CheckBox mnemonicParsing="false" text="Only Show Affordable" />
             </children>
         </VBox>
         <Label fx:id="coffeeBeansLabel" text="You Have 0 Coffee Beans" GridPane.rowIndex="2">
@@ -175,73 +174,10 @@
                                                 </AnchorPane>
                                             </content>
                                         </Tab>
-                                        <Tab text="Page 3">
-                                            <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="734.0">
-                                                    <children>
-                                                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-                                                        <HBox layoutX="5.0" layoutY="9.0" prefHeight="311.0" prefWidth="609.0">
-                                                            <children>
-                                                                <VBox prefHeight="311.0" prefWidth="211.0">
-                                                                    <children>
-                                                                        <ImageView fitHeight="205.0" fitWidth="247.0" pickOnBounds="true" preserveRatio="true">
-                                                                            <image>
-                                                                                <Image url="@images/java.png" />
-                                                                            </image>
-                                                                        </ImageView>
-                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                                            <children>
-                                                                                <Label text="THEME_NAME_1" />
-                                                                                <Button mnemonicParsing="false" text="Buy!" />
-                                                                            </children>
-                                                                        </VBox>
-                                                                    </children>
-                                                                </VBox>
-                                                                <VBox prefHeight="311.0" prefWidth="214.0">
-                                                                    <children>
-                                                                        <ImageView fitHeight="204.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true">
-                                                                            <image>
-                                                                                <Image url="@images/java.png" />
-                                                                            </image>
-                                                                        </ImageView>
-                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                                            <children>
-                                                                                <Label text="THEME_NAME_1" />
-                                                                                <Button mnemonicParsing="false" text="Buy!" />
-                                                                            </children>
-                                                                        </VBox>
-                                                                    </children>
-                                                                </VBox>
-                                                                <VBox prefHeight="311.0" prefWidth="213.0">
-                                                                    <children>
-                                                                        <ImageView fitHeight="200.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
-                                                                            <image>
-                                                                                <Image url="@images/java.png" />
-                                                                            </image>
-                                                                        </ImageView>
-                                                                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
-                                                                            <children>
-                                                                                <Label text="THEME_NAME_1" />
-                                                                                <Button mnemonicParsing="false" text="Buy!" />
-                                                                            </children>
-                                                                        </VBox>
-                                                                    </children>
-                                                                </VBox>
-                                                            </children>
-                                                        </HBox>
-                                                    </children>
-                                                </AnchorPane>
-                                            </content>
-                                        </Tab>
                                     </tabs>
                                 </TabPane>
                             </children>
                         </AnchorPane>
-                    </content>
-                </Tab>
-                <Tab>
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                 </Tab>
             </tabs>
