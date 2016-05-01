@@ -1,5 +1,5 @@
 package com.mocha.server.SocketCapsule;
-import com.mocha.server.EventCapsule.EventCapsule;
+
 import com.mocha.server.EventCapsule.EventTypes;
 
 import java.io.IOException;

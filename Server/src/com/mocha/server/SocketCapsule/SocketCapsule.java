@@ -20,7 +20,6 @@ public class SocketCapsule {
         return serverHandler.getClientHandler(uid);
     }
 
-
     public void sendMessageToAll(String message){
         serverHandler.sendMessageToAll(message);
     }
@@ -32,8 +31,6 @@ public class SocketCapsule {
     public void sendMessageObject(int uid, RequestTypes type, Object o){
         JsonRequest jsonRequest = new JsonRequest(type, o);
         String req = gson.toJson(jsonRequest);
-
-        System.out.println(req);
 
         sendMessage(uid, req);
     }

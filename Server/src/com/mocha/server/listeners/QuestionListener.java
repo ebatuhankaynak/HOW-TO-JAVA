@@ -11,6 +11,7 @@ import com.mocha.server.models.results.QuestionResults;
 /**
  * Created by E.Batuhan Kaynak on 19.4.2016.
  */
+
 public class QuestionListener extends JsonListener<QuestionRequest> {
 
     @Override

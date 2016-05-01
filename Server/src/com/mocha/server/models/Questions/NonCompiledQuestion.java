@@ -1,7 +1,5 @@
 package com.mocha.server.models.Questions;
 
-import com.mocha.server.models.Questions.QuestionID;
-
 /**
  * Hüseyin Ziya İmamoğlu
  * 17.04.2016

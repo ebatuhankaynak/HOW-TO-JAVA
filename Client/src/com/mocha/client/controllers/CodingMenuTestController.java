@@ -55,7 +55,6 @@ public class CodingMenuTestController extends CodingMenuController {
             @Override
             public void run(CompileResultRequest req) {
                 CompileResults res = req.getResult();
-                System.out.println(res);
                 if (res == CompileResults.SUCCESS) {
                     Core.Storage.setCompileResultRequest(req);
                     Platform.runLater(new Runnable() {
@@ -65,7 +64,6 @@ public class CodingMenuTestController extends CodingMenuController {
                         }
                     });
                 } else if (res == CompileResults.FAILURE) {
-                    System.out.println("Rip Compile");
                 }
             }
         });

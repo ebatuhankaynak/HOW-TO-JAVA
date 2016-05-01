@@ -55,13 +55,10 @@ public class ServerHandler {
 
     private void connectClients(){
         new Thread(() -> {
-            // TODO what if maxNumberOfClients is equals currentNumberOfClients?
             while(currentNumberOfClients < maxNumberOfClients){
-
                 Socket socket = null;
                 try {
                     socket = serverSocket.accept();
-
                     final Socket finalSocket = socket;
 
                     new Thread(() -> {
@@ -69,18 +66,12 @@ public class ServerHandler {
                         uid++;
                         ClientHandler clientHandler = new ClientHandler(finalSocket, uid);
                         clientHandlers.put(uid, clientHandler);
-                        System.out.println("New client with UID: " + uid);
-
                     }).start();
-
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
-    }).start();
+        }).start();
     }
-
 }
 

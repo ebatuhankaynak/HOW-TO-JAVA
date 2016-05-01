@@ -1,7 +1,5 @@
 package com.mocha.server.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +23,6 @@ public class UserProgress {
     private final static int LEVEL_CONSTANT = 1000;
 
     // Instance Variables
-    @JsonProperty
     private int totalCoffeeBeans;
     private int totalScore;
     private Map<String, Integer> topicsToInt;

@@ -1,7 +1,7 @@
 package com.mocha.server.models;
 
 /**
- * Created by ASUS on 29.04.2016.
+ * Created by Hüseyin Ziya İmamoğlu on 29.04.2016.
  */
 
 public class LevelContainer

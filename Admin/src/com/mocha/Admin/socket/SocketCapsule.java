@@ -18,15 +18,12 @@ public class SocketCapsule {
     Gson gson = new Gson();
 
     public SocketCapsule() {
-
         Socket socket = null;
         try {
             socket = new Socket("localhost", 8081);
-            System.out.println("Client Initialized!");
 
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
-
 
             new Thread(() -> {
                 while(true){
@@ -36,11 +33,9 @@ public class SocketCapsule {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                     Core.EventManager.notify(EventTypes.JSON_MESSAGE, a);
                 }
             }).start();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,9 +48,6 @@ public class SocketCapsule {
     public void sendMessageObject(RequestTypes type, Object o){
         JsonRequest jsonRequest = new JsonRequest(type, o);
         String req = gson.toJson(jsonRequest);
-
-        System.out.println(req);
-
         sendMessage(req);
     }
 }

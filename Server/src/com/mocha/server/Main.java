@@ -9,17 +9,9 @@ import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
         System.out.println("Mocha Initialized!");
         Core.EventManager.addMessageEventListener(EventTypes.STRING_MESSAGE, message -> System.out.println("Message Received: " + message));
-
-
-
-        String code = "public static int factorial(int n){if (n == 0){return 1;} else {return n * factorial(n - 1);}}";
-        CompilerCapsule compilerCapsule = new CompilerCapsule();
-        String wraped = " public class Main{"+ code+" public static void main(String[] args){System.out.println(factorial(Integer.parseInt(args[0])));}}";
-        //String  [] output = compilerCapsule.compile(wraped,);
 
         Core.JsonListenerManager.addJsonListener(RequestTypes.LOGIN, new LoginListener());
         Core.JsonListenerManager.addJsonListener(RequestTypes.REGISTER, new RegisterListener());
@@ -27,17 +19,10 @@ public class Main {
         Core.JsonListenerManager.addJsonListener(RequestTypes.COMPILE, new CompileListener());
         Core.JsonListenerManager.addJsonListener(RequestTypes.UPDATE, new UpdateListener());
 
-       // for (int i = 0; i < output.length;i++)
-        //{
-         //   System.out.println(output[i]);
-        //}
         Scanner in = new Scanner(System.in);
         String str;
         while((str = in.nextLine()) != null){
             Core.ServerManager.sendMessageToAll(str);
-
         }
-
     }
-
 }

@@ -17,36 +17,26 @@ public class EventCapsule {
         return instance;
     }
 
-
     private EventCapsule(){
-
         for (EventTypes t : EventTypes.values()){
             events.put(t, new ArrayList<>());
         }
-
-
-
-        System.out.println("Event Capsule Initialized!");
-
     }
 
     public void addMessageEventListener(EventTypes type, MessageEvent messageEvent){
         events.get(type).add(messageEvent);
-        // System.out.println("Message Event Added: " + type.toString());
     }
 
 
     public void runMessageEvent(EventTypes type, String message){
-        // System.out.println("Message Event Runned: " + type.toString());
         for(MessageEvent e : events.get(type)){
             e.run(message);
         }
     }
 
     public void runMessageEvent(int uid, EventTypes type, String message){
-        // System.out.println("Message Event Runned: " + type.toString());
         for(MessageEvent e : events.get(type)){
             e.run(message);
-    }
+        }
     }
 }

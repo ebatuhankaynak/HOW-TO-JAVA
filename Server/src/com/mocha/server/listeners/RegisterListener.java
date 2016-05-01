@@ -8,12 +8,9 @@ import com.mocha.server.models.requests.RegisterResultRequest;
 import com.mocha.server.models.results.RegisterResults;
 
 public class RegisterListener extends JsonListener<RegisterRequest> {
-
     @Override
-    public void run(RegisterRequest req)
-    {
+    public void run(RegisterRequest req){
         RegisterResults res = Core.Repository.getUsers().register(req);
-        System.out.println(res.name());
         Core.ServerManager.sendMessageObject(getClientUID(), RequestTypes.REGISTER_RESULT, new RegisterResultRequest(res));
     }
 

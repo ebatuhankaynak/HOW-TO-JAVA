@@ -7,12 +7,9 @@ import com.mocha.server.models.requests.UpdateRequest;
 /**
  * Created by Ziya on 30.04.2016.
  */
-public class UpdateListener extends JsonListener<UpdateRequest>
-{
+public class UpdateListener extends JsonListener<UpdateRequest> {
     @Override
-    public void run( UpdateRequest request)
-    {
+    public void run( UpdateRequest request){
         Core.Repository.getUsers().update( request.getUser());
-
     }
 }

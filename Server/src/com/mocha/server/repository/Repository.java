@@ -45,12 +45,11 @@ public class Repository {
 
         CompiledQuestion q1 = new CompiledQuestion( "Write a recursive method that computes the factorial with the signature factorial", id , 100, testCases, testCaseAnswers, testClass, type);
         container.add( q1);
-        //  container.add( q1);
-
 
         QuestionID id1 = new QuestionID( 1, 1, "RECURSION");
         String [] testCases1  = new String [5];
         String[] testCaseAnswers1 = {"0", "1", "3", "6", "10"};
+
         for( int i = 0; i < testCases1.length; i++)
         {
             testCases1[i] = i + "";
@@ -61,7 +60,6 @@ public class Repository {
 
         CompiledQuestion q2 = new CompiledQuestion( "Write a recursive method that computes the sum with the siganture sum", id1 , 100, testCases1, testCaseAnswers1, testClass1, type);
         container.add( q2);
-        //  container.add( q1);
 
         questionContainers.add( container);
 

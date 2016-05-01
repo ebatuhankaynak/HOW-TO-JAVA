@@ -7,7 +7,6 @@ import com.mocha.Admin.models.Admin;
 import com.mocha.Admin.models.requests.LoginRequest;
 import com.mocha.Admin.models.requests.LoginResultRequest;
 import com.mocha.Admin.models.results.LoginResults;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Hyperlink;
@@ -28,7 +27,6 @@ public class LoginController extends Controller implements Initializable{
     @FXML PasswordField passwordTF;
     @FXML Hyperlink createAccount;
 
-    // TODO: 17.4.2016 HOLD DA NAME AFTA LOGIN 
     public LoginController(){
         Core.JsonListenerManager.addJsonListener(RequestTypes.LOGIN_RESULT, new JsonListener<LoginResultRequest>() {
             @Override
@@ -48,11 +46,7 @@ public class LoginController extends Controller implements Initializable{
 
     @FXML
     private void onSignInButtonClick(MouseEvent mouseEvent){
-        // TODO: 8.4.2016 UNCOMMENT THIS TO TEST SERVER 
         Core.SocketManager.sendMessageObject(RequestTypes.LOGIN, new LoginRequest(usernameTF.getText(), passwordTF.getText()));
-        if (true) {
-            goToScene("AdminPanel");
-        }
     }
 
     @FXML

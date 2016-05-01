@@ -12,29 +12,24 @@ public class CompileListener extends JsonListener <CompileRequest> {
 
 
     @Override
-    public void run(CompileRequest req)
+    public void run(CompileRequest req){
+        CompileResult result;
+        CompilerCapsule compiler = new CompilerCapsule();
+        String [] compilerResults = compiler.compile(req.getCodeToCompile(), req.getQuestion());
+        boolean[] isPassed =  req.getQuestion().check(compilerResults);
+        if (compiler.isCompiled())
         {
-            CompileResult result;
-            CompilerCapsule compiler = new CompilerCapsule();
-            // TODO: 4/23/2016 give the correcct boolean array when check is implemented
-            //boolean[] isPassed = {true,true,true,true};
-           // System.out.println(req.getQuestion().getTestClass());
-            String [] compilerResults = compiler.compile(req.getCodeToCompile(), req.getQuestion());
-            boolean[] isPassed =  req.getQuestion().check(compilerResults);
-            if (compiler.isCompiled())
-            {
-                result = CompileResult.SUCCESS;
-            }
-            else
-            {
-                result = CompileResult.FAILURE;
-                for( int i = 0; i < isPassed.length; i++) {
-                    isPassed[i] = false;
-                }
-            }
-            Core.ServerManager.sendMessageObject(getClientUID(), RequestTypes.COMPILE_RESULT, new CompileResultRequest
-                    (result, isPassed,compilerResults));
-            System.out.println("sent " + result);
+            result = CompileResult.SUCCESS;
         }
+        else
+        {
+            result = CompileResult.FAILURE;
+            for( int i = 0; i < isPassed.length; i++) {
+                isPassed[i] = false;
+            }
+        }
+        Core.ServerManager.sendMessageObject(getClientUID(), RequestTypes.COMPILE_RESULT, new CompileResultRequest
+                (result, isPassed,compilerResults));
+    }
 }
 

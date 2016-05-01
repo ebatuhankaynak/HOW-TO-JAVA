@@ -36,7 +36,6 @@ public class CompileRequest
         return userName;
     }
 
-
     public void setQuestion(CompiledQuestion question) {
         this.question = question;
     }

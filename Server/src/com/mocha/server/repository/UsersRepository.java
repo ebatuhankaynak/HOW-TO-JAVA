@@ -36,7 +36,6 @@ public class UsersRepository {
             users.save(user);
             res = RegisterResults.SUCCESS;
         }
-
         return res;
     }
 }

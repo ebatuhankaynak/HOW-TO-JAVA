@@ -7,30 +7,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EventCapsule
-{
-    // TODO: 28.3.2016 çok uğraşıyo valla yazık tüm eventHandlerlar bakıyo
-
+public class EventCapsule {
     private Map<EventTypes, List<MessageEvent>> eventsMap;
     private Gson gson = new Gson();
 
-    public EventCapsule()
-    {
+    public EventCapsule() {
         eventsMap = new HashMap<EventTypes, List<MessageEvent>>();
         for (EventTypes eventType : EventTypes.values())
         {
             eventsMap.put(eventType, new ArrayList<MessageEvent>());
         }
     }
-    public void addEventListener(EventTypes eventType, MessageEvent messageEvent)
-    {
+
+    public void addEventListener(EventTypes eventType, MessageEvent messageEvent) {
         eventsMap.get(eventType).add(messageEvent);
     }
 
-    public void notify(EventTypes eventType, String message)
-    {
-        for(MessageEvent messageEvent : eventsMap.get(eventType))
-        {
+    public void notify(EventTypes eventType, String message) {
+        for(MessageEvent messageEvent : eventsMap.get(eventType)) {
             messageEvent.run(message);
         }
     }

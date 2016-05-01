@@ -72,10 +72,6 @@ public class TopicMenuController extends Controller implements Initializable{
         Core.SocketManager.sendMessageObject(RequestTypes.QUESTION, new QuestionRequest(topicType, level));
     }
 
-    private void goToScene(String codingMenu, CompiledQuestion questionToShow) {
-        new Transition(getPrevStage(), codingMenu, questionToShow).changeScene();
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         User user = Core.Storage.getUser();

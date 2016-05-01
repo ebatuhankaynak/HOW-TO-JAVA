@@ -29,17 +29,10 @@ public class JsonListenerCapsule {
                 RequestTypes requestType = RequestTypes.valueOf(jo.getAsJsonPrimitive("type").getAsString());
                 int uid = jo.getAsJsonPrimitive("uid").getAsInt();
                 listeners.get(requestType).init(uid, gson.toJson(jo.getAsJsonObject("object")));
-
             }
-
         });
-
     }
 
-    /**
-     * @param type type of request
-     * @param jsonListener json request that will be called
-     */
     public void addJsonListener(RequestTypes type, JsonListener jsonListener){
         listeners.put(type, jsonListener);
     }

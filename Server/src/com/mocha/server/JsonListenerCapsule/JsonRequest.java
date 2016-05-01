@@ -1,7 +1,5 @@
 package com.mocha.server.JsonListenerCapsule;
 
-import com.mocha.server.JsonListenerCapsule.RequestTypes;
-
 public class JsonRequest {
     private RequestTypes type;
     private Object object;
