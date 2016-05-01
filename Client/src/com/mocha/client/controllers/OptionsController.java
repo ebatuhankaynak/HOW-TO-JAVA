@@ -86,7 +86,6 @@ public class OptionsController extends Controller implements Initializable{
     {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("About the Developers!");
-        //alert.setHeaderText("Very Coders \n     such java \n            Wow");
         alert.setHeaderText("Hi!");
         ButtonType okButton =  new ButtonType("Ok!");
         alert.getButtonTypes().setAll(okButton);
