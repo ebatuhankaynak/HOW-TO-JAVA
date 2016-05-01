@@ -21,7 +21,7 @@ public class UsersRepository {
 
     public void update( User user)
     {
-        users.save( user);
+        users.update( "{username: '" + user.getUsername() + "'}").with(user);
     }
 
     public RegisterResults register(RegisterRequest registerRequest){

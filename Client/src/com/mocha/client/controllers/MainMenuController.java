@@ -1,7 +1,10 @@
 package com.mocha.client.controllers;
 
 import com.mocha.client.Core;
+import com.mocha.client.JsonListenerCapsule.RequestTypes;
+import com.mocha.client.models.requests.UpdateRequest;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -9,6 +12,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.WindowEvent;
 
 import java.util.Optional;
 
@@ -60,6 +64,8 @@ public class MainMenuController extends Controller {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == yesButton) {
             //Platform.exit();
+            System.out.println("About to send UpdateRequest");
+            Core.SocketManager.sendMessageObject(RequestTypes.UPDATE, new UpdateRequest(Core.Storage.getUser()));
             System.exit(0);
         }
     }
