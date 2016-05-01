@@ -27,7 +27,6 @@ public class Controller {
 
     public void goToScene(String sceneName)
     {
-       //Transition transition = new Transition(getPrevStage(), sceneName);
         new Transition(getPrevStage(), sceneName).changeScene();
     }
 }

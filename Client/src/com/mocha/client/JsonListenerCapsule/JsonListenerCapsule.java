@@ -22,23 +22,16 @@ public class JsonListenerCapsule {
 
             @Override
             public void run(String message) {
-
                 JsonElement je = new JsonParser().parse(message);
                 JsonObject jo = je.getAsJsonObject();
                 System.out.println(message);
                 RequestTypes requestType = RequestTypes.valueOf(jo.getAsJsonPrimitive("type").getAsString());
                 listeners.get(requestType).init(gson.toJson(jo.getAsJsonObject("object")));
-
             }
 
         });
 
     }
-
-    /**
-     * @param type type of request
-     * @param jsonListener json request that will be called
-     */
     public void addJsonListener(RequestTypes type, JsonListener jsonListener){
         listeners.put(type, jsonListener);
     }

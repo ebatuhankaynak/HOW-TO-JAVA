@@ -9,8 +9,6 @@ import java.util.Map;
 
 public class EventCapsule
 {
-    // TODO: 28.3.2016 çok uğraşıyo valla yazık tüm eventHandlerlar bakıyo
-
     private Map<EventTypes, List<MessageEvent>> eventsMap;
     private Gson gson = new Gson();
 

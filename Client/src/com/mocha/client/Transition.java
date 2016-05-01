@@ -62,52 +62,6 @@ public class Transition {
         stage.setScene(scene);
     }
 
-    /*
-    public Transition(Stage prevStage, String fxml, Question question)
-    {
-        this.prevStage = prevStage;
-
-        stage = new Stage();
-        stage.setMinHeight(700);
-        stage.setMinWidth(800);
-        stage.setTitle("How To Java");
-
-        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("resources/" + fxml + ".fxml"));
-        Pane myPane = null;
-        try {
-            myPane = (Pane)myLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Controller controller = new CodingMenuController(question);
-        controller.setPrevStage(stage);
-        Scene scene = new Scene(myPane);
-        stage.setScene(scene);
-    }*/
-
-    public Transition(Stage prevStage, String fxml, CompiledQuestion question)
-    {
-        this.prevStage = prevStage;
-
-        stage = new Stage();
-        stage.setMinHeight(700);
-        stage.setMinWidth(800);
-        stage.setTitle("How To Java");
-
-        FXMLLoader myLoader = new FXMLLoader(getClass().getResource("resources/" + fxml + ".fxml"));
-        Pane myPane = null;
-        try {
-            myPane = (Pane)myLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Controller controller = myLoader.getController();
-        controller.setPrevStage(stage);
-        Scene scene = new Scene(myPane);
-        Core.Storage.setScene(scene);
-        stage.setScene(scene);
-    }
-
     public void changeScene()
     {
         prevStage.close();

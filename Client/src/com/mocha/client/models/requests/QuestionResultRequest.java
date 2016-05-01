@@ -6,6 +6,7 @@ import com.mocha.client.models.Questions.CompiledQuestionContainer;
 /**
  * Created by E.Batuhan Kaynak on 19.4.2016.
  */
+
 public class QuestionResultRequest {
     private QuestionResults result;
     private CompiledQuestionContainer questions;

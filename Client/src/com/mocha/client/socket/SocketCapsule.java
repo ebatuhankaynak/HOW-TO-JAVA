@@ -27,7 +27,6 @@ public class SocketCapsule {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
-
             new Thread(() -> {
                 while(true){
                     String a = null;
@@ -53,8 +52,6 @@ public class SocketCapsule {
     public void sendMessageObject(RequestTypes type, Object o){
         JsonRequest jsonRequest = new JsonRequest(type, o);
         String req = gson.toJson(jsonRequest);
-
-        System.out.println(req);
 
         sendMessage(req);
     }

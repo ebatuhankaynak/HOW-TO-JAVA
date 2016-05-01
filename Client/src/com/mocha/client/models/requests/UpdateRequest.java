@@ -5,6 +5,7 @@ import com.mocha.client.models.User;
 /**
  * Created by Ziya on 30.04.2016.
  */
+
 public class UpdateRequest
 {
     // Instance Variables

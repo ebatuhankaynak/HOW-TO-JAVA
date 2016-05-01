@@ -10,7 +10,6 @@ import com.mocha.client.models.requests.CompileResultRequest;
 import com.mocha.client.models.results.CompileResults;
 import com.mocha.server.models.Questions.CompiledQuestionContainer;
 import javafx.application.Platform;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -31,11 +30,8 @@ public class CodingMenuController extends Controller implements Initializable {
     @FXML Label awardLabel;
     @FXML TextArea codingArea;
     @FXML ProgressBar progressBar;
-    //@FXML HTMLEditor htmlEditor;
-    //@FXML WebView webView;
 
     private CompiledQuestion question;
-    private CompiledQuestionContainer questions;
 
     public CodingMenuController(){
         question = Core.Storage.getQuestionToShow();
@@ -51,11 +47,6 @@ public class CodingMenuController extends Controller implements Initializable {
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            /*
-                            questions = Core.Storage.getQuestionContainer();
-                            Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
-                            questions.getQuestions().remove(0);
-                            Core.Storage.setQuestionContainer(questions);*/
                             goToScene("CodingMenuTest");
                         }
                     });
@@ -72,7 +63,6 @@ public class CodingMenuController extends Controller implements Initializable {
                             Optional<ButtonType> result = alert.showAndWait();
                             if (result.get() == okButton) {
                                 progressBar.setVisible(false);
-                                //goToScene("CodingTest");
                             }
                         }
                     });
@@ -106,13 +96,6 @@ public class CodingMenuController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         CompiledQuestion question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
-        /*
-        awardLabel.setText("Coffee Bean award: " + String.valueOf(question.getCoffeeBeansawarded()));
-        codingArea.setText("public static int factorial (int n){\n" +
-                "\tif (n <= 1)\n" +
-                "\treturn 1;\n" +
-                "\treturn n * factorial (n - 1);\n" +
-                "}");*/
     }
 
     public String getBluePublic(String parsedHtml){
@@ -162,11 +145,3 @@ public class CodingMenuController extends Controller implements Initializable {
         return result;
     }
 }
-
-        /*
-        webView.lookup(".top-toolbar").setManaged(false);
-        webView.lookup(".top-toolbar").setVisible(false);
-
-        webView.lookup(".bottom-toolbar").setManaged(false);
-        webView.lookup(".bottom-toolbar").setVisible(false);
-        */

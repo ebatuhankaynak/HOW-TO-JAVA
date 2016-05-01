@@ -78,9 +78,6 @@ public class MainMenuController extends Controller {
     private void onExitButtonClick(MouseEvent mouseEvent) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Exit Program?");
-
-        //alert.setHeaderText("Exit application");
-        //alert.setContentText("Are you sure you want to quit How To Java?");
         alert.setHeaderText("Are you sure you want to quit How To Java?");
 
         ButtonType yesButton =  new ButtonType("Yes");
@@ -91,8 +88,6 @@ public class MainMenuController extends Controller {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == yesButton) {
-            //Platform.exit();
-            System.out.println("About to send UpdateRequest");
             Core.SocketManager.sendMessageObject(RequestTypes.UPDATE, new UpdateRequest(Core.Storage.getUser()));
             System.exit(0);
         }

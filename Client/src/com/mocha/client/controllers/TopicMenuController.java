@@ -41,11 +41,9 @@ public class TopicMenuController extends Controller implements Initializable{
             @Override
             public void run(QuestionResultRequest req) {
                 QuestionResults res = req.getResult();
-                System.out.println(res);
                 if (res == QuestionResults.SUCCESS) {
                     questions = req.getQuestions();
                     Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
-                    //questions.getQuestions().remove(0);
                     Core.Storage.setQuestionContainer(questions);
                     Platform.runLater(new Runnable() {
                         @Override
@@ -54,7 +52,6 @@ public class TopicMenuController extends Controller implements Initializable{
                         }
                     });
                 } else if (res == QuestionResults.FAILURE) {
-                    System.out.println("Rip questions");
                 }
             }
         });
@@ -73,10 +70,6 @@ public class TopicMenuController extends Controller implements Initializable{
     public void requestQuestions(String topicType, String level)
     {
         Core.SocketManager.sendMessageObject(RequestTypes.QUESTION, new QuestionRequest(topicType, level));
-    }
-
-    public void goToCodingMenu(CompiledQuestion questionToShow) {
-        goToScene("CodingMenu", questionToShow);
     }
 
     private void goToScene(String codingMenu, CompiledQuestion questionToShow) {

@@ -4,16 +4,14 @@ import com.mocha.client.Core;
 import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.Questions.CompiledQuestion;
+import com.mocha.client.models.Questions.CompiledQuestionContainer;
 import com.mocha.client.models.requests.CompileResultRequest;
 import com.mocha.client.models.results.CompileResults;
-import com.mocha.client.models.Questions.CompiledQuestionContainer;
-import com.sun.webkit.WebPage;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -36,20 +34,14 @@ public class CodingMenuTestController extends CodingMenuController {
     @FXML TableColumn passedColumn;
     @FXML Label awardLabel;
     @FXML TextArea codingArea;
-    //@FXML HTMLEditor htmlEditor;
-    @FXML WebView webView;
     @FXML javafx.scene.control.Button nextQuestionButton;
 
-    private WebPage webPage;
     private boolean trueSoFar;
     private CompiledQuestionContainer questions;
 
 
     private static final String tickSource = "../resources/images/tick_32.png";
     private static final String crossSource = "../resources/images/cross_32.png";
-
-    //private final ImageView tickImage = new ImageView(new Image(String.valueOf(getClass().getResource(tickSource))));
-    //private final ImageView crossImage = new ImageView(new Image(String.valueOf(getClass().getResource(crossSource))));
 
     private CompileResultRequest compileResultRequest;
     private ObservableList<MyCompileData> compileDatas;
@@ -77,7 +69,6 @@ public class CodingMenuTestController extends CodingMenuController {
                 }
             }
         });
-        Scene scene = Core.Storage.getScene(); // NO NEED FOR THIS NOW(I THINK)
     }
 
     public void onNextQuestionButtonClick(){
@@ -133,7 +124,6 @@ public class CodingMenuTestController extends CodingMenuController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //super.initialize(location, resources);
         CompiledQuestion question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
         awardLabel.setText("Coffee Bean award: " + String.valueOf(question.getCoffeeBeansawarded()));
@@ -146,7 +136,6 @@ public class CodingMenuTestController extends CodingMenuController {
             awardLabel.setText("Coffee Beans Awarded!");
             System.out.println(Core.Storage.getUser().getTotalCoffeeBeans());
             Core.Storage.getUser().update(question.getId().getQuestionTopic(), question.getCoffeeBeansawarded());
-            //Core.Storage.setUser();
             System.out.println(Core.Storage.getUser().getTotalCoffeeBeans());
         }
 
@@ -156,65 +145,9 @@ public class CodingMenuTestController extends CodingMenuController {
         passedColumn.setCellValueFactory(new PropertyValueFactory<MyCompileData, ImageView>("passed"));
 
         testTable.setItems(compileDatas);
-
-        /**
-         * BEHOLD, THE FAILED IDE
-         */
-
-        /*
-        WebEngine webEngine = webView.getEngine();
-        webPage = Accessor.getPageFor(webEngine);
-        String url = CodingMenuTestController.class.getResource("IDE.html").toExternalForm();
-        webEngine.load(url);
-        //webPage.executeScript(webPage.getMainFrame(), "document.body.innerHTML = " + Core.Storage.getCodeToShow() + ";");
-
-        //webView.addEventHandler(KeyEvent.KEY_RELEASED, event -> executeScript());
-        try {
-            webView.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>()
-                {
-                    @Override
-                    public void handle(KeyEvent keyEvent)
-                    {
-                        if(keyEvent.getCode() == KeyCode.TAB)
-                        {
-                            executeScript();
-                            keyEvent.consume();
-                        }
-                    }
-                });
-            webView.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
-                @Override
-                public void handle(KeyEvent event) {
-                    String currentText = (String) webPage.executeScript(webPage.getMainFrame(), "document.body.innerHTML");
-                    System.out.println(currentText);
-                    String newText = "\"" + getBluePublic(currentText) + "\"";
-                    webPage.executeScript(webPage.getMainFrame(), "document.body.innerHTML = " + newText + ";");
-                }
-            });
-            setCaret();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        */
     }
 
-    /*
-    public void executeScript(){
-        webPage.executeScript(webPage.getMainFrame(), "document.body.innerHTML = document.body.innerHTML + \"&emsp;\" + \"ZA\"");
-    }
-
-    public void setCaret(){
-        webPage.executeScript(webPage.getMainFrame(), "range = document.createRange();" +
-                "range.selectNodeContents(document.body);" +
-                "range.collapse(false);" +
-                "selection = window.getSelection();" +
-                "selection.removeAllRanges();" +
-                "selection.addRange(range);");
-    }
-    */
-
-    public static class MyCompileData {
+    public  class MyCompileData {
         private final SimpleStringProperty testCase;
         private final SimpleStringProperty expected;
         private final SimpleStringProperty output;

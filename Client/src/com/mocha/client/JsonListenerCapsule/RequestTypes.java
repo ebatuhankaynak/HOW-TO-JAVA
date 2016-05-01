@@ -10,5 +10,4 @@ public enum RequestTypes {
     COMPILE,
     COMPILE_RESULT,
     UPDATE,
-    UPDATE_RESULT
 }

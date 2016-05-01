@@ -29,7 +29,6 @@ public class CreateAccountController extends Controller {
             @Override
             public void run(RegisterResultRequest req) {
                 RegisterResults res = req.getResult();
-                System.out.println(res);
                 if (res == RegisterResults.SUCCESS){
                     Platform.runLater(new Runnable() {
                         @Override
@@ -58,7 +57,6 @@ public class CreateAccountController extends Controller {
         else
         {
             errorLabel.setText("Passwords do not match:(");
-            System.out.println("Passwords not equal");
         }
     }
 
