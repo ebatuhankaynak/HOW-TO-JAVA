@@ -25,11 +25,13 @@ public class ShopController extends Controller implements Initializable{
     @FXML ArrayList<Label> labelList;
     @FXML ArrayList<ImageView> imageList;
     @FXML ArrayList<Button> buttonList;
+    @FXML ArrayList<Label> costLabelList;
 
     private User user;
 
     private static final String tickSource = "../resources/images/tick_32.png";
     private final String[] themeNames = {"Red", "Blue", "Green"};
+    private final String[] costs = {"50", "100", "150"};
     private final String[] imageSources = {
         "../resources/images/shopImages/Red.png",
         "../resources/images/shopImages/Blue.png",
@@ -39,10 +41,21 @@ public class ShopController extends Controller implements Initializable{
     public ShopController(){
         user = Core.Storage.getUser();
     }
+
     @FXML
     public void onBuyButtonClick(MouseEvent mouseEvent){
         Button clickedButton = (Button) mouseEvent.getSource();
-        Core.Storage.getUser().addTheme(themeNames[Integer.parseInt(clickedButton.getId())]);
+        User user = Core.Storage.getUser();
+        int cost = Integer.parseInt(costs[Integer.parseInt(clickedButton.getId()) - 1]);
+        if (user.getTotalCoffeeBeans() >= cost){
+            user.decrementCoffeeBeans(cost);
+            user.addTheme(themeNames[Integer.parseInt(clickedButton.getId()) - 1]);
+            clickedButton.setText("SOLD!");
+            coffeeBeansLabel.setText("You Have " + user.getTotalCoffeeBeans() + " Coffee Beans");
+        }
+        else {
+            clickedButton.setText("Insufficient CoffeeBeans");
+        }
     }
 
     @Override
@@ -54,6 +67,10 @@ public class ShopController extends Controller implements Initializable{
         }
 
         for (int i = 0; i < themeNames.length; i++){
+            costLabelList.get(i).setText(costs[i]);
+        }
+
+        for (int i = 0; i < themeNames.length; i++){
             if (!(user.getThemes().contains(themeNames[i]))) {
                 imageList.get(i).setImage(new Image(String.valueOf(getClass().getResource(imageSources[i]))));
             }
@@ -61,8 +78,6 @@ public class ShopController extends Controller implements Initializable{
                 imageList.get(i).setImage(new Image(String.valueOf(getClass().getResource(tickSource))));
             }
         }
-
-        // TODO: 29.4.2016 CANNOT ADD THEMES TO USER BECAUSE F!#K DATABASE
 
         for (int i = 0; i < themeNames.length; i++){
             if((user.getThemes().contains(themeNames[i]))){

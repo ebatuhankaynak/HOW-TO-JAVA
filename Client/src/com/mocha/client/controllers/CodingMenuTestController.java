@@ -4,27 +4,20 @@ import com.mocha.client.Core;
 import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.Questions.CompiledQuestion;
-import com.mocha.client.models.Questions.Question;
-import com.mocha.client.models.Questions.QuestionContainer;
 import com.mocha.client.models.requests.CompileResultRequest;
-import com.mocha.client.models.requests.QuestionRequest;
 import com.mocha.client.models.results.CompileResults;
-import com.sun.javafx.webkit.Accessor;
+import com.mocha.client.models.Questions.CompiledQuestionContainer;
 import com.sun.webkit.WebPage;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 import java.net.URL;
@@ -42,14 +35,14 @@ public class CodingMenuTestController extends CodingMenuController {
     @FXML TableColumn outputColumn;
     @FXML TableColumn passedColumn;
     @FXML Label awardLabel;
-    //@FXML TextArea codingArea;
+    @FXML TextArea codingArea;
     //@FXML HTMLEditor htmlEditor;
     @FXML WebView webView;
     @FXML javafx.scene.control.Button nextQuestionButton;
 
     private WebPage webPage;
     private boolean trueSoFar;
-    private QuestionContainer questions;
+    private CompiledQuestionContainer questions;
 
 
     private static final String tickSource = "../resources/images/tick_32.png";
@@ -141,9 +134,10 @@ public class CodingMenuTestController extends CodingMenuController {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //super.initialize(location, resources);
-        Question question = Core.Storage.getQuestionToShow();
+        CompiledQuestion question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
         awardLabel.setText("Coffee Bean award: " + String.valueOf(question.getCoffeeBeansawarded()));
+        codingArea.setText(Core.Storage.getCodeToShow());
 
         parseCompileData();
         if (trueSoFar){

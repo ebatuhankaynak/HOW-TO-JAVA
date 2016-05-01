@@ -7,21 +7,30 @@ package com.mocha.client.models.Questions;
  * Creates a compiled question
  * v 1.0
  */
-public class CompiledQuestion extends Question
+public class CompiledQuestion
 {
     // Instance Variables
     private String[] testCases;
     private String[] testCaseAnswers;
     private String testClass;
+    private String question;
+    private int coffeeBeansAwarded;
+    private QuestionID id;
 
     // Constructor
-    public CompiledQuestion( String question, QuestionID id, int coffeeBeansAwarded,
+    public CompiledQuestion(String question, QuestionID id, int coffeeBeansAwarded,
                             String[] testCases, String[] testCaseAnswers, String testClass)
     {
-        super( question, id, coffeeBeansAwarded);
         this.testCases = testCases;
         this.testCaseAnswers = testCaseAnswers;
         this.testClass = testClass;
+        this.question = question;
+        this.coffeeBeansAwarded = coffeeBeansAwarded;
+        this.id = id;
+    }
+
+    public CompiledQuestion(){
+
     }
 
     // Check Method
@@ -56,11 +65,33 @@ public class CompiledQuestion extends Question
         return testCaseAnswers;
     }
 
+    public int getCoffeeBeansAwarded() {
+        return coffeeBeansAwarded;
+    }
 
+    public void setCoffeeBeansAwarded(int coffeeBeansAwarded) {
+        this.coffeeBeansAwarded = coffeeBeansAwarded;
+    }
 
+    public String getQuestion() {
+        return question;
+    }
 
+    public void setQuestion(String question) {
+        this.question = question;
+    }
 
+    public QuestionID getId() {
+        return id;
+    }
 
+    public void setId(QuestionID id) {
+        this.id = id;
+    }
+
+    public int getCoffeeBeansawarded() {
+        return coffeeBeansAwarded;
+    }
 }
 
 

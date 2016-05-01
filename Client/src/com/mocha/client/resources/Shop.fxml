@@ -75,6 +75,7 @@
                                                                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                                                             <children>
                                                                                 <Label fx:id="label1" text="THEME_NAME_1" />
+                                                            <Label fx:id="costLabel1" text="0" />
                                                                                 <Button fx:id="button1" mnemonicParsing="false" text="Buy!" />
                                                                             </children>
                                                                         </VBox>
@@ -90,6 +91,7 @@
                                                                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                                                             <children>
                                                                                 <Label fx:id="label2" text="THEME_NAME_1" />
+                                                            <Label fx:id="costLabel2" text="0" />
                                                                                 <Button fx:id="button2" mnemonicParsing="false" text="Buy!" />
                                                                             </children>
                                                                         </VBox>
@@ -105,6 +107,7 @@
                                                                         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                                                                             <children>
                                                                                 <Label fx:id="label3" text="THEME_NAME_1" />
+                                                            <Label fx:id="costLabel3" text="0" />
                                                                                 <Button fx:id="button3" mnemonicParsing="false" text="Buy!" />
                                                                             </children>
                                                                         </VBox>
@@ -191,6 +194,11 @@
             <fx:reference source="label4"/>
             <fx:reference source="label5"/>
             <fx:reference source="label6"/>
+        </ArrayList>
+        <ArrayList fx:id="costLabelList" >
+            <fx:reference source="costLabel1"/>
+            <fx:reference source="costLabel2"/>
+            <fx:reference source="costLabel3"/>
         </ArrayList>
         <ArrayList fx:id="imageList" >
             <fx:reference source="image1"/>

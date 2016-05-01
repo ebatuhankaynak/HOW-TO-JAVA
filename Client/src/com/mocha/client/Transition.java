@@ -2,7 +2,7 @@ package com.mocha.client;
 
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.controllers.Controller;
-import com.mocha.client.models.Questions.Question;
+import com.mocha.client.models.Questions.CompiledQuestion;
 import com.mocha.client.models.requests.UpdateRequest;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -85,7 +85,7 @@ public class Transition {
         stage.setScene(scene);
     }*/
 
-    public Transition(Stage prevStage, String fxml, Question question)
+    public Transition(Stage prevStage, String fxml, CompiledQuestion question)
     {
         this.prevStage = prevStage;
 

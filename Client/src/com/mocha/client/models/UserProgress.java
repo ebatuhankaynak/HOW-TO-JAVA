@@ -36,7 +36,7 @@ public class UserProgress {
         this.totalCoffeeBeans = totalCoffeeBeans;
         scores = new ArrayList<>();
         topicsToInt = new HashMap<>();
-        addTopic("DATA_TYPES");
+        addTopic("RECURSION");
         addTopic("METHODS");
         addTopic("CLASS");
     }

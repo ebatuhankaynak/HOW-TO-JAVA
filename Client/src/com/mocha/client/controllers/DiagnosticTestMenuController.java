@@ -3,7 +3,7 @@ package com.mocha.client.controllers;
 import com.mocha.client.Core;
 import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
-import com.mocha.client.models.Questions.Question;
+import com.mocha.client.models.Questions.CompiledQuestion;
 import com.mocha.client.models.requests.CompileRequest;
 import com.mocha.client.models.requests.CompileResultRequest;
 import com.mocha.client.models.results.CompileResults;
@@ -27,7 +27,7 @@ public class DiagnosticTestMenuController extends Controller implements Initiali
     @FXML ProgressBar progressBar;
     @FXML Label questionLabel;
 
-    private Question question;
+    private CompiledQuestion question;
 
     public DiagnosticTestMenuController(){
         question = Core.Storage.getQuestionToShow();
@@ -69,7 +69,7 @@ public class DiagnosticTestMenuController extends Controller implements Initiali
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Question question = Core.Storage.getQuestionToShow();
+        CompiledQuestion question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
     }
 }

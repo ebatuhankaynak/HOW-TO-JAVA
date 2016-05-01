@@ -31,7 +31,7 @@ public class User
     private String currentTheme;
 
     public User(String id, String username, String password, String lastLoginDate, String lastSubmissionDate,
-                int coffeeBeans, List<Submission> submissions, String currentTheme)
+                int coffeeBeans, String currentTheme)
     {
         this.id = id;
         this.username = username;

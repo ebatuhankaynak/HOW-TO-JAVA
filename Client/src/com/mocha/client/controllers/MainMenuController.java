@@ -3,11 +3,11 @@ package com.mocha.client.controllers;
 import com.mocha.client.Core;
 import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
-import com.mocha.client.models.Questions.QuestionContainer;
 import com.mocha.client.models.requests.QuestionRequest;
 import com.mocha.client.models.requests.QuestionResultRequest;
 import com.mocha.client.models.requests.UpdateRequest;
 import com.mocha.client.models.results.QuestionResults;
+import com.mocha.client.models.Questions.CompiledQuestionContainer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -24,7 +24,7 @@ import java.util.Optional;
 
 public class MainMenuController extends Controller {
 
-    private QuestionContainer questions;
+    private CompiledQuestionContainer questions;
 
     public MainMenuController(){
         Core.JsonListenerManager.addJsonListener(RequestTypes.QUESTION_RESULT, new JsonListener<QuestionResultRequest>() {

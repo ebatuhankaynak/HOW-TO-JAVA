@@ -1,6 +1,6 @@
 package com.mocha.server.repository;
 
-import com.mocha.server.models.Questions.QuestionContainer;
+import com.mocha.server.models.Questions.CompiledQuestionContainer;
 import com.mocha.server.models.requests.QuestionRequest;
 import org.jongo.MongoCollection;
 
@@ -18,13 +18,13 @@ public class QuestionRepository
         this.questionContainers = questionContainers;
     }
 
-    public QuestionContainer find(QuestionRequest questionRequest){
+    public CompiledQuestionContainer find(QuestionRequest questionRequest){
         System.out.println("this is where bomb happens");
-        QuestionContainer questions = questionContainers.findOne( questionRequest.toSearchQuery()).as( QuestionContainer.class);
+        CompiledQuestionContainer questions = questionContainers.findOne( questionRequest.toSearchQuery()).as( CompiledQuestionContainer.class);
         return  questions;
     }
 
-    public void add( QuestionContainer container)
+    public void add( CompiledQuestionContainer container)
     {
         questionContainers.save(container);
     }

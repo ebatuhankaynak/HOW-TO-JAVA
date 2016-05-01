@@ -1,15 +1,13 @@
 package com.mocha.client.models.requests;
 
 import com.mocha.client.models.Questions.CompiledQuestion;
-import com.mocha.client.models.Questions.Question;
-import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile;
 
 public class CompileRequest
 {
     private String codeToCompile;
     private String userName;
-    private Question question;
-    public CompileRequest (String codeToCompile, String userName, Question question)
+    private CompiledQuestion question;
+    public CompileRequest (String codeToCompile, String userName, CompiledQuestion question)
     {
         this.codeToCompile = codeToCompile;
         this.userName = userName;
@@ -38,11 +36,11 @@ public class CompileRequest
     }
 
 
-    public void setQuestion(Question question) {
+    public void setQuestion(CompiledQuestion question) {
         this.question = question;
     }
 
-    public Question getQuestion() {
+    public CompiledQuestion getQuestion() {
         return question;
     }
 }

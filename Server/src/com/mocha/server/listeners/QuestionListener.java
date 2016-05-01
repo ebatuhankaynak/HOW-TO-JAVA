@@ -3,7 +3,7 @@ package com.mocha.server.listeners;
 import com.mocha.server.Core;
 import com.mocha.server.JsonListenerCapsule.JsonListener;
 import com.mocha.server.JsonListenerCapsule.RequestTypes;
-import com.mocha.server.models.Questions.QuestionContainer;
+import com.mocha.server.models.Questions.CompiledQuestionContainer;
 import com.mocha.server.models.requests.QuestionRequest;
 import com.mocha.server.models.requests.QuestionResultRequest;
 import com.mocha.server.models.results.QuestionResults;
@@ -16,7 +16,7 @@ public class QuestionListener extends JsonListener<QuestionRequest> {
     @Override
     public void run(QuestionRequest req) {
         QuestionResults res;
-        QuestionContainer container;
+        CompiledQuestionContainer container;
         if (Core.Repository.getQuestionContainers().find(req) != null){
             res = QuestionResults.SUCCESS;
         }

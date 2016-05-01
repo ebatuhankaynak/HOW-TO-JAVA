@@ -1,7 +1,6 @@
 package com.mocha.server.models.requests;
 
 import com.mocha.server.models.Questions.CompiledQuestion;
-import com.mocha.server.models.Questions.Question;
 
 public class CompileRequest
 {

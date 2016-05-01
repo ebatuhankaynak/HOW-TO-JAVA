@@ -4,11 +4,11 @@ package com.mocha.client.controllers;
 import com.mocha.client.Core;
 import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
-import com.mocha.client.models.Questions.Question;
-import com.mocha.client.models.Questions.QuestionContainer;
+import com.mocha.client.models.Questions.CompiledQuestion;
 import com.mocha.client.models.requests.CompileRequest;
 import com.mocha.client.models.requests.CompileResultRequest;
 import com.mocha.client.models.results.CompileResults;
+import com.mocha.server.models.Questions.CompiledQuestionContainer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,8 +33,8 @@ public class CodingMenuController extends Controller implements Initializable {
     //@FXML HTMLEditor htmlEditor;
     //@FXML WebView webView;
 
-    private Question question;
-    private QuestionContainer questions;
+    private CompiledQuestion question;
+    private CompiledQuestionContainer questions;
 
     public CodingMenuController(){
         question = Core.Storage.getQuestionToShow();
@@ -103,7 +103,7 @@ public class CodingMenuController extends Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Question question = Core.Storage.getQuestionToShow();
+        CompiledQuestion question = Core.Storage.getQuestionToShow();
         questionLabel.setText(question.getQuestion());
         awardLabel.setText("Coffee Bean award: " + String.valueOf(question.getCoffeeBeansawarded()));
         codingArea.setText("public static int factorial (int n){\n" +

@@ -5,12 +5,11 @@ import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.Transition;
 import com.mocha.client.models.Questions.CompiledQuestion;
-import com.mocha.client.models.Questions.Question;
-import com.mocha.client.models.Questions.QuestionContainer;
 import com.mocha.client.models.requests.QuestionRequest;
 import com.mocha.client.models.requests.QuestionResultRequest;
 import com.mocha.client.models.results.QuestionResults;
 import com.mocha.client.models.User;
+import com.mocha.client.models.Questions.CompiledQuestionContainer;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,10 +30,10 @@ public class TopicMenuController extends Controller implements Initializable{
 
     @FXML Label dataTypesMastery;
     @FXML ArrayList<Label> labelList;
-    private QuestionContainer questions;
+    private CompiledQuestionContainer questions;
     private CompiledQuestion questionToShow;
 
-    private final String[] topics = {"DATA_TYPES", "METHODS", "CLASS"};
+    private final String[] topics = {"RECURSION", "METHODS", "CLASS"};
 
     public TopicMenuController()
     {
@@ -62,8 +61,8 @@ public class TopicMenuController extends Controller implements Initializable{
     }
 
     @FXML
-    public void onDataTypesButtonClick(MouseEvent mouseEvent) {
-        requestQuestions("DATA_TYPES", "1");
+    public void onRecursionButtonClick(MouseEvent mouseEvent) {
+        requestQuestions("RECURSION", "1");
     }
 
     @FXML
@@ -76,11 +75,11 @@ public class TopicMenuController extends Controller implements Initializable{
         Core.SocketManager.sendMessageObject(RequestTypes.QUESTION, new QuestionRequest(topicType, level));
     }
 
-    public void goToCodingMenu(Question questionToShow) {
+    public void goToCodingMenu(CompiledQuestion questionToShow) {
         goToScene("CodingMenu", questionToShow);
     }
 
-    private void goToScene(String codingMenu, Question questionToShow) {
+    private void goToScene(String codingMenu, CompiledQuestion questionToShow) {
         new Transition(getPrevStage(), codingMenu, questionToShow).changeScene();
     }
 

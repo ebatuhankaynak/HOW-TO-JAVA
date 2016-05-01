@@ -1,5 +1,7 @@
 package com.mocha.client.models.Questions;
 
+import com.mocha.server.models.Questions.QuestionID;
+
 /**
  * Hüseyin Ziya İmamoğlu
  * 17.04.2016
@@ -7,16 +9,51 @@ package com.mocha.client.models.Questions;
  * Creates a non compiled question
  * v 1.0
  */
-public class NonCompiledQuestion extends Question
+public class NonCompiledQuestion
 {
     // Instance Variables
+    private String question;
+    private com.mocha.server.models.Questions.QuestionID id;
+    private int coffeeBeansAwarded;
     private String answer;
 
     // Constructor
-    public NonCompiledQuestion( String question, QuestionID id, int coffeeBeansAwarded, String answer)
+    public NonCompiledQuestion( String question, com.mocha.server.models.Questions.QuestionID id, int coffeeBeansAwarded, String answer)
     {
-        super( question, id, coffeeBeansAwarded);
+        this.question = question;
+        this.id = id;
+        this.coffeeBeansAwarded = coffeeBeansAwarded;
         this.answer = answer;
+    }
+
+    public int getCoffeeBeansAwarded()
+    {
+        return coffeeBeansAwarded;
+    }
+
+    public com.mocha.server.models.Questions.QuestionID getId()
+    {
+        return id;
+    }
+
+    public String getQuestion()
+    {
+        return question;
+    }
+
+    public void setCoffeeBeansAwarded( int coffeeBeansAwarded )
+    {
+        this.coffeeBeansAwarded = coffeeBeansAwarded;
+    }
+
+    public void setId( QuestionID id )
+    {
+        this.id = id;
+    }
+
+    public void setQuestion( String question )
+    {
+        this.question = question;
     }
 
     // Check method

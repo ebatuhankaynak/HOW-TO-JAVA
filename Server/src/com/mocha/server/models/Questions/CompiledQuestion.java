@@ -11,24 +11,27 @@ public class CompiledQuestion
 {
     // Instance Variables
     private String[] testCases;
+    private String[] testCaseAnswers;
     private String testClass;
+    private String question;
+    private int coffeeBeansAwarded;
     private QuestionID id;
-    String question;
-    int coffeeBeansAwarded;
-    String[] testCaseAnswers;
+
     // Constructor
-    public CompiledQuestion( String question, QuestionID id, int coffeeBeansAwarded,
+    public CompiledQuestion(String question, QuestionID id, int coffeeBeansAwarded,
                             String[] testCases, String[] testCaseAnswers, String testClass)
     {
-        this.testClass = testClass;
-        this.coffeeBeansAwarded = coffeeBeansAwarded;
-        this.question = question;
-        this.testCaseAnswers = testCaseAnswers;
-        this.id = id;
         this.testCases = testCases;
         this.testCaseAnswers = testCaseAnswers;
+        this.testClass = testClass;
+        this.question = question;
+        this.coffeeBeansAwarded = coffeeBeansAwarded;
+        this.id = id;
     }
-    public CompiledQuestion(){}
+
+    public CompiledQuestion(){
+
+    }
 
     // Check Method
     public boolean[] check( String[] results)
@@ -58,19 +61,24 @@ public class CompiledQuestion
         return testClass;
     }
 
-
     public String[] getTestCaseAnswers() {
         return testCaseAnswers;
     }
-    public String getQuestion(){
-        return question;
-    }
-    public void setTestCaseAnswers(String[] testCaseAnswers) {
-        this.testCaseAnswers = testCaseAnswers;
+
+    public int getCoffeeBeansAwarded() {
+        return coffeeBeansAwarded;
     }
 
-    public void setTestClass(String testClass) {
-        this.testClass = testClass;
+    public void setCoffeeBeansAwarded(int coffeeBeansAwarded) {
+        this.coffeeBeansAwarded = coffeeBeansAwarded;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     public QuestionID getId() {
@@ -79,6 +87,10 @@ public class CompiledQuestion
 
     public void setId(QuestionID id) {
         this.id = id;
+    }
+
+    public int getCoffeeBeansawarded() {
+        return coffeeBeansAwarded;
     }
 }
 

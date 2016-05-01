@@ -1,7 +1,7 @@
 package com.mocha.server.repository;
 
-import com.mocha.server.models.Questions.MethodQuestion;
-import com.mocha.server.models.Questions.QuestionContainer;
+import com.mocha.server.models.Questions.CompiledQuestion;
+import com.mocha.server.models.Questions.CompiledQuestionContainer;
 import com.mocha.server.models.Questions.QuestionID;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
@@ -28,9 +28,10 @@ public class Repository {
         users = new UsersRepository(jongo.getCollection("Users"));
         questionContainers = new QuestionRepository( jongo.getCollection("QuestionContainers"));
         admins = new AdminRepository(jongo.getCollection("Admins"));
+
         //--------------------------------------------------------------------------------------------------// Test
-        QuestionContainer container = new QuestionContainer( "DATA_TYPES", "1");
-        QuestionID id = new QuestionID( 1, 1, "DATA_TYPES");
+        CompiledQuestionContainer container = new CompiledQuestionContainer( "RECURSION", "1");
+        QuestionID id = new QuestionID( 1, 1, "RECURSION");
         String [] testCases  = new String [5];
         String[] testCaseAnswers = {"1", "1", "2", "6", "24"};
         for( int i = 0; i < testCases.length; i++)
@@ -41,11 +42,28 @@ public class Repository {
         String testClass = "public class Main{ public static void main( String[] args) { System.out.println( factorial( Integer.parseInt( args[0]))); } ";
 
 
-        MethodQuestion q1 = new MethodQuestion( "Write a recursive method that computes the factorial", id , 100, testCases, testCaseAnswers, testClass);
+        CompiledQuestion q1 = new CompiledQuestion( "Write a recursive method that computes the factorial with the signature factorial", id , 100, testCases, testCaseAnswers, testClass);
         container.add( q1);
-        container.add( q1);
+        //  container.add( q1);
+
+
+        QuestionID id1 = new QuestionID( 1, 1, "RECURSION");
+        String [] testCases1  = new String [5];
+        String[] testCaseAnswers1 = {"0", "1", "3", "6", "10"};
+        for( int i = 0; i < testCases1.length; i++)
+        {
+            testCases1[i] = i + "";
+        }
+
+        String testClass1 = "public class Main{ public static void main( String[] args) { System.out.println( sum( Integer.parseInt( args[0]))); } ";
+
+
+        CompiledQuestion q2 = new CompiledQuestion( "Write a recursive method that computes the sum with the siganture sum", id1 , 100, testCases1, testCaseAnswers1, testClass1);
+        container.add( q2);
+        //  container.add( q1);
 
         questionContainers.add( container);
+
         //-------------------------------------------------------------------------------------
     }
 

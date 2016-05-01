@@ -1,10 +1,9 @@
 package com.mocha.client;
 
 import com.mocha.client.models.Questions.CompiledQuestion;
-import com.mocha.client.models.Questions.Question;
-import com.mocha.client.models.Questions.QuestionContainer;
 import com.mocha.client.models.User;
 import com.mocha.client.models.requests.CompileResultRequest;
+import com.mocha.client.models.Questions.CompiledQuestionContainer;
 import javafx.scene.Scene;
 
 /**
@@ -12,8 +11,8 @@ import javafx.scene.Scene;
  */
 public class Storage {
     private User user;
-    private Question questionToShow;
-    private QuestionContainer questionContainer;
+    private CompiledQuestion questionToShow;
+    private CompiledQuestionContainer questionContainer;
     private CompileResultRequest compileResultRequest;
     private Scene scene;
     private String selectedTheme;
@@ -27,11 +26,11 @@ public class Storage {
         this.user = user;
     }
 
-    public Question getQuestionToShow() {
+    public CompiledQuestion getQuestionToShow() {
         return questionToShow;
     }
 
-    public void setQuestionToShow(Question questionToShow) {
+    public void setQuestionToShow(CompiledQuestion questionToShow) {
         this.questionToShow = questionToShow;
     }
 
@@ -67,11 +66,11 @@ public class Storage {
         this.codeToShow = codeToShow;
     }
 
-    public QuestionContainer getQuestionContainer() {
+    public CompiledQuestionContainer getQuestionContainer() {
         return questionContainer;
     }
 
-    public void setQuestionContainer(QuestionContainer questionContainer) {
+    public void setQuestionContainer(CompiledQuestionContainer questionContainer) {
         this.questionContainer = questionContainer;
     }
 }

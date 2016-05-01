@@ -1,6 +1,5 @@
 package com.mocha.server.CompilerCapsule;
 
-import com.mocha.server.models.Questions.ClassQuestion;
 import com.mocha.server.models.Questions.CompiledQuestion;
 
 import java.io.*;
@@ -11,18 +10,8 @@ public class CompilerCapsule {
     // TODO check if output is equals expected output
 
     // Instance Variables
-    private TestCaseStorage testCaseStorage;
     private String output;
     private boolean compiled;
-
-
-    public CompilerCapsule(){
-        testCaseStorage = new TestCaseStorage();
-    }
-
-    public void addTestCase(String input, String expectedOutput){
-        testCaseStorage.add(input, expectedOutput);
-    }
 
     public String [] compile(String code, CompiledQuestion question)  {
 

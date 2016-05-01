@@ -31,7 +31,7 @@ public class User
     private String currentTheme;
 
     public User(String id, String username, String password, String lastLoginDate, String lastSubmissionDate,
-                int coffeeBeans, List<com.mocha.server.models.Submission> submissions, String currentTheme)
+                int coffeeBeans, String currentTheme)
     {
         this.id = id;
         this.username = username;
@@ -151,7 +151,7 @@ public class User
         progress.update( topic, scoreGained);
     }
 
-
-
-
+    public void decrementCoffeeBeans(int amount){
+        progress.setTotalCoffeeBeans(progress.getTotalCoffeeBeans() - amount);
+    }
 }

@@ -1,14 +1,14 @@
 package com.mocha.client.models.requests;
 
 import com.mocha.client.models.results.QuestionResults;
-import com.mocha.client.models.Questions.QuestionContainer;
+import com.mocha.client.models.Questions.CompiledQuestionContainer;
 
 /**
  * Created by E.Batuhan Kaynak on 19.4.2016.
  */
 public class QuestionResultRequest {
     private QuestionResults result;
-    private QuestionContainer questions;
+    private CompiledQuestionContainer questions;
 
     public QuestionResultRequest(QuestionResults result) {
         this.result = result;
@@ -22,11 +22,11 @@ public class QuestionResultRequest {
         this.result = result;
     }
 
-    public QuestionContainer getQuestions() {
+    public CompiledQuestionContainer getQuestions() {
         return questions;
     }
 
-    public void setQuestions(QuestionContainer questions) {
+    public void setQuestions(CompiledQuestionContainer questions) {
         this.questions = questions;
     }
 }
