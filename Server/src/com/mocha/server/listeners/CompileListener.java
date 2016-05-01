@@ -27,7 +27,7 @@ public class CompileListener extends JsonListener <CompileRequest> {
             }
             else
             {
-                result = CompileResult.FAİL;
+                result = CompileResult.FAILURE;
                 for( int i = 0; i < isPassed.length; i++) {
                     isPassed[i] = false;
                 }
