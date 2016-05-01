@@ -4,6 +4,7 @@ import com.mocha.client.Core;
 import com.mocha.client.JsonListenerCapsule.JsonListener;
 import com.mocha.client.JsonListenerCapsule.RequestTypes;
 import com.mocha.client.models.Questions.CompiledQuestion;
+import com.mocha.client.models.Questions.CompiledQuestionContainer;
 import com.mocha.client.models.requests.CompileRequest;
 import com.mocha.client.models.requests.CompileResultRequest;
 import com.mocha.client.models.results.CompileResults;
@@ -27,6 +28,7 @@ public class DiagnosticTestMenuController extends Controller implements Initiali
     @FXML Label questionLabel;
 
     private CompiledQuestion question;
+    private CompiledQuestionContainer questions;
 
     public DiagnosticTestMenuController(){
         question = Core.Storage.getQuestionToShow();
@@ -34,15 +36,34 @@ public class DiagnosticTestMenuController extends Controller implements Initiali
         Core.JsonListenerManager.addJsonListener(RequestTypes.COMPILE_RESULT, new JsonListener<CompileResultRequest>() {
             @Override
             public void run(CompileResultRequest req) {
-                System.out.println("IN CODING MENU");
                 CompileResults res = req.getResult();
                 System.out.println(res);
                 if (res == CompileResults.SUCCESS) {
+                    Core.Storage.getUser().getProgress().update(question.getId().getQuestionTopic(), 1000);
                     Core.Storage.setCompileResultRequest(req);
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            goToScene("DiagnosticTest");
+                            try{
+                                questions = Core.Storage.getQuestionContainer();
+                                //Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
+                                questions.getQuestions().remove(0);
+                                Core.Storage.setQuestionContainer(questions);
+                                Core.Storage.setQuestionToShow(questions.getQuestions().get(0));
+                                goToScene("DiagnosticTest");
+                            }
+                            catch (IndexOutOfBoundsException e){
+                                Alert alert = new Alert(Alert.AlertType.WARNING);
+                                alert.setTitle("Questions Completed!");
+                                alert.setHeaderText("Succes!");
+                                ButtonType okButton =  new ButtonType("Back to Main Menu");
+                                alert.getButtonTypes().setAll(okButton);
+
+                                Optional<ButtonType> result = alert.showAndWait();
+                                if (result.get() == okButton) {
+                                    goToScene("MainMenu");
+                                }
+                            }
                         }
                     });
                 } else if (res == CompileResults.FAILURE) {
@@ -58,7 +79,6 @@ public class DiagnosticTestMenuController extends Controller implements Initiali
                             Optional<ButtonType> result = alert.showAndWait();
                             if (result.get() == okButton) {
                                 progressBar.setVisible(false);
-                                //goToScene("CodingTest");
                             }
                         }
                     });
@@ -69,7 +89,7 @@ public class DiagnosticTestMenuController extends Controller implements Initiali
 
     @FXML
     public void onNextQuestionButtonClick(){
-
+        sendCodeToServer();
     }
 
     public void sendCodeToServer()

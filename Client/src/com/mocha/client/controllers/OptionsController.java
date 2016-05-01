@@ -60,7 +60,12 @@ public class OptionsController extends Controller implements Initializable{
             if (seperatorIndex == 0 ) {
                 labelList.get(0).setText("");
             }
-            labelList.get(i).setText(userThemes.get(seperatorIndex + i));
+            if (userThemes.get(seperatorIndex + i).equals(user.getCurrentTheme())){
+                labelList.get(i).setText("");
+            }
+            else {
+                labelList.get(i).setText(userThemes.get(seperatorIndex + i));
+            }
             String imageSource = String.valueOf(getClass().getResource("../resources/images/shopImages/" + userThemes.get(seperatorIndex + i) + ".png"));
             imageList.get(i).setImage(new Image(imageSource));
         }
@@ -123,6 +128,12 @@ public class OptionsController extends Controller implements Initializable{
             }
             String imageSource = String.valueOf(getClass().getResource("../resources/images/shopImages/" + userThemes.get(i) + ".png"));
             imageList.get(i).setImage(new Image(imageSource));
+        }
+        while (userThemes.size() < 3){
+            userThemes.add(user.getCurrentTheme());
+            labelList.get(userThemes.size() - 1).setText("");
+            String imageSource = String.valueOf(getClass().getResource("../resources/images/shopImages/" + user.getCurrentTheme() + ".png"));
+            imageList.get(userThemes.size() - 1).setImage(new Image(imageSource));
         }
         /*
         for (int i = 0; i < 3; i++){

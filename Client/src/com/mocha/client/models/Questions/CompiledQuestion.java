@@ -16,10 +16,11 @@ public class CompiledQuestion
     private String question;
     private int coffeeBeansAwarded;
     private QuestionID id;
+    private String type;
 
     // Constructor
     public CompiledQuestion(String question, QuestionID id, int coffeeBeansAwarded,
-                            String[] testCases, String[] testCaseAnswers, String testClass)
+                            String[] testCases, String[] testCaseAnswers, String testClass, String type)
     {
         this.testCases = testCases;
         this.testCaseAnswers = testCaseAnswers;
@@ -27,6 +28,7 @@ public class CompiledQuestion
         this.question = question;
         this.coffeeBeansAwarded = coffeeBeansAwarded;
         this.id = id;
+        this.type = type;
     }
 
     public CompiledQuestion(){
@@ -91,6 +93,14 @@ public class CompiledQuestion
 
     public int getCoffeeBeansawarded() {
         return coffeeBeansAwarded;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
 

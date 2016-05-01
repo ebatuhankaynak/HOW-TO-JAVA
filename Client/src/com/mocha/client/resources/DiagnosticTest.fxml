@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" stylesheets="@Navigation.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mocha.client.controllers.CodingMenuController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" stylesheets="@Navigation.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mocha.client.controllers.DiagnosticTestMenuController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -44,7 +44,7 @@
                 <ToolBar prefHeight="45.0" prefWidth="256.0">
                     <items>
                         <Button mnemonicParsing="false" onMouseClicked="#onMainMenuButtonClick" styleClass="mainMenuButton" text="Main Menu" />
-                        <Button mnemonicParsing="false" onMouseClicked="#onTopicMenuButtonClick" styleClass="currentButton" text="Diagnostic Test" />
+                        <Button mnemonicParsing="false" styleClass="currentButton" text="Diagnostic Test" />
                     </items>
                 </ToolBar>
             </children>

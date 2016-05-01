@@ -30,6 +30,7 @@ public class Repository {
         admins = new AdminRepository(jongo.getCollection("Admins"));
 
         //--------------------------------------------------------------------------------------------------// Test
+        String type = "Method";
         CompiledQuestionContainer container = new CompiledQuestionContainer( "RECURSION", "1");
         QuestionID id = new QuestionID( 1, 1, "RECURSION");
         String [] testCases  = new String [5];
@@ -42,7 +43,7 @@ public class Repository {
         String testClass = "public class Main{ public static void main( String[] args) { System.out.println( factorial( Integer.parseInt( args[0]))); } ";
 
 
-        CompiledQuestion q1 = new CompiledQuestion( "Write a recursive method that computes the factorial with the signature factorial", id , 100, testCases, testCaseAnswers, testClass);
+        CompiledQuestion q1 = new CompiledQuestion( "Write a recursive method that computes the factorial with the signature factorial", id , 100, testCases, testCaseAnswers, testClass, type);
         container.add( q1);
         //  container.add( q1);
 
@@ -58,11 +59,16 @@ public class Repository {
         String testClass1 = "public class Main{ public static void main( String[] args) { System.out.println( sum( Integer.parseInt( args[0]))); } ";
 
 
-        CompiledQuestion q2 = new CompiledQuestion( "Write a recursive method that computes the sum with the siganture sum", id1 , 100, testCases1, testCaseAnswers1, testClass1);
+        CompiledQuestion q2 = new CompiledQuestion( "Write a recursive method that computes the sum with the siganture sum", id1 , 100, testCases1, testCaseAnswers1, testClass1, type);
         container.add( q2);
         //  container.add( q1);
 
         questionContainers.add( container);
+
+        CompiledQuestionContainer container2 = new CompiledQuestionContainer("RANDOM", "-1");
+        container2.add(q1);
+        container2.add(q2);
+        questionContainers.add(container2);
 
         //-------------------------------------------------------------------------------------
     }
